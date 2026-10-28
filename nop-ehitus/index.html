@@ -425,7 +425,7 @@ html:not(.js) .ba{--pos:50%}
           <div><span class="k">Facebook</span><a class="v" href="https://www.facebook.com/p/NOP-Ehitus-61564908815808/" target="_blank" rel="noopener">NOP Ehitus</a></div>
         </div>
       </div>
-      <form class="form" id="mailform" action="mailto:nopehitus@gmail.com" method="post" enctype="text/plain" novalidate>
+      <form class="form" id="mailform" method="dialog" novalidate>
         <div class="f" id="g-name">
           <label for="f-name">Nimi</label>
           <input id="f-name" name="nimi" type="text" autocomplete="name" required aria-describedby="e-name">
@@ -548,7 +548,7 @@ html:not(.js) .ba{--pos:50%}
     d.getElementById('lb-close').addEventListener('click', function () { lb.close(); });
     lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
     lb.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') show(cur - 1); if (e.key === 'ArrowRight') show(cur + 1); });
-    lb.addEventListener('close', function () { lbImg.src = ''; if (opener) opener.focus(); });
+    lb.addEventListener('close', function () { if (opener) opener.focus(); });
   }
   /* form: builds an e-mail in the visitor's own mail app, nothing is stored */
   var form = d.getElementById('mailform'), status = d.getElementById('f-status');
