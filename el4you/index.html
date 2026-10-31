@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>EL4YOU OÜ: electrical installation for shipbuilding</title>
+<meta name="description" content="Electrical installation, commissioning, measurements and manufacturing of distribution switchboards for shipbuilding. Working in Estonia and Germany.">
+<meta name="theme-color" content="#0B141C">
+<link rel="icon" href="assets/brand/el4you-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/brand/el4you-mark-512.png">
+<style>
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-var.woff2") format("woff2");font-weight:400 800;font-stretch:100% 125%;font-display:swap}
+@font-face{font-family:"Plex Mono";src:url("assets/fonts/plexmono-500.woff2") format("woff2");font-weight:500;font-display:swap}
+:root{
+  --hull:#0B141C; --hull-2:#101D28; --hull-3:#172634; --line-d:rgba(214,226,236,.16);
+  --txt-d:#EDF1F4; --txt-d2:#A9B6C1;
+  --paper:#EEF0ED; --steel:#D2D6D2; --steel-2:#E2E5E1; --steel-line:#A3AAA5;
+  --ink:#0E1A24; --ink-2:#44515C; --plate:#F5F6F2;
+  --blue:#0050FF; --blue-d:#0040CC; --blue-hi:#5C97FF;
+  --slope:.4276; /* cot(66.85deg): the diagonal of the "4" */
+  --pad:clamp(16px,4.2vw,64px); --max:1280px;
+  --mono:"Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+  --sans:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--hull);color:var(--ink);font:400 1rem/1.55 var(--sans);font-stretch:100%;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{margin:0;font-weight:720;font-stretch:112%;hyphens:manual;overflow-wrap:normal}
+p{margin:0}
+.wrap{width:100%;max-width:calc(var(--max) + 2*var(--pad));margin:0 auto;padding-inline:var(--pad)}
+.skip{position:absolute;left:8px;top:-60px;z-index:50;background:var(--blue);color:#fff;padding:12px 16px;font-weight:600;text-decoration:none}
+.skip:focus{top:8px}
+:focus-visible{outline:3px solid var(--blue-hi);outline-offset:3px}
+.light :focus-visible{outline-color:var(--blue)}
+
+/* labels */
+.tag{font:500 .75rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:12px;color:var(--ink-2)}
+.tag .n{display:inline-flex;align-items:center;gap:10px;color:var(--blue)}
+.tag .n::after{content:"";width:9px;height:20px;background:currentColor;clip-path:polygon(calc(20px*var(--slope)) 0,100% 0,calc(100% - 20px*var(--slope)) 100%,0 100%)}
+.light .tag .n{color:var(--blue-d)}
+.dark .tag{color:var(--txt-d2)} .dark .tag .n{color:var(--blue-hi)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border:2px solid var(--blue);background:var(--blue);color:#fff;font:640 1rem/1.1 var(--sans);font-stretch:108%;text-decoration:none;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.btn:hover{background:var(--blue-d);border-color:var(--blue-d)}
+.btn svg{flex:none}
+.btn.ghost{background:transparent;border-color:rgba(237,241,244,.45);color:var(--txt-d)}
+.btn.ghost:hover{border-color:var(--txt-d);background:rgba(255,255,255,.06)}
+.btn.sm{min-height:44px;padding:0 18px;font-size:.9375rem}
+
+/* header */
+.top{position:sticky;top:0;z-index:20;background:var(--hull);border-bottom:1px solid var(--line-d)}
+.top .wrap{display:flex;align-items:center;gap:16px;height:64px}
+.brand{display:flex;align-items:center;min-height:44px;margin-right:auto}
+.brand img{height:28px;width:auto}
+.nav{display:none}
+.nav a{color:var(--txt-d2);text-decoration:none;font-weight:500;font-size:.9375rem;display:inline-flex;align-items:center;min-height:44px;padding:0 4px}
+.nav a:hover{color:var(--txt-d)}
+.lang{display:flex;border:1px solid var(--line-d)}
+.lang button{all:unset;box-sizing:border-box;width:44px;height:40px;display:grid;place-items:center;font:500 .75rem/1 var(--mono);letter-spacing:.08em;color:var(--txt-d2);cursor:pointer;position:relative}
+.lang button+button{border-left:1px solid var(--line-d)}
+.lang button:hover{color:var(--txt-d)}
+.lang button[aria-pressed="true"]{color:#fff;background:var(--hull-3)}
+.lang button[aria-pressed="true"]::after{content:"";position:absolute;left:8px;right:8px;bottom:5px;height:2px;background:var(--blue-hi)}
+.lang button:focus-visible{outline:3px solid var(--blue-hi);outline-offset:-3px}
+.top .btn{display:none}
+@media (min-width:960px){
+  .top .wrap{height:76px;gap:28px}
+  .brand img{height:34px}
+  .nav{display:flex;gap:22px}
+  .top .btn{display:inline-flex}
+  html{scroll-padding-top:84px}
+}
+
+/* hero */
+.hero{position:relative;background:var(--hull);color:var(--txt-d);overflow:hidden}
+.hero-media{--h:196px;position:relative;height:var(--h);margin-inline:auto;max-width:calc(var(--max) + 2*var(--pad))}
+.hero-media picture,.hero-media img{width:100%;height:100%}
+.hero-media img{object-fit:cover;object-position:50% 58%}
+.hero-media .photo{position:absolute;inset:0;clip-path:polygon(calc(var(--h)*var(--slope) + 12px) 0,100% 0,100% 100%,12px 100%)}
+.hero-media .stroke{position:absolute;inset:0;background:var(--blue-hi);clip-path:polygon(calc(var(--h)*var(--slope)) 0,calc(var(--h)*var(--slope) + 12px) 0,12px 100%,0 100%)}
+.hero-copy{padding-top:18px;padding-bottom:28px}
+.eyebrow{font:500 .75rem/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--blue-hi);margin-bottom:10px}
+.hero h1{font-size:clamp(2rem,.9rem + 5.4vw,5.3rem);line-height:1;letter-spacing:-.012em;font-weight:740}
+.hero h1 em{font-style:normal;color:var(--blue-hi);display:block}
+.lead{margin-top:14px;font-size:1rem;line-height:1.55;color:var(--txt-d2);max-width:36em}
+.ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.ctas .btn{flex:1 1 auto}
+.ctas .tel{font-family:var(--mono);font-weight:500;letter-spacing:.02em;font-size:.95rem}
+/* type plate */
+.plate{--screw:radial-gradient(circle,#9aa19c 0 2.6px,#6f7772 2.7px 3.4px,transparent 3.6px);
+  position:relative;background:var(--plate);color:var(--ink);border:1px solid #C3C9C4;padding:20px 22px 18px;
+  box-shadow:inset 0 0 0 7px var(--plate),inset 0 0 0 8px #D9DED9;margin:0 var(--pad) 36px;
+  background-image:var(--screw),var(--screw),var(--screw),var(--screw);background-size:12px 12px;background-repeat:no-repeat;
+  background-position:5px 5px,calc(100% - 5px) 5px,5px calc(100% - 5px),calc(100% - 5px) calc(100% - 5px)}
+.plate-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:0 4px 12px;border-bottom:2px solid var(--ink)}
+.plate-name{font-weight:760;font-stretch:118%;font-size:1.15rem;letter-spacing:.02em}
+.plate-code{font:500 .75rem/1 var(--mono);letter-spacing:.14em;color:var(--blue)}
+.plate dl{margin:0;padding:0 4px}
+.plate dl div{display:grid;grid-template-columns:minmax(0,9.5em) minmax(0,1fr);gap:4px 14px;padding:10px 0;border-bottom:1px solid #D3D8D3}
+.plate dl div:last-child{border-bottom:0;padding-bottom:2px}
+.plate dt{font:500 .6875rem/1.45 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);padding-top:2px}
+.plate dd{margin:0;font-weight:600;font-size:.95rem;line-height:1.4}
+@media (max-width:400px){.plate dl div{grid-template-columns:1fr;gap:2px}}
+@media (min-width:640px){.hero-media{--h:300px}}
+@media (min-width:960px){
+  .hero{--hh:clamp(620px,calc(100svh - 76px),820px)}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);max-width:calc(var(--max) + 2*var(--pad));margin:0 auto;min-height:var(--hh)}
+  .hero-copy{grid-column:1;grid-row:1;align-self:center;padding:64px 40px 72px var(--pad);max-width:none;margin:0}
+  .lead{font-size:1.125rem;margin-top:22px}
+  .ctas{margin-top:30px}
+  .hero-media{--h:var(--hh);grid-column:2;grid-row:1;height:var(--hh);margin:0;max-width:none;margin-right:calc(-1 * max(0px, (100vw - var(--max) - 2 * var(--pad)) / 2))}
+  .hero-media img{object-position:50% 50%}
+  .hero-media .photo{clip-path:polygon(calc(var(--h)*var(--slope) + 16px) 0,100% 0,100% 100%,16px 100%)}
+  .hero-media .stroke{clip-path:polygon(calc(var(--h)*var(--slope)) 0,calc(var(--h)*var(--slope) + 16px) 0,16px 100%,0 100%)}
+  .plate{position:absolute;z-index:2;left:auto;right:max(var(--pad),calc((100vw - var(--max)) / 2));bottom:36px;margin:0;width:min(450px,33vw);box-shadow:inset 0 0 0 7px var(--plate),inset 0 0 0 8px #D9DED9,0 18px 40px rgba(0,0,0,.35)}
+  .ctas .btn{flex:0 0 auto}
+}
+
+/* services: the switchboard */
+.light{background:var(--paper);color:var(--ink)}
+.services{background:var(--steel);padding:72px 0 80px;border-top:6px solid var(--blue)}
+.h2{font-size:clamp(1.9rem,1.1rem + 3.2vw,3.5rem);line-height:1.02;margin-top:16px;letter-spacing:-.01em}
+.sec-lead{margin-top:16px;font-size:1.0625rem;color:var(--ink-2);max-width:34em}
+.modules{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:14px}
+.module{--s:radial-gradient(circle,#a2a9a4 0 2.4px,#7c847f 2.5px 3.2px,transparent 3.4px);
+  position:relative;background:var(--steel-2);border:1px solid var(--steel-line);padding:12px 12px 24px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 1px 0 rgba(0,0,0,.05);
+  background-image:var(--s),var(--s),var(--s),var(--s);background-size:12px 12px;background-repeat:no-repeat;
+  background-position:3px 3px,calc(100% - 3px) 3px,3px calc(100% - 3px),calc(100% - 3px) calc(100% - 3px)}
+.module figure{margin:0;border:1px solid #9DA49F;background:#C9CEC9;aspect-ratio:16/10;overflow:hidden}
+.module figure img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.04)}
+.label{position:relative;display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #B8BEB9;margin:-26px 14px 0;padding:11px 14px;box-shadow:0 2px 0 rgba(14,26,36,.08)}
+.label .code{font:500 .8125rem/1 var(--mono);color:#fff;background:var(--blue);padding:6px 7px;letter-spacing:.06em;flex:none}
+.label h3{font-size:clamp(.875rem,.78rem + .45vw,1rem);font-stretch:108%;font-weight:740;text-transform:uppercase;letter-spacing:.035em;line-height:1.2;hyphens:manual}
+.module p{margin:16px 14px 0;color:var(--ink-2);font-size:1rem;line-height:1.55}
+@media (min-width:700px){.modules{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}
+@media (min-width:1100px){
+  .services .grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:56px}
+  .services .sec-head{position:sticky;top:120px;align-self:start}
+  .modules{margin-top:0}
+  .services{padding:110px 0 120px}
+}
+
+/* where */
+.dark{background:var(--hull);color:var(--txt-d)}
+.where{padding:72px 0 64px;position:relative}
+.where .sec-lead,.contact .sec-lead{color:var(--txt-d2)}
+.where-grid{display:grid;gap:36px}
+.legend{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:14px}
+.legend li{display:flex;align-items:center;gap:14px;font-weight:600}
+.legend .sw{width:34px;height:20px;flex:none;border:1.5px solid var(--blue-hi)}
+.legend .sw.now{background:var(--blue-hi)}
+.legend .sw.past{background:repeating-linear-gradient(-66.85deg,var(--blue-hi) 0 2px,transparent 2px 7px)}
+.legend small{display:block;font:500 .6875rem/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--txt-d2);font-weight:500}
+.map{margin:0 auto;position:relative;width:100%;max-width:540px}
+.map svg{width:100%;height:auto;display:block;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 7%,#000 90%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 6%,#000 94%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 7%,#000 90%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 6%,#000 94%,transparent 100%);mask-composite:intersect}
+.map .land{fill:var(--hull-3);stroke:var(--hull);stroke-width:1.1;stroke-linejoin:round}
+.map .now{fill:var(--blue-hi);stroke:var(--hull);stroke-width:1.1}
+.map .past{fill:url(#hatch);stroke:var(--blue-hi);stroke-width:1.6}
+.map .lbl{font:500 19px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+@media (max-width:599px){.map .lbl{font-size:23px;letter-spacing:.1em}}
+.map .lbl-in{fill:var(--hull);font-weight:500}
+.map .lbl-out,.map .lbl-past{fill:#fff;paint-order:stroke;stroke:var(--hull);stroke-width:7px;stroke-linejoin:round}
+.map .lead-line{stroke:#fff;stroke-width:1.5;fill:none}
+@media (min-width:960px){
+  .where{padding:120px 0 110px}
+  .where-grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px;align-items:center}
+  .map{max-width:560px;justify-self:end;width:100%}
+}
+
+/* steps */
+.steps{padding:72px 0 80px}
+.flow{list-style:none;margin:40px 0 0;padding:0;display:grid;gap:0;counter-reset:s}
+.flow li{position:relative;padding:0 0 34px 64px}
+.flow li::before{content:"";position:absolute;left:21px;top:44px;bottom:0;width:2px;background:var(--ink)}
+.flow li:last-child::before{display:none}
+.flow .num{position:absolute;left:0;top:0;width:44px;height:44px;display:grid;place-items:center;background:var(--ink);color:#fff;font:500 1rem/1 var(--mono)}
+.flow li:first-child .num{background:var(--blue)}
+.flow h3{font-size:1.3rem;font-stretch:110%;line-height:1.2;padding-top:8px}
+.flow p{margin-top:10px;color:var(--ink-2);max-width:30em}
+@media (min-width:860px){
+  .flow{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+  .flow li{padding:68px 0 0}
+  .flow li::before{left:44px;right:-40px;top:21px;bottom:auto;width:auto;height:2px}
+  .steps{padding:110px 0 120px}
+}
+
+/* contact */
+.contact{padding:72px 0 80px;border-top:1px solid var(--line-d)}
+.contact-grid{display:grid;gap:40px}
+.direct{margin-top:28px;display:grid;gap:6px}
+.direct a{display:inline-flex;flex-direction:column;justify-content:center;min-height:64px;text-decoration:none;color:var(--txt-d);padding:6px 0;border-bottom:1px solid var(--line-d)}
+.direct a span{font:500 .6875rem/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--txt-d2)}
+.direct a b{font-weight:680;font-stretch:108%;font-size:clamp(1.25rem,.9rem + 1.6vw,2rem);line-height:1.2;overflow-wrap:anywhere}
+.direct a:hover b{color:var(--blue-hi)}
+.form{background:var(--plate);color:var(--ink);padding:24px 18px 22px;border:1px solid #C3C9C4;position:relative}
+.form::before{content:"";position:absolute;left:-1px;top:-1px;width:64px;height:6px;background:var(--blue)}
+.form h3{font-size:1.25rem;font-stretch:110%;margin-bottom:6px}
+.form .note{font-size:.875rem;color:var(--ink-2)}
+.fields{display:grid;gap:14px;margin-top:18px}
+.field label{display:block;font:500 .75rem/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px}
+.field label .opt{text-transform:none;letter-spacing:0;font-family:var(--sans);font-weight:400}
+.field input,.field textarea{width:100%;font:400 1rem/1.4 var(--sans);color:var(--ink);background:#fff;border:1.5px solid #8F9893;border-radius:0;padding:12px 12px;min-height:48px}
+.field textarea{min-height:128px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:3px solid var(--blue);outline-offset:0;border-color:var(--blue)}
+.field [aria-invalid="true"]{border-color:#B3261E;background:#FFF7F6}
+.err{color:#A3231B;font-size:.875rem;margin-top:6px;font-weight:500}
+.err:empty{display:none}
+.form .btn{width:100%;margin-top:6px}
+.hint{font-size:.875rem;color:var(--ink-2);margin-top:12px}
+.fallback{margin-top:4px;font-size:.9375rem;color:var(--ink)}
+.fallback a{display:inline-flex;align-items:center;min-height:44px;font-weight:600;color:var(--blue);overflow-wrap:anywhere}
+.status{margin-top:10px;padding:12px 14px;background:#E6EEFF;border-left:4px solid var(--blue);font-size:.9375rem}
+.status:empty{display:none}
+.two{display:grid;gap:14px}
+@media (min-width:560px){.two{grid-template-columns:1fr 1fr}.form{padding:32px 30px 28px}}
+@media (min-width:960px){
+  .contact{padding:120px 0 120px}
+  .contact-grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px;align-items:start}
+}
+
+/* footer */
+.foot{background:#070E14;color:var(--txt-d2);padding:48px 0 28px;border-top:1px solid var(--line-d)}
+.foot-grid{display:grid;gap:28px}
+.foot-logo img{width:min(300px,100%)}
+.foot dl{margin:0;display:grid;grid-template-columns:max-content minmax(0,1fr);gap:8px 18px;font-size:.9375rem;align-items:baseline}
+.foot dl div{display:contents}
+.foot dt{font:500 .6875rem/1.9 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.foot dd{margin:0;color:var(--txt-d)}
+.foot-links{display:grid;gap:2px}
+.foot-links a{display:inline-flex;align-items:center;min-height:44px;color:var(--txt-d);text-decoration:none;overflow-wrap:anywhere}
+.foot-links a:hover{color:var(--blue-hi)}
+.foot-bottom{margin-top:32px;padding-top:18px;border-top:1px solid var(--line-d);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;font:500 .75rem/1.4 var(--mono);letter-spacing:.08em}
+.foot-bottom a{color:var(--txt-d2);text-decoration:none;display:inline-flex;align-items:center;min-height:40px}
+.foot-bottom a:hover{color:var(--txt-d)}
+@media (min-width:860px){.foot-grid{grid-template-columns:1.2fr 1.4fr 1fr;align-items:start}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/brand/el4you-wordmark-white.svg" alt="EL4YOU" width="146" height="35"></a>
+    <nav class="nav" aria-label="Main" data-i18n-attr="aria-label:navAria">
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#where" data-i18n="nav.where">Where we work</a>
+      <a href="#start" data-i18n="nav.start">How to start</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language" data-i18n-attr="aria-label:langAria">
+      <button type="button" data-lang="en" lang="en" aria-pressed="true" title="English" aria-label="English">EN</button>
+      <button type="button" data-lang="de" lang="de" aria-pressed="false" title="Deutsch" aria-label="Deutsch">DE</button>
+      <button type="button" data-lang="et" lang="et" aria-pressed="false" title="Eesti" aria-label="Eesti">ET</button>
+    </div>
+    <a class="btn sm" href="#contact" data-i18n="cta">Get in touch</a>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top" aria-labelledby="h1">
+  <div class="hero-grid">
+    <div class="hero-media">
+      <div class="photo">
+        <picture>
+          <source media="(min-width: 960px)" srcset="assets/img/hero-tall.webp" width="1000" height="1400">
+          <img src="assets/img/hero-wide.webp" width="1200" height="660" alt="Engine room corridor on a ship with cable runs under the deckhead" data-i18n-attr="alt:alt.hero" fetchpriority="high">
+        </picture>
+      </div>
+      <span class="stroke" aria-hidden="true"></span>
+    </div>
+    <div class="hero-copy wrap">
+      <p class="eyebrow" data-i18n="hero.eyebrow">Shipbuilding · Electrical works</p>
+      <h1 id="h1" data-i18n="hero.h1">Electrical installation <em>for shipbuilding</em></h1>
+      <p class="lead" data-i18n="hero.lead">Installation, commissioning, measurements and manufacturing of distribution switchboards for shipyards and marine contractors. Currently working in Estonia and Germany.</p>
+      <div class="ctas">
+        <a class="btn" href="#contact"><span data-i18n="cta">Get in touch</span><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M9.5 4.5 14 9l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+        <a class="btn ghost tel" href="tel:+37255593398" aria-label="Call +372 5559 3398" data-i18n-attr="aria-label:callAria"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3h3l1.5 4.5-2.2 1.4a11 11 0 0 0 6.2 6.2l1.4-2.2L21 14.4v3A2.6 2.6 0 0 1 18.4 20 15.4 15.4 0 0 1 4 5.6 2.6 2.6 0 0 1 6.6 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>+372 5559 3398</a>
+      </div>
+    </div>
+  </div>
+  <div class="plate" role="group" aria-label="Company summary" data-i18n-attr="aria-label:plate.aria">
+    <div class="plate-top"><span class="plate-name">EL4YOU OÜ</span><span class="plate-code">EE · DE</span></div>
+    <dl>
+      <div><dt data-i18n="plate.sector">Sector</dt><dd data-i18n="plate.sectorV">Shipbuilding</dd></div>
+      <div><dt data-i18n="plate.scope">Scope</dt><dd data-i18n="plate.scopeV">Installation · Commissioning · Measurements · Switchboards</dd></div>
+      <div><dt data-i18n="plate.now">Working now</dt><dd data-i18n="plate.nowV">Estonia, Germany</dd></div>
+      <div><dt data-i18n="plate.past">Also worked in</dt><dd data-i18n="plate.pastV">Sweden, Finland</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="services light" id="services" aria-labelledby="svc-h">
+  <div class="wrap grid">
+    <div class="sec-head">
+      <p class="tag"><span class="n">01</span><span data-i18n="svc.tag">Services</span></p>
+      <h2 class="h2" id="svc-h" data-i18n="svc.h2">What we do</h2>
+      <p class="sec-lead" data-i18n="svc.lead">Electrical works in shipbuilding: installation and commissioning, measurements and distribution switchboards.</p>
+    </div>
+    <ol class="modules">
+      <li class="module">
+        <figure><img src="assets/img/s-installation.webp" width="1120" height="700" loading="lazy" alt="Cable conduits routed along a steel ceiling" data-i18n-attr="alt:alt.s1"></figure>
+        <div class="label"><span class="code">F1</span><h3 data-i18n="s1.t">Electrical installation</h3></div>
+        <p data-i18n="s1.d">Electrical installation works on board: cable laying, connections and mounting of electrical equipment.</p>
+      </li>
+      <li class="module">
+        <figure><img src="assets/img/s-commissioning.webp" width="1120" height="700" loading="lazy" alt="Row of blue electrical switchgear panels" data-i18n-attr="alt:alt.s2"></figure>
+        <div class="label"><span class="code">F2</span><h3 data-i18n="s2.t">Commissioning</h3></div>
+        <p data-i18n="s2.d">Start-up and adjustment: we put the installed electrical systems into operation and set them up.</p>
+      </li>
+      <li class="module">
+        <figure><img src="assets/img/s-measurements.webp" width="1120" height="700" loading="lazy" alt="Gloved hands taking a reading with a multimeter" data-i18n-attr="alt:alt.s3"></figure>
+        <div class="label"><span class="code">F3</span><h3 data-i18n="s3.t">Measurements</h3></div>
+        <p data-i18n="s3.d">Electrical measurements of installations and equipment on site.</p>
+      </li>
+      <li class="module">
+        <figure><img src="assets/img/s-switchboards.webp" width="1120" height="700" loading="lazy" alt="Wired relays and terminals inside a switchboard" data-i18n-attr="alt:alt.s4"></figure>
+        <div class="label"><span class="code">F4</span><h3 data-i18n="s4.t">Distribution switchboards</h3></div>
+        <p data-i18n="s4.d">Manufacturing of distribution switchboards for your project.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="where dark" id="where" aria-labelledby="where-h">
+  <div class="wrap where-grid">
+    <div>
+      <p class="tag"><span class="n">02</span><span data-i18n="where.tag">Where we work</span></p>
+      <h2 class="h2" id="where-h" data-i18n="where.h2">Estonia and Germany</h2>
+      <p class="sec-lead" data-i18n="where.p">We currently work in Estonia and Germany. We have also worked in Sweden and Finland.</p>
+      <ul class="legend">
+        <li><span class="sw now" aria-hidden="true"></span><span><small data-i18n="leg.now">Working now</small><span data-i18n="leg.nowV">Estonia, Germany</span></span></li>
+        <li><span class="sw past" aria-hidden="true"></span><span><small data-i18n="leg.past">Also worked in</small><span data-i18n="leg.pastV">Sweden, Finland</span></span></li>
+      </ul>
+    </div>
+    <figure class="map">
+<svg viewBox="0 0 600 802" role="img" aria-labelledby="map-t" xmlns="http://www.w3.org/2000/svg">
+<title id="map-t" data-i18n="map.title">Map of Northern Europe: Estonia and Germany, where we work now; Sweden and Finland, where we have also worked.</title>
+<defs><pattern id="hatch" patternUnits="userSpaceOnUse" width="9" height="9" patternTransform="rotate(23.15)"><rect width="9" height="9" fill="#172634"/><path d="M0 0V9" stroke="#5C97FF" stroke-width="2.4"/></pattern></defs>
+<path d="M-129.7 616.4L-108.3 622.5L-86.8 628.3L-65.2 633.8L-43.5 638.9L-21.8 643.7L0.0 648.2L21.9 652.3L43.8 656.1L65.8 659.6L87.8 662.8L109.9 665.6L132.0 668.1L154.2 670.3L176.3 672.1L198.6 673.6L220.8 674.8L243.0 675.6L265.3 676.1L287.5 676.3L309.8 676.1L332.1 675.6L354.3 674.8L376.5 673.6L398.7 672.1L420.9 670.3L443.1 668.1L465.2 665.6L487.3 662.8L509.3 659.6L531.3 656.1L553.2 652.3L575.1 648.2L596.9 643.7L618.6 638.9L640.3 633.8L661.9 628.3L683.4 622.5L704.8 616.4L726.1 610.0L747.3 603.3L768.4 596.2M-81.3 451.1L-62.3 456.5L-43.3 461.6L-24.3 466.5L-5.1 471.0L14.1 475.2L33.4 479.2L52.7 482.9L72.1 486.2L91.5 489.3L111.0 492.1L130.5 494.6L150.1 496.8L169.6 498.7L189.3 500.4L208.9 501.7L228.5 502.7L248.2 503.5L267.9 503.9L287.5 504.1L307.2 503.9L326.9 503.5L346.5 502.7L366.2 501.7L385.8 500.4L405.4 498.7L425.0 496.8L444.6 494.6L464.1 492.1L483.6 489.3L503.0 486.2L522.4 482.9L541.7 479.2L561.0 475.2L580.2 471.0L599.3 466.5L618.4 461.6L637.4 456.5L656.3 451.1L675.2 445.5L693.9 439.5L712.6 433.3M-33.1 286.9L-16.7 291.5L-0.2 296.0L16.4 300.2L33.1 304.1L49.8 307.8L66.5 311.2L83.3 314.4L100.2 317.4L117.1 320.1L134.0 322.5L151.0 324.7L168.0 326.6L185.0 328.2L202.1 329.7L219.1 330.8L236.2 331.7L253.3 332.3L270.4 332.7L287.5 332.9L304.6 332.7L321.8 332.3L338.8 331.7L355.9 330.8L373.0 329.7L390.1 328.2L407.1 326.6L424.1 324.7L441.0 322.5L458.0 320.1L474.9 317.4L491.7 314.4L508.5 311.2L525.3 307.8L542.0 304.1L558.7 300.2L575.2 296.0L591.8 291.5L608.2 286.9L624.6 281.9L640.9 276.7L657.1 271.3M15.1 122.4L29.0 126.3L43.1 130.1L57.2 133.7L71.3 137.0L85.5 140.2L99.7 143.1L114.0 145.8L128.4 148.3L142.7 150.6L157.1 152.6L171.5 154.5L186.0 156.1L200.4 157.5L214.9 158.7L229.4 159.7L243.9 160.5L258.5 161.0L273.0 161.3L287.5 161.4L302.1 161.3L316.6 161.0L331.1 160.5L345.7 159.7L360.2 158.7L374.6 157.5L389.1 156.1L403.6 154.5L418.0 152.6L432.4 150.6L446.7 148.3L461.0 145.8L475.3 143.1L489.6 140.2L503.8 137.0L517.9 133.7L532.0 130.1L546.0 126.3L560.0 122.4L573.9 118.2L587.8 113.8L601.6 109.2M-15.7 858.6L-9.4 823.9L-3.1 789.4L3.2 755.0L9.4 720.6L15.7 686.4L21.9 652.3L28.1 618.3L34.2 584.3L40.4 550.5L46.6 516.6L52.7 482.9L58.8 449.1L65.0 415.4L71.1 381.8L77.2 348.1L83.3 314.4L89.5 280.8L95.6 247.1L101.7 213.4L107.9 179.6L114.0 145.8L120.2 111.9L126.4 78.0L132.6 43.9L138.8 9.7L145.0 -24.5L151.3 -59.0L157.6 -93.5M110.0 876.6L113.7 841.6L117.4 806.7L121.1 771.9L124.7 737.2L128.4 702.6L132.0 668.1L135.6 633.7L139.3 599.4L142.9 565.2L146.5 531.0L150.1 496.8L153.7 462.7L157.2 428.7L160.8 394.6L164.4 360.6L168.0 326.6L171.6 292.5L175.2 258.5L178.8 224.4L182.4 190.3L186.0 156.1L189.6 121.9L193.2 87.5L196.8 53.1L200.5 18.6L204.1 -16.1L207.8 -50.9L211.5 -85.8M236.7 885.2L237.8 850.0L238.9 814.9L239.9 779.9L240.9 745.0L242.0 710.3L243.0 675.6L244.1 641.1L245.1 606.6L246.1 572.1L247.2 537.8L248.2 503.5L249.2 469.2L250.3 435.0L251.3 400.7L252.3 366.5L253.3 332.3L254.4 298.1L255.4 263.9L256.4 229.7L257.4 195.4L258.5 161.0L259.5 126.6L260.5 92.1L261.6 57.5L262.6 22.8L263.7 -12.0L264.7 -47.0L265.8 -82.1M363.7 884.3L362.1 849.0L360.6 814.0L359.0 779.0L357.4 744.2L355.9 709.4L354.3 674.8L352.7 640.2L351.2 605.8L349.6 571.4L348.1 537.0L346.5 502.7L345.0 468.5L343.5 434.3L341.9 400.1L340.4 365.9L338.8 331.7L337.3 297.5L335.8 263.3L334.2 229.1L332.7 194.8L331.1 160.5L329.6 126.1L328.0 91.6L326.5 57.0L324.9 22.3L323.4 -12.5L321.8 -47.4L320.2 -82.5M490.3 873.8L486.1 838.8L481.9 803.9L477.7 769.2L473.5 734.6L469.3 700.1L465.2 665.6L461.0 631.3L456.9 597.0L452.8 562.8L448.7 528.7L444.6 494.6L440.5 460.6L436.4 426.6L432.3 392.6L428.2 358.6L424.1 324.7L420.0 290.7L415.9 256.7L411.8 222.7L407.7 188.6L403.6 154.5L399.4 120.3L395.3 86.0L391.2 51.7L387.0 17.2L382.8 -17.4L378.7 -52.1L374.4 -87.0M615.7 853.9L608.9 819.3L602.1 784.8L595.3 750.5L588.5 716.3L581.8 682.2L575.1 648.2L568.4 614.2L561.7 580.4L555.0 546.6L548.4 512.9L541.7 479.2L535.1 445.6L528.4 412.0L521.8 378.4L515.2 344.8L508.5 311.2L501.9 277.7L495.3 244.1L488.6 210.5L482.0 176.8L475.3 143.1L468.7 109.3L462.0 75.4L455.3 41.5L448.5 7.4L441.8 -26.8L435.0 -61.1L428.2 -95.6" fill="none" stroke="rgba(214,226,236,.07)" stroke-width="1"/>
+<path class="land" d=""/><path class="land" d="M597.2 802.2L595.2 800.5L595.0 796.1L596.2 794.8L599.6 794.9L602.0 793.1L602.0 770.2L601.3 771.5L595.9 773.6L592.1 770.8L590.2 772.9L582.5 772.0L580.6 775.4L579.3 770.5L574.3 773.8L574.2 777.2L577.2 783.3L576.6 787.9L572.3 792.7L572.6 795.7L568.0 803.1L568.2 804.0L598.0 804.0ZM593.6 569.9L588.9 571.0L586.6 573.5L583.6 573.2L581.8 574.6L578.1 580.7L576.0 588.4L575.6 591.8L579.4 599.5L578.1 602.9L573.3 601.8L572.2 599.4L568.6 597.4L556.0 601.4L552.0 603.9L545.3 596.6L540.5 600.5L538.7 604.6L536.7 604.1L535.2 601.4L526.0 600.7L522.7 602.9L519.3 602.3L516.5 606.8L515.8 603.6L513.8 602.9L507.3 604.1L503.3 599.3L495.4 599.8L473.8 597.5L458.6 599.2L444.0 603.1L442.6 606.5L436.8 613.5L432.7 612.3L429.6 612.9L429.1 616.8L431.2 620.9L431.1 623.8L436.0 629.7L439.4 635.8L442.0 637.9L442.3 638.8L439.8 641.1L442.9 646.7L443.1 649.7L441.0 654.1L435.4 655.8L422.0 673.7L415.6 684.5L414.5 686.9L417.1 695.2L416.8 699.5L420.5 703.0L419.7 704.5L413.4 703.2L408.9 717.1L405.7 721.4L405.9 727.1L408.7 726.8L411.4 731.9L415.4 733.3L417.1 735.6L421.5 736.1L423.8 738.7L424.5 741.5L428.4 739.1L430.1 736.1L436.7 738.9L442.7 738.2L454.8 740.0L461.8 737.8L464.0 738.1L472.2 744.6L476.3 743.2L478.2 740.2L484.6 736.3L500.4 731.4L502.7 723.6L509.6 720.7L514.2 715.5L523.0 714.7L525.1 712.2L526.7 712.6L529.7 709.9L536.2 711.0L541.7 713.5L543.2 715.5L548.0 715.3L549.4 716.0L549.7 718.4L551.5 718.0L552.8 719.7L554.0 717.4L559.7 717.5L564.2 722.6L565.4 723.1L568.7 721.3L570.9 723.9L571.9 727.5L572.0 737.6L578.8 742.0L582.7 743.3L583.0 748.3L585.5 753.7L593.6 756.9L595.8 760.3L596.6 766.7L602.0 769.5L602.0 569.4Z"/><path class="land" d="M93.4 803.4L100.5 794.7L101.4 788.2L102.6 787.6L105.5 788.4L107.2 794.8L109.8 795.4L117.3 793.9L119.3 798.5L121.4 798.7L120.1 789.9L121.7 786.0L124.4 785.5L126.0 787.7L129.7 788.6L129.4 784.5L131.5 776.5L130.8 774.1L129.3 773.3L123.7 777.4L118.0 773.7L117.4 771.2L109.2 768.4L109.5 764.5L114.0 754.7L104.5 746.5L97.4 746.1L96.4 744.3L94.0 744.2L90.7 741.1L87.3 742.2L86.4 743.6L87.4 745.0L90.0 745.4L87.2 747.0L81.2 745.8L74.7 746.4L67.6 744.4L64.6 745.6L62.4 748.5L58.6 749.0L55.9 746.4L54.0 746.1L49.9 748.8L52.0 751.1L50.5 753.4L42.5 760.7L37.1 762.6L35.0 769.1L28.2 773.1L24.8 779.0L26.0 781.0L24.8 784.3L21.4 786.0L21.1 788.2L23.8 788.8L26.8 787.7L28.9 785.9L28.4 783.0L33.6 780.4L41.4 782.1L42.0 787.2L40.4 790.8L45.8 800.9L47.5 802.0L57.8 800.0L63.6 802.9L69.0 800.3L72.8 795.7L72.6 791.7L80.0 786.6L81.3 786.7L81.2 793.8L85.0 799.0L89.2 800.7L87.8 803.4L88.2 804.0L93.4 804.0Z"/><path class="land" d="M401.2 699.4L398.0 695.0L392.1 693.0L379.5 693.6L377.9 696.5L375.0 697.5L369.1 695.2L363.4 695.7L359.1 698.3L356.9 703.1L353.6 701.8L351.1 703.0L350.0 702.6L350.2 696.8L346.9 695.7L342.4 689.2L338.2 692.4L336.0 696.3L332.0 696.6L331.2 693.0L323.5 693.5L318.4 699.0L313.8 701.8L311.5 709.5L309.0 710.4L301.8 716.4L290.6 716.5L287.2 722.2L284.4 732.3L289.5 744.4L294.9 746.0L302.4 752.3L305.4 753.6L327.9 752.6L329.1 750.3L328.4 747.3L329.3 745.2L332.1 743.3L344.9 740.8L347.0 737.2L348.4 736.8L354.9 739.7L356.0 739.1L364.7 733.5L367.9 725.3L376.5 724.2L381.2 725.3L389.9 723.1L396.6 729.8L405.5 727.5L405.7 721.4L408.9 717.1L413.4 703.2Z"/><path class="land" d="M265.0 802.4L268.9 802.4L269.7 797.7L271.2 796.8L275.9 798.1L272.7 793.2L270.4 785.5L265.9 785.2L263.1 787.4L262.5 791.7L258.0 790.4L250.1 793.1L244.7 792.5L236.9 793.6L228.4 800.5L208.1 795.4L207.5 797.4L200.5 802.1L199.9 804.0L263.4 804.0Z"/><path class="land" d="M597.7 534.3L591.7 535.1L587.3 532.7L582.3 534.0L580.4 540.7L588.5 548.0L588.1 550.3L591.2 555.0L592.1 563.0L597.5 569.3L602.0 570.0L602.0 529.4ZM439.1 -1.3L437.4 7.8L429.7 14.3L430.4 15.3L434.5 15.7L432.8 28.4L437.3 38.1L446.5 41.0L457.3 52.8L457.5 57.0L451.3 74.1L450.3 81.5L466.7 106.5L471.9 118.3L472.1 119.8L467.2 122.8L469.0 124.4L468.1 135.8L471.3 136.7L471.9 138.7L469.7 142.8L469.9 145.2L473.5 150.3L477.9 150.8L479.4 154.7L478.1 158.0L479.6 161.7L481.1 164.1L485.8 166.1L488.2 168.5L489.3 174.6L486.4 182.8L483.6 185.7L491.6 192.2L505.1 199.8L512.0 207.1L512.9 209.4L510.5 224.1L493.3 260.3L487.9 270.3L476.5 286.0L468.5 299.8L474.6 297.6L479.5 293.1L482.2 294.9L482.5 299.0L480.0 297.7L483.5 302.9L486.6 303.8L491.7 307.8L502.6 305.6L508.0 310.4L511.7 312.1L511.4 315.1L503.3 313.8L494.2 314.0L491.9 320.4L488.6 321.7L484.5 321.0L482.3 326.8L478.3 324.2L477.1 324.6L476.7 326.6L478.5 332.2L478.0 334.7L481.0 338.0L477.2 342.0L476.0 350.1L471.8 359.9L475.4 371.5L476.0 378.8L480.6 388.0L482.9 389.9L479.0 393.0L477.1 397.9L476.9 401.9L480.0 402.9L480.9 405.5L487.0 409.2L487.5 412.6L485.9 424.9L488.9 423.7L490.5 424.9L491.2 427.7L496.2 433.7L498.4 438.8L499.7 443.0L499.3 447.1L502.4 449.6L507.5 447.5L512.7 451.8L516.7 448.3L521.8 449.2L524.3 450.7L524.3 455.2L527.3 458.1L534.9 451.0L540.5 449.9L545.1 451.0L551.3 455.5L554.5 455.7L556.3 462.3L555.4 466.6L559.2 470.8L560.2 473.6L558.3 478.8L558.6 483.3L566.6 487.2L566.1 492.0L568.5 492.8L574.7 500.5L584.2 504.2L584.4 511.9L593.5 510.9L599.1 512.7L599.2 515.3L600.7 517.5L602.0 518.1L602.0 133.3L596.8 117.8L595.0 116.6L589.2 117.7L580.1 112.3L573.9 111.2L570.6 113.0L571.1 119.5L569.8 121.8L568.1 122.2L568.9 125.2L571.2 128.0L582.6 136.8L586.4 136.8L590.6 134.7L594.4 136.2L599.2 145.3L598.5 148.2L594.3 151.6L592.4 155.1L574.9 153.7L570.0 148.5L563.6 145.1L561.0 144.3L558.2 146.2L556.0 146.3L551.7 144.7L548.2 141.4L546.7 136.6L547.6 134.6L545.5 133.6L543.4 127.6L534.2 115.4L536.1 110.9L536.0 101.7L535.2 98.4L533.1 95.9L527.6 91.1L522.9 88.9L511.9 88.0L514.5 85.4L514.9 83.2L508.3 81.7L506.6 76.8L502.0 76.5L495.1 71.2L494.9 68.1L490.2 65.4L485.8 64.7L492.4 63.4L499.9 64.0L499.4 66.5L504.8 71.4L509.8 73.0L511.2 72.0L515.8 73.6L519.1 72.8L523.6 73.5L523.2 74.9L524.9 76.7L528.9 73.5L540.1 78.1L552.4 77.8L560.8 76.4L574.8 78.3L583.1 76.7L558.1 1.9L552.0 -2.0L440.1 -2.0ZM554.4 116.9L552.0 119.3L557.2 124.0L557.8 122.9L556.5 118.3ZM363.7 492.0L356.8 502.4L354.4 504.0L348.7 504.1L346.2 505.5L345.8 511.3L344.3 515.4L339.5 521.6L370.3 522.4L402.8 521.1L400.5 514.2L402.4 503.5L398.2 500.4L396.8 497.5L387.1 498.1L376.6 494.3L373.2 491.8L370.3 492.4L370.0 503.7L364.2 504.9L358.3 502.8L364.8 492.2Z"/><path class="land" d="M556.7 794.1L556.2 788.3L557.4 777.0L556.1 770.5L550.2 759.5L544.3 755.7L537.5 748.8L529.4 739.5L521.3 726.4L518.4 723.0L513.5 720.2L509.6 720.7L502.7 723.6L500.4 731.4L484.6 736.3L478.2 740.2L476.3 743.2L472.2 744.6L464.0 738.1L461.8 737.8L454.8 740.0L442.7 738.2L436.7 738.9L430.1 736.1L428.4 739.1L424.5 741.5L418.8 748.4L411.4 750.3L405.2 758.6L405.4 762.4L402.7 765.8L401.1 771.7L398.4 775.2L398.4 778.0L395.0 784.3L395.3 787.3L391.3 791.0L389.9 795.3L390.4 797.9L388.7 798.7L387.2 802.6L385.5 804.0L559.7 804.0Z"/><path class="land" d="M427.4 613.5L427.2 610.3L428.6 606.8L428.4 598.8L427.0 596.7L417.5 591.3L421.7 583.0L431.2 575.5L429.8 564.5L421.9 545.5L417.2 527.2L413.4 524.2L408.4 522.5L406.9 520.4L403.8 519.7L402.1 521.4L380.1 522.2L339.5 521.6L335.7 524.3L327.1 525.8L320.9 523.2L316.0 512.5L323.3 516.2L322.4 514.4L313.7 509.3L309.0 509.5L292.7 513.3L285.3 517.9L278.8 519.3L271.2 528.3L253.1 533.1L234.6 539.9L231.2 538.9L231.1 541.6L238.0 543.6L238.3 549.9L231.8 546.5L234.2 564.9L233.2 568.1L228.2 573.8L227.9 575.7L235.6 584.0L237.7 588.1L236.1 593.9L238.6 597.7L239.0 602.6L239.9 603.6L236.4 612.1L239.1 619.2L238.7 622.8L242.5 625.0L244.7 632.3L239.8 645.8L243.6 645.0L243.9 640.6L249.6 642.6L251.6 647.8L259.8 650.4L264.5 652.9L265.8 655.0L271.8 653.5L274.8 656.4L270.1 661.5L272.8 663.5L279.5 672.7L287.3 668.1L284.9 661.5L290.9 663.2L296.7 667.4L303.1 665.6L303.8 668.2L300.6 670.8L301.5 672.2L307.0 677.1L310.4 674.9L316.7 679.0L317.6 678.4L322.4 680.1L323.2 684.3L328.1 689.1L328.8 692.7L331.2 693.0L332.0 696.6L336.0 696.3L338.2 692.4L342.4 689.2L346.9 695.7L350.2 696.8L350.0 702.6L353.6 701.8L356.9 703.1L359.1 698.3L363.4 695.7L369.1 695.2L375.0 697.5L377.9 696.5L379.5 693.6L392.1 693.0L398.0 695.0L401.2 699.4L419.7 704.5L420.3 702.3L416.8 699.5L417.1 695.2L414.5 686.9L422.0 673.7L429.4 663.5L435.4 655.8L441.0 654.1L443.1 649.7L442.9 646.7L439.8 641.1L442.3 638.8L442.0 637.9L439.4 635.8L436.0 629.7L431.1 623.8L430.5 619.1Z"/><path class="land" d="M312.2 -0.2L311.8 3.3L307.2 5.9L307.4 7.8L311.1 11.2L307.8 11.7L302.9 6.6L300.8 11.7L301.2 17.6L296.3 19.6L292.5 30.1L289.2 33.8L286.1 34.1L283.1 36.2L281.4 39.4L282.3 41.7L293.0 41.2L294.6 43.1L286.9 45.6L282.7 43.8L279.7 44.3L277.3 46.8L278.0 52.8L279.7 54.7L277.9 57.8L278.6 61.9L276.1 56.9L274.8 49.9L265.7 55.2L266.2 57.5L269.4 58.1L269.6 59.5L266.7 60.4L263.3 58.5L258.7 64.0L258.4 68.7L259.3 69.1L265.3 65.7L264.4 71.4L267.5 74.5L269.8 73.5L270.2 74.3L268.6 76.9L268.8 80.2L266.5 75.8L260.6 72.2L257.8 74.7L253.4 82.5L264.8 83.3L266.6 83.7L266.3 85.2L257.7 85.3L248.7 87.5L245.4 92.7L242.2 94.6L242.8 96.5L246.2 98.7L241.6 98.4L235.7 103.4L233.3 110.6L233.6 117.5L245.6 115.0L246.4 115.8L241.2 119.6L237.3 119.3L228.7 121.7L231.9 126.9L228.8 126.8L226.9 128.4L225.8 131.7L220.3 139.5L217.6 146.4L217.6 149.3L220.3 150.8L221.4 152.8L228.9 148.0L226.1 152.1L222.5 155.8L219.6 156.1L217.7 152.7L207.5 159.0L205.2 161.2L204.0 166.3L209.1 164.7L207.3 166.9L202.7 168.8L198.1 171.9L196.4 174.6L192.2 176.8L186.5 184.5L182.8 187.5L180.0 192.9L175.8 196.7L174.8 199.6L175.1 200.6L177.8 200.2L179.5 206.5L181.4 207.0L186.0 205.5L195.7 199.5L197.6 197.1L195.8 194.3L202.1 190.5L204.2 192.2L199.7 195.4L201.6 196.4L202.3 198.9L192.0 204.2L191.0 206.4L192.0 209.8L183.3 209.2L180.5 211.1L176.4 202.6L170.6 203.8L167.6 207.3L166.5 207.0L166.5 205.8L167.8 202.7L163.6 200.4L159.4 201.4L155.6 204.5L155.8 206.3L158.9 207.4L159.1 210.3L153.3 211.5L151.0 215.5L156.8 227.2L151.1 221.3L149.8 217.8L141.7 216.4L138.6 218.6L131.2 220.7L126.9 227.3L127.5 228.1L134.9 227.4L137.3 229.2L147.5 228.5L148.1 230.0L139.2 230.8L138.7 232.9L141.1 234.1L140.4 234.7L137.8 235.1L134.8 232.6L126.6 230.1L120.4 230.1L115.8 235.0L115.9 236.4L124.9 235.8L122.8 237.5L114.7 238.2L112.4 235.5L105.9 238.1L102.2 243.0L100.5 241.4L98.8 242.1L97.3 246.5L97.9 249.0L99.4 250.0L102.8 250.2L112.7 255.2L122.4 256.1L117.8 257.6L110.5 257.1L102.4 251.9L93.7 251.0L92.7 256.6L95.5 262.9L97.9 265.4L92.2 266.2L91.4 272.4L92.4 274.8L95.4 278.1L97.4 278.6L100.9 277.7L108.1 278.2L112.8 280.1L114.7 279.7L117.2 275.4L117.7 278.4L122.1 280.6L125.9 281.0L127.6 280.8L129.5 274.4L131.6 272.6L129.4 276.9L129.9 279.7L133.1 280.5L123.3 283.2L122.6 287.9L122.0 284.3L119.3 280.8L116.5 280.6L113.1 281.9L106.2 279.6L98.1 280.3L91.5 278.6L89.8 279.5L88.5 290.8L89.2 293.4L90.9 296.0L98.3 293.2L88.4 299.8L89.4 308.4L91.3 310.5L95.3 311.2L95.7 312.3L92.1 313.5L87.3 312.1L86.9 315.8L83.5 323.8L83.6 327.0L90.7 321.8L95.2 316.2L98.5 314.7L99.4 312.0L104.7 306.1L108.3 304.2L119.6 302.7L114.6 305.2L109.9 313.6L111.8 306.8L111.1 305.0L103.9 309.9L101.8 314.7L94.9 321.2L96.2 323.8L102.9 324.1L96.4 326.0L94.4 328.2L89.6 325.5L88.1 327.2L86.3 327.4L80.9 340.9L81.2 343.2L84.5 343.6L88.7 340.0L93.9 338.7L104.6 333.3L95.4 340.9L95.1 344.7L93.2 347.5L93.0 348.8L96.0 353.0L100.3 351.5L100.9 352.1L95.6 355.8L87.9 349.5L86.7 350.6L84.6 358.9L86.7 366.3L92.0 372.4L97.4 377.0L102.2 377.9L102.5 379.3L99.6 382.3L100.1 383.3L102.4 384.7L104.1 381.9L105.4 382.3L105.5 385.1L107.1 386.9L110.6 386.6L115.3 388.2L123.0 387.3L126.2 385.4L128.5 385.8L135.5 381.3L150.0 368.0L151.6 367.9L153.1 366.0L151.8 364.1L158.3 360.9L159.1 359.7L157.1 355.9L158.5 355.9L161.5 361.7L163.6 361.6L166.0 359.8L167.6 360.6L172.9 351.9L173.2 343.6L176.3 341.6L176.1 337.9L177.4 335.6L177.0 348.5L179.6 355.8L188.7 359.3L190.0 366.1L191.2 366.8L193.0 365.8L196.7 353.6L195.5 343.1L198.5 339.8L200.6 334.2L204.8 332.8L210.6 326.6L213.1 315.0L209.5 295.8L216.5 294.3L220.0 284.5L215.7 277.7L209.0 271.1L212.8 252.0L210.5 241.3L211.3 230.1L213.2 227.4L210.5 217.2L214.3 210.6L214.0 207.0L224.3 193.8L230.6 191.6L241.8 194.3L244.8 188.9L244.3 178.9L238.1 174.6L251.3 150.4L254.1 133.5L253.3 121.9L260.2 120.8L266.5 116.2L265.8 109.9L279.5 90.6L279.9 87.1L276.0 77.7L276.9 75.0L280.4 73.4L281.9 71.0L284.7 61.5L291.7 54.3L299.5 59.0L302.7 50.8L302.3 39.4L304.1 38.5L313.7 40.4L325.5 44.7L328.8 40.3L325.2 38.2L328.5 33.5L329.5 27.4L326.3 21.5L333.2 19.5L338.1 20.2L338.8 18.8L337.7 14.2L340.1 12.0L344.1 11.7L353.9 25.5L355.7 30.1L364.1 31.0L365.2 32.0L367.4 31.6L372.0 28.9L373.5 25.5L388.0 31.3L389.6 29.5L390.9 23.0L394.6 20.2L396.3 16.4L395.2 6.2L396.2 -2.0L330.3 -2.0L333.1 3.8L330.0 3.2L325.7 10.4L324.9 9.9L328.1 0.7L328.1 -2.0L322.1 -2.0L319.9 7.8L320.2 -2.0L313.3 -2.0ZM433.3 4.0L435.7 9.1L438.3 6.0L439.1 -1.3L440.2 -2.0L435.5 -2.0ZM89.3 273.8L87.7 274.2L86.7 277.4L89.3 277.8ZM86.0 299.2L84.7 300.3L84.1 305.1L84.5 307.8L86.0 308.3ZM216.7 135.4L215.0 134.4L213.2 136.8L215.1 138.2ZM163.0 198.3L163.1 194.8L155.4 197.9L156.3 198.8ZM151.7 208.5L151.1 204.8L146.8 206.2L147.8 208.5L149.5 209.2ZM243.1 48.1L241.5 51.0L239.8 51.0L238.4 53.5L238.6 56.7L240.8 55.9L241.3 53.8L242.1 54.9L243.4 53.5L245.9 53.2L250.5 48.5L246.3 47.3ZM236.8 57.9L236.7 53.9L235.1 55.8L233.0 62.4ZM264.8 23.5L263.1 22.8L263.0 26.5L260.9 25.7L259.9 30.0L256.8 28.9L254.4 32.5L254.7 34.2L256.2 35.3L259.0 33.9L260.8 36.3L265.0 36.2L266.7 34.3L266.7 28.4ZM302.4 0.9L300.7 1.3L301.3 3.6L303.1 4.4L309.2 2.7L311.1 -2.0L303.3 -2.0ZM227.5 126.3L228.0 124.7L224.1 125.6L223.3 128.3ZM225.7 122.5L226.6 118.9L225.4 117.7L224.4 118.5L222.2 123.5ZM203.7 161.0L202.3 158.5L197.5 159.9L196.2 161.6L197.5 162.7L200.9 162.4L202.5 163.3ZM293.7 2.4L293.1 4.7L290.3 6.5L292.1 7.9L292.0 9.9L288.6 9.3L287.6 10.6L287.2 18.4L285.2 20.7L288.5 21.5L288.6 22.7L293.6 16.3L294.6 17.6L299.3 16.2L298.9 13.5L300.7 9.3L300.4 7.1L297.1 3.5L295.1 4.4ZM274.0 32.3L272.7 22.2L276.6 15.6L276.8 13.6L275.8 12.6L273.9 13.4L268.7 21.4L268.1 25.8L269.6 27.4L267.4 36.3L263.3 42.2L256.7 43.4L252.3 48.3L252.2 50.5L257.0 50.5L261.0 46.8L262.4 47.7L264.3 46.8L265.5 44.6L267.5 46.8L270.7 45.4L271.8 43.6L274.5 43.8L277.3 39.1L281.5 35.9L281.8 33.0L279.1 27.4L276.9 28.6L275.7 34.2L273.7 35.2L272.0 38.5Z"/><path class="land" d="M50.0 625.4L46.6 620.5L48.4 620.4L53.1 617.5L52.4 614.7L56.2 607.4L52.9 594.5L58.0 592.6L61.6 595.2L70.2 593.5L71.9 591.4L70.3 589.2L70.8 587.7L76.7 584.2L77.9 582.3L78.3 577.0L73.3 574.7L72.4 572.3L74.2 568.9L80.1 569.2L85.1 557.9L86.7 548.3L82.3 546.0L79.8 541.7L60.4 540.9L52.8 543.3L48.3 548.5L41.4 552.0L37.6 553.1L35.3 551.6L25.4 571.9L18.1 579.2L15.1 580.9L11.0 586.6L14.6 594.3L10.8 594.1L15.6 599.4L12.7 599.4L8.1 594.3L5.3 593.0L1.2 592.4L-1.3 593.6L1.0 597.1L5.7 599.6L9.8 599.3L17.0 603.7L17.7 601.3L20.5 600.2L22.9 602.5L25.9 600.7L27.3 604.0L29.4 604.2L31.6 602.5L32.3 606.9L34.3 609.6L36.3 610.7L40.0 610.4L42.3 613.9L46.0 616.1L46.1 618.4L43.8 622.8L40.8 626.0L41.6 628.6L47.9 630.5ZM-0.3 602.8L6.0 606.8L13.5 603.3L14.1 602.1L11.5 602.5L9.6 600.9L6.6 601.7L0.7 599.0L-2.0 598.8L-2.0 603.1ZM62.0 538.2L62.0 538.0L56.5 537.0L57.9 538.1ZM44.5 540.4L42.9 540.1L40.3 542.2ZM54.8 537.7L46.7 537.9L49.4 538.6ZM38.5 547.6L39.2 543.8L34.7 548.2L36.1 549.7ZM5.3 588.3L5.6 590.2L7.5 590.0L9.9 592.8L12.6 592.6L10.6 589.0ZM78.9 536.6L80.5 535.4L77.7 535.6L77.0 536.5Z"/><path class="land" d="M596.6 766.7L595.8 760.3L593.6 756.9L585.5 753.7L583.0 748.3L582.7 743.3L578.8 742.0L572.0 737.6L571.9 727.5L570.9 723.9L568.7 721.3L565.4 723.1L564.2 722.6L559.7 717.5L554.0 717.4L552.8 719.7L551.5 718.0L549.7 718.4L549.4 716.0L548.0 715.3L543.2 715.5L541.7 713.5L536.2 711.0L529.7 709.9L526.7 712.6L525.1 712.2L523.0 714.7L514.2 715.5L509.6 720.7L513.5 720.2L518.4 723.0L523.4 729.2L529.4 739.5L537.5 748.8L544.3 755.7L550.2 759.5L556.1 770.5L557.4 777.0L556.2 788.3L556.7 794.1L559.7 804.0L568.3 804.0L568.0 803.1L572.6 795.7L572.3 792.7L576.6 787.9L577.2 783.3L574.2 777.2L574.3 773.8L579.3 770.5L580.6 775.4L582.5 772.0L590.2 772.9L592.1 770.8L595.9 773.6L601.3 771.5L602.0 770.2L602.0 769.5Z"/><path class="land" d="M44.2 650.3L37.7 657.9L36.6 661.7L39.1 667.8L36.5 671.1L40.9 675.1L45.0 673.9L48.3 676.1L49.9 671.2L52.9 667.9L53.4 664.8L48.7 661.4L46.7 657.5L46.6 651.2Z"/><path class="land" d="M364.8 492.2L366.1 489.7L367.1 480.5L365.6 487.9L363.7 492.0ZM403.8 519.7L406.9 520.4L408.4 522.5L415.3 525.4L417.2 527.2L418.5 534.1L420.0 534.6L432.6 532.3L435.4 533.9L441.2 530.3L444.1 530.1L445.5 524.1L449.1 524.1L451.4 521.0L456.6 517.6L458.3 520.1L458.2 522.0L463.0 521.5L462.5 518.0L458.2 516.0L460.7 507.7L460.6 498.4L461.7 495.2L467.5 491.5L468.4 487.2L475.2 486.1L477.8 480.7L471.3 479.3L472.4 467.8L466.0 465.9L461.6 461.4L452.6 455.4L441.0 453.6L437.0 447.3L435.8 447.0L429.4 452.1L422.8 453.5L416.7 451.9L404.9 451.7L402.2 453.5L398.8 451.3L393.4 452.5L383.8 452.2L375.9 455.9L364.9 465.0L365.7 473.8L369.9 485.8L370.3 492.4L373.2 491.8L376.6 494.3L387.1 498.1L396.8 497.5L398.2 500.4L402.4 503.5L400.5 514.2L402.8 521.1Z"/><path class="land" d="M111.4 768.8L112.3 767.2L110.9 761.3L109.5 764.5L109.5 768.4Z"/><path class="land" d="M476.5 465.8L478.5 461.9L480.3 461.0L490.5 460.5L491.1 456.5L495.0 450.2L499.3 447.1L499.7 443.0L496.2 433.7L494.1 432.1L489.8 424.1L485.9 424.9L487.5 412.6L487.0 409.2L480.9 405.5L480.0 402.9L474.0 402.8L469.6 401.0L462.1 404.8L460.8 404.6L457.5 403.1L450.8 395.8L447.1 395.2L438.2 390.5L437.2 390.3L436.4 392.2L434.0 390.2L420.6 398.4L424.0 419.4L416.5 428.5L411.4 430.3L404.3 426.9L400.8 419.2L391.0 410.8L388.9 406.5L374.3 412.9L369.9 421.7L368.6 432.3L363.8 439.2L363.9 458.6L364.9 465.0L375.9 455.9L383.8 452.2L393.4 452.5L398.8 451.3L402.2 453.5L404.9 451.7L416.7 451.9L422.8 453.5L429.4 452.1L435.8 447.0L437.0 447.3L441.0 453.6L452.6 455.4L461.6 461.4L466.0 465.9L471.4 467.8Z"/><path class="land" d="M87.8 803.4L89.2 800.7L85.0 799.0L81.2 793.8L81.3 786.7L80.0 786.6L72.6 791.7L72.8 795.7L69.0 800.3L63.6 802.9L57.8 800.0L47.5 802.0L45.1 800.0L39.1 804.0L88.2 804.0ZM200.5 802.1L207.5 797.4L208.1 795.4L195.5 792.9L177.0 787.2L172.0 778.7L171.6 776.9L173.5 774.4L172.8 773.6L163.2 776.2L150.5 775.5L147.8 776.7L143.9 781.9L140.0 781.6L136.9 778.9L131.3 777.7L129.4 784.5L129.7 788.6L126.0 787.7L124.4 785.5L121.7 786.0L120.1 789.9L121.8 798.2L120.2 798.9L117.3 793.9L109.8 795.4L107.2 794.8L105.5 788.4L102.6 787.6L101.4 788.2L100.5 794.7L93.4 803.4L93.3 804.0L199.9 804.0Z"/><path class="land" d="M387.9 801.8L388.7 798.7L390.4 797.9L389.9 795.3L391.3 791.0L395.3 787.3L395.0 784.3L398.4 778.0L398.4 775.2L401.1 771.7L402.7 765.8L405.4 762.4L405.2 758.6L411.4 750.3L418.8 748.4L424.5 741.5L423.8 738.7L421.5 736.1L417.1 735.6L415.4 733.3L411.4 731.9L408.1 726.6L397.7 730.0L389.9 723.1L381.2 725.3L376.5 724.2L367.9 725.3L364.7 733.5L356.0 739.1L354.9 739.7L348.4 736.8L347.0 737.2L344.9 740.8L332.1 743.3L329.3 745.2L328.4 747.3L329.1 750.3L327.9 752.6L305.4 753.6L294.9 746.0L291.0 745.5L288.2 751.4L289.1 755.9L282.5 756.9L278.0 754.4L274.0 757.0L279.1 759.3L279.9 761.9L278.6 765.0L274.4 766.6L274.8 771.0L273.7 772.8L274.2 775.5L275.5 776.3L274.5 780.3L269.7 781.5L265.9 785.2L270.4 785.5L272.7 793.2L275.9 798.1L284.4 803.7L284.6 804.0L385.5 804.0Z"/><path class="land" d="M39.3 803.1L45.1 800.0L40.4 790.8L42.0 787.2L41.8 782.5L33.6 780.4L28.4 783.0L28.9 785.9L26.8 787.7L21.9 788.7L21.1 788.2L21.4 786.0L24.8 784.3L26.0 781.0L25.2 778.0L28.2 773.1L35.0 769.1L37.1 762.6L42.5 760.7L51.9 751.7L49.9 748.8L51.8 747.0L55.9 746.4L57.2 748.6L60.5 749.0L62.4 748.5L64.6 745.6L67.6 744.4L66.0 741.3L70.4 725.0L73.0 721.0L77.8 709.2L85.8 701.5L86.1 698.5L74.7 693.8L71.5 690.2L62.0 690.2L61.6 687.8L59.2 686.4L55.5 687.5L52.3 678.8L46.3 674.3L40.9 675.1L36.5 671.1L30.1 671.0L26.0 664.4L20.6 659.9L17.6 659.0L17.0 652.9L19.7 647.1L18.9 646.4L16.1 647.8L14.4 650.9L11.7 651.8L3.6 650.3L3.0 648.8L4.8 645.8L3.9 643.9L5.4 640.5L1.2 636.6L-2.0 635.7L-2.0 804.0L39.0 804.0Z"/><path class="land" d="M201.7 469.7L203.5 465.9L202.1 464.0L198.3 462.5L196.3 462.4L189.2 467.1L190.3 469.6L187.6 476.2L185.2 475.0L185.8 468.9L184.6 467.1L181.6 467.3L181.2 469.5L178.2 473.6L171.5 474.1L171.8 476.8L173.8 478.4L174.8 483.2L174.0 487.8L175.9 492.3L183.0 493.5L183.9 502.9L186.0 507.9L189.8 506.8L191.5 494.1L198.0 491.2L197.7 487.7L194.6 484.7L195.3 482.3L202.0 477.7ZM144.7 497.4L143.2 495.3L139.5 494.3L144.6 487.1L143.9 479.2L153.3 470.9L151.2 467.9L153.5 467.0L156.7 467.7L160.5 456.1L162.7 454.2L164.6 456.9L168.8 455.9L170.9 454.3L172.7 449.4L171.4 446.5L164.7 445.9L161.2 442.1L162.7 429.3L167.8 421.4L168.7 414.4L167.4 410.4L168.3 407.5L171.0 404.7L169.6 404.6L164.2 408.2L158.6 408.8L147.4 421.6L132.1 421.9L124.3 431.1L124.1 433.2L127.4 436.7L133.3 435.4L138.6 426.0L140.9 425.3L143.5 426.7L141.2 437.2L139.1 433.7L135.5 435.3L132.3 438.6L130.5 443.0L128.5 440.5L123.7 437.9L121.5 438.0L118.6 453.7L119.4 459.3L116.3 472.1L124.8 479.5L124.7 488.5L122.8 489.0L123.7 497.1L128.2 497.9L134.7 501.8L142.0 500.9L144.0 502.2ZM161.8 478.8L157.8 476.6L149.2 479.0L148.6 484.4L150.4 491.2L158.9 496.1L162.4 496.3L165.9 493.8L167.1 487.4L164.3 477.1ZM174.6 500.8L170.6 500.9L169.6 506.6L177.6 512.2L183.8 511.0L183.6 506.6L179.7 505.5ZM164.4 505.2L169.2 493.3L161.7 503.1L162.7 506.9ZM199.3 501.2L194.8 498.6L191.4 503.5L192.6 504.3L196.2 502.2L200.0 502.3ZM203.6 480.9L203.0 478.0L200.9 480.1L201.7 482.2ZM159.5 502.6L153.8 498.5L156.2 502.3L157.7 503.2ZM150.9 500.8L150.0 497.3L146.0 494.0L145.9 499.6L148.8 501.1ZM165.9 468.2L164.1 464.1L163.0 471.1L164.1 471.9ZM180.0 419.8L175.5 419.9L174.3 421.3L176.7 422.7ZM251.0 500.6L250.9 498.6L243.9 493.1L242.1 499.8L249.2 503.3Z"/><path class="land" d="M328.1 689.1L323.2 684.3L322.4 680.1L317.6 678.4L316.7 679.0L310.4 674.9L307.0 677.1L301.5 672.2L300.6 670.8L303.8 668.2L303.1 665.6L296.7 667.4L290.9 663.2L284.9 661.5L287.3 668.1L279.5 672.7L272.8 663.5L270.1 661.5L273.9 658.3L274.8 656.4L273.5 654.7L271.8 653.5L265.8 655.0L264.5 652.9L259.8 650.4L251.6 647.8L249.6 642.6L243.9 640.6L243.6 645.0L237.8 647.3L235.5 645.8L235.8 643.7L234.2 640.9L228.5 639.5L227.9 640.4L230.2 644.1L219.8 648.4L212.2 650.0L209.4 653.4L208.1 652.6L205.0 654.0L203.6 656.2L199.9 656.7L198.1 659.5L194.3 658.4L189.4 659.4L183.0 666.3L181.0 662.5L179.1 661.9L181.2 669.1L187.5 676.5L184.4 681.7L190.2 693.4L193.0 696.6L195.3 696.7L200.0 702.9L203.2 705.2L206.4 710.3L208.9 710.3L214.6 717.3L218.5 720.1L219.7 723.3L222.9 724.2L227.0 724.5L229.9 722.9L234.5 724.0L236.8 718.9L240.0 718.2L241.8 710.2L245.6 712.3L249.0 711.4L257.9 715.5L260.7 715.4L265.9 719.3L273.0 720.0L275.6 717.9L277.1 718.0L284.9 721.3L286.5 724.9L290.6 716.5L291.8 715.8L298.6 716.9L304.9 714.8L308.3 710.9L312.2 708.5L313.8 701.8L318.4 699.0L323.5 693.5L328.2 692.7Z"/><path class="land" d="M281.5 801.0L271.2 796.8L269.2 798.6L268.9 802.4L265.0 802.4L263.9 804.0L284.2 804.0Z"/><path class="land" d="M1.2 636.6L5.4 640.5L3.9 643.9L4.8 645.8L3.0 648.8L3.6 650.3L11.7 651.8L14.4 650.9L16.1 647.8L18.9 646.4L19.7 647.1L17.0 652.9L17.6 659.0L20.6 659.9L26.0 664.4L30.1 671.0L36.5 671.1L39.1 667.8L36.6 661.7L37.7 657.9L44.2 650.3L46.6 651.2L47.0 652.4L48.9 648.8L53.5 646.6L53.8 641.9L50.6 638.9L52.3 636.6L47.9 630.5L42.7 629.3L40.8 626.0L43.8 622.8L46.5 617.1L42.3 613.9L40.0 610.4L36.3 610.7L34.3 609.6L32.3 606.9L31.6 602.5L29.4 604.2L27.3 604.0L25.9 600.7L22.9 602.5L20.5 600.2L17.7 601.3L17.7 603.5L14.1 602.1L12.4 604.6L6.0 606.8L-0.3 602.8L-2.0 603.1L-2.0 635.7Z"/><path class="land" d="M600.7 517.5L599.2 515.3L599.1 512.7L593.5 510.9L584.4 511.9L584.2 504.2L574.7 500.5L568.5 492.8L566.1 492.0L566.6 487.2L558.6 483.3L558.3 478.8L560.2 473.6L559.2 470.8L555.4 466.6L556.3 462.3L555.1 456.5L549.1 454.4L545.1 451.0L540.5 449.9L534.9 451.0L527.3 458.1L524.3 455.2L524.3 450.7L521.8 449.2L516.7 448.3L512.7 451.8L507.5 447.5L504.3 448.2L503.0 449.6L499.3 447.1L497.2 447.8L491.1 456.5L490.5 460.5L480.3 461.0L478.5 461.9L476.5 465.8L472.4 467.8L471.3 479.3L477.8 480.7L475.2 486.1L468.4 487.2L467.5 491.5L461.7 495.2L460.6 498.4L460.7 507.7L458.2 516.0L462.5 518.0L463.0 521.5L458.2 522.0L458.3 520.1L456.6 517.6L451.4 521.0L449.1 524.1L445.5 524.1L444.1 530.1L441.2 530.3L435.4 533.9L432.6 532.3L423.6 534.5L418.5 534.1L421.9 545.5L428.9 561.6L431.3 573.2L430.2 577.0L421.7 583.0L417.5 591.3L427.0 596.7L428.4 598.8L428.6 606.8L427.2 610.3L427.4 613.5L429.1 616.8L428.9 613.6L430.9 612.4L436.8 613.5L442.6 606.5L444.0 603.1L462.8 598.5L476.8 597.5L488.4 599.4L503.3 599.3L507.3 604.1L513.8 602.9L515.8 603.6L516.5 606.8L519.3 602.3L522.7 602.9L526.0 600.7L535.2 601.4L536.7 604.1L538.7 604.6L540.5 600.5L545.3 596.6L552.0 603.9L556.0 601.4L568.6 597.4L572.2 599.4L573.3 601.8L578.1 602.9L579.4 599.5L575.6 591.8L578.1 580.7L583.6 573.2L586.6 573.5L588.9 571.0L597.5 569.3L592.1 563.0L591.2 555.0L588.1 550.3L588.5 548.0L580.4 540.7L581.8 534.5L587.3 532.7L591.7 535.1L597.7 534.3L602.0 529.4L602.0 518.2Z"/><path class="land" d="M112.3 767.2L111.4 768.8L117.4 771.2L118.0 773.7L123.7 777.4L129.3 773.3L130.8 774.1L131.9 778.1L136.9 778.9L140.0 781.6L143.9 781.9L147.8 776.7L150.5 775.5L163.2 776.2L172.8 773.6L173.5 774.4L171.6 776.9L172.0 778.7L177.0 787.2L179.1 788.4L228.4 800.5L236.9 793.6L244.7 792.5L250.1 793.1L258.0 790.4L262.5 791.7L263.1 787.4L264.5 785.9L269.7 781.5L274.7 779.8L275.5 776.3L274.2 775.5L273.7 772.8L274.8 771.0L274.4 766.6L278.6 765.0L279.9 761.9L279.1 759.3L274.0 757.0L278.0 754.4L282.5 756.9L289.1 755.9L288.2 751.4L291.0 745.5L289.5 744.4L284.4 732.3L286.5 724.9L284.9 721.3L277.1 718.0L275.6 717.9L273.0 720.0L265.9 719.3L260.7 715.4L257.9 715.5L249.0 711.4L245.6 712.3L241.8 710.2L240.0 718.2L236.8 718.9L234.5 724.0L229.9 722.9L227.0 724.5L219.7 723.3L218.5 720.1L214.6 717.3L213.7 723.5L212.2 725.0L211.0 725.6L206.8 723.4L203.8 730.9L190.4 737.1L189.0 740.0L193.1 746.7L191.4 752.5L194.6 753.5L194.9 755.0L193.6 761.1L189.0 758.6L188.3 755.2L186.3 754.0L181.5 754.8L175.3 751.5L174.5 754.9L163.4 755.3L155.5 758.1L153.1 760.0L147.0 760.6L145.6 760.3L143.4 755.8L133.4 753.8L131.1 760.1L127.8 762.6L126.4 762.6L127.1 759.7L124.1 758.4L123.6 755.5L117.3 751.3L114.8 752.7L111.9 752.5L114.0 754.7L110.9 761.3Z"/><path class="past" d="M395.2 6.2L396.3 16.4L394.6 20.2L390.9 23.0L389.6 29.5L388.0 31.3L373.5 25.5L372.0 28.9L367.4 31.6L365.2 32.0L364.1 31.0L355.7 30.1L353.9 25.5L344.1 11.7L340.1 12.0L337.7 14.2L338.8 18.8L338.1 20.2L333.2 19.5L332.6 20.7L336.1 22.4L336.5 25.0L351.0 37.4L362.3 41.9L365.8 45.4L367.3 49.5L369.0 49.5L373.8 55.2L372.3 58.1L373.6 67.0L373.0 72.4L376.8 73.4L377.7 76.5L376.1 80.0L376.6 83.6L382.4 94.1L381.6 102.3L379.5 107.1L380.5 113.6L381.4 115.7L383.7 116.9L388.4 128.3L392.0 128.8L394.8 125.7L394.6 129.3L396.2 132.1L398.6 132.2L404.7 135.4L406.5 137.5L406.6 149.1L408.9 153.5L407.1 155.7L408.3 158.7L403.2 158.5L398.0 162.0L395.0 172.2L387.1 186.2L386.6 189.5L385.0 189.9L375.0 202.9L371.7 204.4L371.8 206.7L370.1 209.9L368.9 209.6L369.5 211.7L367.9 211.9L369.4 216.2L363.2 220.1L361.6 219.3L357.8 220.7L359.8 226.3L357.1 226.7L357.0 229.5L352.6 237.0L352.2 241.1L353.6 248.1L356.3 250.4L356.7 252.6L356.0 262.6L358.2 265.0L362.5 275.8L360.9 277.3L362.1 279.5L361.2 279.6L361.7 286.5L359.9 297.4L362.0 310.0L365.1 312.0L368.2 309.6L369.3 312.6L376.3 315.6L381.9 315.9L380.9 319.4L382.4 321.1L380.4 322.2L380.1 323.7L380.8 328.0L385.6 326.7L387.1 321.1L387.9 321.2L389.7 324.9L393.4 327.2L393.4 328.9L390.0 334.2L391.0 334.5L393.6 333.2L398.0 328.0L402.5 328.2L412.7 324.5L414.6 325.0L416.8 321.6L425.9 317.7L433.7 312.0L435.7 314.0L438.5 310.8L440.1 310.8L438.1 306.5L442.6 308.2L445.4 307.2L447.6 300.0L448.1 307.2L454.8 304.2L458.6 301.1L463.3 303.1L468.5 299.8L476.5 286.0L487.9 270.3L493.3 260.3L510.5 224.1L512.9 209.4L512.0 207.1L505.1 199.8L491.6 192.2L483.6 185.7L486.4 182.8L489.3 174.6L488.2 168.5L485.8 166.1L481.1 164.1L479.6 161.7L478.1 158.0L479.4 154.7L477.9 150.8L473.5 150.3L469.9 145.2L469.7 142.8L471.9 138.7L471.3 136.7L468.1 135.8L469.0 124.4L467.2 122.8L472.1 119.8L471.9 118.3L466.7 106.5L450.3 81.5L451.3 74.1L457.5 57.0L457.3 52.8L446.5 41.0L437.3 38.1L432.8 28.4L434.5 15.7L430.4 15.3L429.7 14.3L435.7 9.1L433.3 4.0L435.5 -2.0L396.0 -2.0ZM372.0 318.2L368.9 313.8L369.0 316.8L370.8 318.4ZM352.8 218.5L350.5 218.7L353.4 222.8L355.8 221.1L355.8 219.4L354.9 218.9L352.8 220.4ZM373.6 319.8L377.0 323.7L378.7 323.5L377.6 320.0L379.2 318.8L378.1 317.0L375.0 316.8ZM362.4 312.2L359.1 308.7L358.3 310.0L359.0 312.6L360.0 314.1L362.3 313.8ZM369.8 325.1L370.2 322.9L367.5 324.1L368.2 326.4ZM366.4 326.4L366.4 324.3L364.2 325.2L364.9 326.9ZM402.9 152.6L398.2 152.5L397.3 153.7L397.6 155.9L399.4 156.4Z"/><path class="past" d="M325.4 406.3L322.1 403.7L320.4 406.6L318.9 405.5L315.6 406.8L308.4 416.3L308.8 423.7L308.0 426.0L311.5 432.4L309.0 438.1L312.5 436.0L315.0 429.6L319.0 426.8L320.5 422.7L322.7 421.4L320.5 418.5L320.7 410.9L323.1 409.6L323.9 407.2ZM288.5 428.4L288.5 425.9L289.7 424.6L288.0 423.7L282.5 438.9L280.6 439.7L276.5 450.2L276.2 459.1L277.6 461.5ZM188.9 361.7L187.4 359.8L185.6 360.0L184.5 362.9L185.2 380.6L184.5 384.2L185.9 384.0L187.6 385.5L187.3 393.1L188.8 397.2L191.5 398.4L191.4 407.2L193.9 408.7L194.8 417.4L196.5 416.8L197.8 424.5L202.0 435.8L204.6 438.8L207.0 444.5L210.0 446.2L210.5 449.8L209.2 451.8L205.4 452.0L207.7 458.2L205.8 459.1L201.5 456.9L209.9 476.1L208.7 485.1L207.5 487.5L215.9 490.2L225.4 487.9L232.5 489.3L236.0 484.9L233.6 477.9L234.0 474.4L237.7 469.6L240.8 467.3L242.7 468.3L244.6 467.9L243.9 464.4L245.2 463.5L255.6 464.2L261.4 463.1L265.1 465.3L268.4 462.0L271.5 452.5L275.3 445.4L278.8 433.2L277.8 426.4L281.1 418.4L279.4 407.7L280.2 404.2L282.0 404.1L282.1 395.8L283.4 394.0L281.3 386.4L286.2 384.4L283.8 381.3L273.5 379.4L275.4 378.5L287.2 378.9L293.7 374.6L295.6 371.9L310.1 363.1L312.2 356.9L315.8 355.5L314.7 353.3L309.7 354.3L307.3 356.1L304.6 355.7L304.4 354.7L309.7 351.9L321.5 340.7L321.8 338.2L319.2 331.5L318.0 329.7L313.7 327.3L314.0 323.9L307.2 318.7L303.6 312.6L298.7 314.5L297.5 311.3L293.6 310.9L291.7 308.9L292.2 305.1L290.9 300.3L289.7 278.9L291.0 276.2L290.7 273.8L295.1 275.2L293.6 269.0L295.7 258.7L297.7 256.4L294.4 252.9L293.5 249.8L294.0 247.0L296.6 248.9L300.7 247.1L303.9 243.7L301.8 241.7L302.8 239.6L301.7 233.9L302.4 235.7L304.7 235.6L304.4 237.2L305.9 237.2L307.1 235.1L310.4 233.4L310.9 230.2L308.0 230.0L308.4 228.8L311.3 227.7L312.4 223.7L316.3 222.6L315.6 220.9L319.0 221.5L321.9 217.6L323.6 213.1L325.8 214.9L325.8 211.9L329.3 213.4L332.0 208.2L336.3 206.2L344.4 198.7L347.6 187.9L353.8 180.6L354.4 177.6L348.1 166.1L353.7 154.8L350.9 148.4L353.9 150.2L352.4 146.9L352.9 145.2L357.3 144.3L358.2 142.6L357.7 140.5L360.8 139.6L359.8 137.7L362.2 137.9L362.3 132.6L363.6 128.7L365.7 130.8L368.4 128.0L373.8 132.2L375.3 130.3L381.8 128.2L384.8 129.5L388.4 128.3L383.7 116.9L381.4 115.7L380.5 113.6L379.5 107.1L381.6 102.3L382.4 94.1L376.6 83.6L376.1 80.0L377.7 76.5L376.8 73.4L373.0 72.4L373.6 67.0L372.3 58.1L373.8 55.2L369.0 49.5L367.3 49.5L365.8 45.4L362.3 41.9L351.0 37.4L336.5 25.0L336.1 22.4L332.6 20.7L326.3 21.5L329.5 27.4L328.5 33.5L325.2 38.2L328.8 40.3L325.5 44.7L313.7 40.4L304.1 38.5L302.3 39.4L302.7 50.8L299.5 59.0L291.7 54.3L284.7 61.5L281.9 71.0L280.4 73.4L276.9 75.0L276.0 77.7L279.9 87.1L279.5 90.6L265.8 109.9L266.5 116.2L260.2 120.8L253.3 121.9L254.1 133.5L251.3 150.4L238.1 174.6L244.3 178.9L244.8 188.9L241.8 194.3L230.6 191.6L224.3 193.8L214.0 207.0L214.3 210.6L210.5 217.2L213.2 227.4L211.3 230.1L210.5 241.3L212.8 252.0L209.0 271.1L215.7 277.7L220.0 284.5L216.5 294.3L209.5 295.8L213.1 315.0L210.6 326.6L204.8 332.8L200.6 334.2L198.5 339.8L195.5 343.1L196.7 353.6L193.0 365.8L191.2 366.8L190.0 366.1ZM326.7 403.3L329.9 401.8L326.3 401.3L324.6 403.8L326.5 405.4ZM312.5 365.8L313.6 363.2L312.1 363.8L311.7 366.2ZM315.7 349.9L317.0 348.4L314.8 348.8L314.9 351.8Z"/><path class="now" d="M114.8 752.7L117.3 751.3L122.3 754.3L124.1 756.4L124.1 758.4L127.1 759.7L126.4 762.6L129.6 761.7L131.1 760.1L133.4 753.8L143.4 755.8L145.6 760.3L147.0 760.6L153.1 760.0L155.5 758.1L163.4 755.3L174.5 754.9L175.3 751.5L181.5 754.8L186.3 754.0L188.3 755.2L189.0 758.6L193.6 761.1L194.9 755.0L194.6 753.5L191.4 752.5L193.1 746.7L189.1 738.9L192.4 735.7L203.8 730.9L206.8 723.4L211.0 725.6L212.2 725.0L213.7 723.5L214.6 717.3L208.9 710.3L205.6 709.5L204.3 706.6L200.0 702.9L195.3 696.7L193.0 696.6L190.2 693.4L184.4 681.7L187.5 676.5L181.2 669.1L179.1 661.9L181.0 662.5L183.0 666.3L189.4 659.4L194.3 658.4L198.1 659.5L199.9 656.7L203.6 656.2L205.0 654.0L208.1 652.6L209.4 653.4L212.2 650.0L219.8 648.4L230.2 644.1L227.9 640.4L229.3 639.2L234.2 640.9L235.8 643.7L235.5 645.8L238.8 647.2L242.3 640.7L244.7 632.3L242.5 625.0L238.7 622.8L239.1 619.2L236.4 612.1L239.9 603.6L239.0 602.6L238.6 597.7L236.1 593.9L237.7 588.1L235.6 584.0L227.9 575.7L228.2 573.8L233.2 568.1L234.2 564.9L231.8 546.5L227.1 545.0L224.0 541.9L221.7 531.5L216.1 531.6L210.4 526.4L208.2 521.9L199.3 519.4L189.3 529.0L183.0 529.3L174.4 535.5L168.7 532.8L164.9 532.9L163.0 530.0L167.3 526.8L168.7 523.5L168.0 520.0L162.2 521.6L155.2 516.7L152.2 517.4L151.1 514.6L145.6 514.6L149.1 511.2L149.3 508.0L147.2 504.1L142.0 500.9L134.7 501.8L128.2 497.9L123.7 497.1L123.4 500.9L127.8 510.3L127.4 512.6L121.1 514.3L120.4 515.7L120.6 517.8L123.3 517.5L125.6 519.6L124.7 529.7L127.4 532.3L132.1 534.3L137.5 543.8L140.5 545.7L136.6 543.7L132.1 535.8L129.9 534.1L123.7 534.1L118.2 532.0L116.0 535.0L113.6 548.1L114.1 544.0L111.3 540.4L108.8 545.7L106.1 544.6L107.6 542.1L105.1 536.7L90.5 535.0L88.8 535.6L86.3 538.6L84.3 544.6L86.7 548.3L84.8 559.0L79.6 569.8L74.2 568.9L72.4 572.3L73.3 574.7L78.3 577.0L77.9 582.3L76.7 584.2L70.8 587.7L70.3 589.2L71.9 591.4L70.2 593.5L61.6 595.2L58.0 592.6L52.9 594.5L56.2 607.4L52.4 614.7L53.1 617.5L48.4 620.4L46.6 620.5L50.0 625.4L47.9 630.5L52.3 636.6L50.6 638.9L53.8 641.9L53.5 646.6L48.9 648.8L46.7 653.3L46.7 657.5L48.7 661.4L53.4 664.8L52.9 667.9L49.9 671.2L48.3 676.1L50.8 676.8L52.3 678.8L55.5 687.5L59.2 686.4L61.6 687.8L62.0 690.2L71.5 690.2L74.7 693.8L86.1 698.5L85.8 701.5L77.8 709.2L73.0 721.0L70.4 725.0L66.0 741.3L66.5 743.8L69.4 745.5L74.7 746.4L81.2 745.8L86.2 747.1L89.7 746.3L89.7 745.1L87.4 745.0L86.4 743.6L87.3 742.2L90.7 741.1L94.0 744.2L96.4 744.3L97.4 746.1L104.5 746.5L111.9 752.5ZM219.3 520.7L221.0 517.5L217.8 515.4L216.6 512.5L214.9 512.5L211.5 517.5L211.3 525.0L214.6 528.0L215.6 527.9L217.2 524.9L219.4 525.0L221.6 527.1L221.8 523.6ZM223.7 532.5L223.6 534.8L225.4 537.1L225.3 541.1L231.1 541.6L231.2 538.9ZM173.5 518.4L172.7 516.2L169.9 514.8L168.2 517.0L170.4 518.9ZM117.1 498.2L122.1 498.2L122.8 497.4L118.0 496.5L120.0 491.4L119.2 491.2L116.4 496.0L115.5 500.8ZM121.1 502.1L118.0 502.1L118.5 503.8L120.3 504.1Z"/><path class="now" d="M479.0 393.0L482.9 390.4L480.6 388.0L476.0 378.8L475.4 371.5L471.8 359.9L476.0 350.1L477.2 342.0L481.0 338.0L478.0 334.7L476.3 337.4L460.4 338.7L453.8 336.1L434.3 335.8L434.8 338.5L433.7 340.0L423.9 341.1L419.1 344.0L415.5 343.8L412.4 347.5L410.3 347.8L411.1 350.5L405.9 351.6L401.2 354.8L401.2 360.5L402.2 361.5L401.0 364.3L402.7 368.6L405.8 368.4L403.4 371.1L403.2 373.1L407.0 378.0L408.8 382.8L415.4 385.4L417.4 384.3L418.9 381.0L422.4 381.5L423.0 383.2L420.6 398.4L434.0 390.2L436.9 392.2L437.2 390.3L447.1 395.2L450.8 395.8L457.5 403.1L460.8 404.6L462.1 404.8L469.6 401.0L476.6 402.9ZM386.2 375.7L382.5 377.6L381.6 380.2L379.8 380.1L378.4 381.5L376.9 380.5L374.4 381.1L376.9 384.7L374.7 387.8L375.3 389.1L381.1 392.4L377.9 398.1L378.2 400.2L381.0 398.8L382.6 392.0L384.3 390.0L390.7 389.0L397.1 381.3L400.6 380.5L393.7 375.8L388.8 376.5ZM393.8 368.0L393.1 365.1L391.6 362.8L388.3 362.2L386.7 359.9L385.6 360.2L383.8 364.0L376.7 365.6L383.2 367.9L384.7 372.9L386.0 373.6L388.0 372.8L389.6 368.8L391.0 370.2ZM400.6 377.1L400.1 373.7L397.0 373.0L395.4 375.5L399.2 377.6Z"/>
+<path class="lead-line" d="M399 400 L415 390 L430 378"/><circle cx="430" cy="378" r="4" fill="#fff"/><text class="lbl lbl-past" x="425.6" y="210.0" text-anchor="middle" data-i18n="map.FIN">Finland</text><text class="lbl lbl-past" x="281.0" y="313.3" text-anchor="middle" data-i18n="map.SWE">Sweden</text><text class="lbl lbl-in" x="149.2" y="642.0" text-anchor="middle" data-i18n="map.DEU">Germany</text><text class="lbl lbl-out" x="395.2" y="409.5" text-anchor="end" data-i18n="map.EST">Estonia</text>
+</svg>
+    </figure>
+  </div>
+</section>
+
+<section class="steps light" id="start" aria-labelledby="start-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="tag"><span class="n">03</span><span data-i18n="start.tag">How to start a job</span></p>
+      <h2 class="h2" id="start-h" data-i18n="start.h2">Three steps to start</h2>
+    </div>
+    <ol class="flow">
+      <li><span class="num" aria-hidden="true">1</span><h3 data-i18n="st1.t">Send the details</h3><p data-i18n="st1.d">Write or call: what needs to be done, where the vessel or the yard is, and the planned dates. Drawings or documents help if you have them.</p></li>
+      <li><span class="num" aria-hidden="true">2</span><h3 data-i18n="st2.t">Agree on the scope</h3><p data-i18n="st2.d">We go through the job with you and agree on scope, schedule and terms.</p></li>
+      <li><span class="num" aria-hidden="true">3</span><h3 data-i18n="st3.t">Work starts</h3><p data-i18n="st3.d">Installation, commissioning, measurements or switchboards, as agreed.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="contact dark" id="contact" aria-labelledby="contact-h">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="tag"><span class="n">04</span><span data-i18n="contact.tag">Contact</span></p>
+      <h2 class="h2" id="contact-h" data-i18n="contact.h2">Get in touch</h2>
+      <p class="sec-lead" data-i18n="contact.p">Tell us about the job by phone, by e&#8209;mail or with the form.</p>
+      <div class="direct">
+        <a href="tel:+37255593398"><span data-i18n="contact.phone">Phone</span><b>+372 5559 3398</b></a>
+        <a href="mailto:info.el4you@gmail.com"><span data-i18n="contact.mail">E-mail</span><b>info.el4you@gmail.com</b></a>
+      </div>
+    </div>
+    <form class="form light" id="req" novalidate aria-labelledby="form-h">
+      <h3 id="form-h" data-i18n="f.title">Request</h3>
+      <p class="note" data-i18n="f.note">Fields marked * are required.</p>
+      <div class="fields">
+        <div class="two">
+          <div class="field"><label for="f-name"><span data-i18n="f.name">Your name</span> *</label><input id="f-name" name="name" autocomplete="name" required aria-describedby="e-name"><p class="err" id="e-name" aria-live="polite"></p></div>
+          <div class="field"><label for="f-company"><span data-i18n="f.company">Company</span></label><input id="f-company" name="company" autocomplete="organization"></div>
+        </div>
+        <div class="two">
+          <div class="field"><label for="f-email"><span data-i18n="f.email">E-mail</span> *</label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="e-email"><p class="err" id="e-email" aria-live="polite"></p></div>
+          <div class="field"><label for="f-phone"><span data-i18n="f.phone">Phone</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"></div>
+        </div>
+        <div class="field"><label for="f-where"><span data-i18n="f.where">Where is the job?</span></label><input id="f-where" name="where" placeholder="Shipyard, port, country" data-i18n-attr="placeholder:f.whereP"></div>
+        <div class="field"><label for="f-msg"><span data-i18n="f.msg">What needs to be done?</span> *</label><textarea id="f-msg" name="message" required aria-describedby="e-msg"></textarea><p class="err" id="e-msg" aria-live="polite"></p></div>
+        <button class="btn" type="submit"><span data-i18n="f.submit">Send request</span><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M9.5 4.5 14 9l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+      </div>
+      <p class="hint" data-i18n="f.hint">The button opens your e&#8209;mail app with the request filled in.</p>
+      <p class="fallback"><span data-i18n="f.fallback">or write directly:</span> <a href="mailto:info.el4you@gmail.com">info.el4you@gmail.com</a></p>
+      <p class="status" id="f-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-logo"><img src="assets/brand/el4you-logo-white.svg" alt="EL4YOU, Electrical Engineering &amp; Installation" width="300" height="94" loading="lazy"></div>
+      <dl>
+        <div><dt data-i18n="foot.company">Company</dt><dd>EL4YOU OÜ</dd></div>
+        <div><dt data-i18n="foot.reg">Registry code</dt><dd>16330107</dd></div>
+        <div><dt data-i18n="foot.vat">VAT number</dt><dd>EE102863433</dd></div>
+      </dl>
+      <div class="foot-links">
+        <a href="tel:+37255593398">+372 5559 3398</a>
+        <a href="mailto:info.el4you@gmail.com">info.el4you@gmail.com</a>
+      </div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 EL4YOU OÜ</span><a href="#top" data-i18n="foot.top">Back to top ↑</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var EMAIL="info.el4you@gmail.com";
+var T={
+en:{
+ "meta.title":"EL4YOU OÜ: electrical installation for shipbuilding",
+ "meta.desc":"Electrical installation, commissioning, measurements and manufacturing of distribution switchboards for shipbuilding. Working in Estonia and Germany.",
+ "skip":"Skip to content","navAria":"Main","langAria":"Language","cta":"Get in touch","callAria":"Call +372 5559 3398",
+ "nav.services":"Services","nav.where":"Where we work","nav.start":"How to start","nav.contact":"Contact",
+ "hero.eyebrow":"Shipbuilding · Electrical works",
+ "hero.h1":"Electrical installation <em>for shipbuilding</em>",
+ "hero.lead":"Installation, commissioning, measurements and manufacturing of distribution switchboards for shipyards and marine contractors. Currently working in Estonia and Germany.",
+ "alt.hero":"Engine room corridor on a ship with cable runs under the deckhead",
+ "plate.aria":"Company summary","plate.sector":"Sector","plate.sectorV":"Shipbuilding","plate.scope":"Scope",
+ "plate.scopeV":"Installation · Commissioning · Measurements · Switchboards","plate.now":"Working now","plate.nowV":"Estonia, Germany",
+ "plate.past":"Also worked in","plate.pastV":"Sweden, Finland",
+ "svc.tag":"Services","svc.h2":"What we do","svc.lead":"Electrical works in shipbuilding: installation and commissioning, measurements and distribution switchboards.",
+ "s1.t":"Electrical installation","s1.d":"Electrical installation works on board: cable laying, connections and mounting of electrical equipment.",
+ "s2.t":"Commissioning","s2.d":"Start-up and adjustment: we put the installed electrical systems into operation and set them up.",
+ "s3.t":"Measurements","s3.d":"Electrical measurements of installations and equipment on site.",
+ "s4.t":"Distribution switchboards","s4.d":"Manufacturing of distribution switchboards for your project.",
+ "alt.s1":"Cable conduits routed along a steel ceiling","alt.s2":"Row of blue electrical switchgear panels","alt.s3":"Gloved hands taking a reading with a multimeter","alt.s4":"Wired relays and terminals inside a switchboard",
+ "where.tag":"Where we work","where.h2":"Estonia and Germany","where.p":"We currently work in Estonia and Germany. We have also worked in Sweden and Finland.",
+ "leg.now":"Working now","leg.nowV":"Estonia, Germany","leg.past":"Also worked in","leg.pastV":"Sweden, Finland",
+ "map.title":"Map of Northern Europe: Estonia and Germany, where we work now; Sweden and Finland, where we have also worked.",
+ "map.EST":"Estonia","map.DEU":"Germany","map.SWE":"Sweden","map.FIN":"Finland",
+ "start.tag":"How to start a job","start.h2":"Three steps to start",
+ "st1.t":"Send the details","st1.d":"Write or call: what needs to be done, where the vessel or the yard is, and the planned dates. Drawings or documents help if you have them.",
+ "st2.t":"Agree on the scope","st2.d":"We go through the job with you and agree on scope, schedule and terms.",
+ "st3.t":"Work starts","st3.d":"Installation, commissioning, measurements or switchboards, as agreed.",
+ "contact.tag":"Contact","contact.h2":"Get in touch","contact.p":"Tell us about the job by phone, by e‑mail or with the form.","contact.phone":"Phone","contact.mail":"E-mail",
+ "f.title":"Request","f.note":"Fields marked * are required.","f.name":"Your name","f.company":"Company","f.email":"E-mail","f.phone":"Phone",
+ "f.where":"Where is the job?","f.whereP":"Shipyard, port, country","f.msg":"What needs to be done?","f.submit":"Send request",
+ "f.hint":"The button opens your e‑mail app with the request filled in.","f.fallback":"or write directly:",
+ "e.name":"Please enter your name.","e.email":"Please enter a valid e-mail address.","e.msg":"Please describe the job.",
+ "f.ok":"Your e‑mail app should open now with the request. If it does not, write directly to info.el4you@gmail.com.",
+ "m.subject":"Request from the website","m.name":"Name","m.company":"Company","m.email":"E-mail","m.phone":"Phone","m.where":"Location","m.msg":"Job",
+ "foot.company":"Company","foot.reg":"Registry code","foot.vat":"VAT number","foot.top":"Back to top ↑"
+},
+de:{
+ "meta.title":"EL4YOU OÜ: Elektroinstallation im Schiffbau",
+ "meta.desc":"Elektroinstallation, Inbetriebnahme, Messungen und Fertigung von Verteilertafeln für den Schiffbau. Tätig in Estland und Deutschland.",
+ "skip":"Zum Inhalt springen","navAria":"Hauptmenü","langAria":"Sprache","cta":"Kontakt aufnehmen","callAria":"Anrufen: +372 5559 3398",
+ "nav.services":"Leistungen","nav.where":"Einsatzgebiete","nav.start":"Ablauf","nav.contact":"Kontakt",
+ "hero.eyebrow":"Schiffbau · Elektroarbeiten",
+ "hero.h1":"Elektro­installation <em>im Schiffbau</em>",
+ "hero.lead":"Installation, Inbetriebnahme, Messungen und Fertigung von Verteilertafeln für Werften und Zulieferer im Schiffbau. Derzeit tätig in Estland und Deutschland.",
+ "alt.hero":"Gang im Maschinenraum eines Schiffes mit Kabeltrassen unter der Decke",
+ "plate.aria":"Firmenübersicht","plate.sector":"Branche","plate.sectorV":"Schiffbau","plate.scope":"Leistungen",
+ "plate.scopeV":"Installation · Inbetriebnahme · Messungen · Verteilertafeln","plate.now":"Derzeit tätig in","plate.nowV":"Estland, Deutschland",
+ "plate.past":"Bisher auch in","plate.pastV":"Schweden, Finnland",
+ "svc.tag":"Leistungen","svc.h2":"Was wir machen","svc.lead":"Elektroarbeiten im Schiffbau: Installation und Inbetriebnahme, Messungen und Verteilertafeln.",
+ "s1.t":"Elektro­installation","s1.d":"Elektroinstallationsarbeiten an Bord: Kabelverlegung, Anschlüsse und Montage der elektrischen Ausrüstung.",
+ "s2.t":"Inbetrieb­nahme","s2.d":"Inbetriebnahme und Einstellung: Wir nehmen die installierten elektrischen Anlagen in Betrieb und stellen sie ein.",
+ "s3.t":"Messungen","s3.d":"Elektrische Messungen an Anlagen und Ausrüstung vor Ort.",
+ "s4.t":"Verteiler­tafeln","s4.d":"Fertigung von Verteilertafeln für Ihr Projekt.",
+ "alt.s1":"Kabelschutzrohre entlang einer Stahldecke","alt.s2":"Reihe blauer Schaltschränke","alt.s3":"Hände in Arbeitshandschuhen messen mit einem Multimeter","alt.s4":"Verdrahtete Relais und Klemmen in einem Schaltschrank",
+ "where.tag":"Einsatzgebiete","where.h2":"Estland und Deutschland","where.p":"Derzeit arbeiten wir in Estland und Deutschland. Wir haben auch in Schweden und Finnland gearbeitet.",
+ "leg.now":"Derzeit tätig in","leg.nowV":"Estland, Deutschland","leg.past":"Bisher auch in","leg.pastV":"Schweden, Finnland",
+ "map.title":"Karte Nordeuropas: Estland und Deutschland, wo wir derzeit arbeiten; Schweden und Finnland, wo wir ebenfalls gearbeitet haben.",
+ "map.EST":"Estland","map.DEU":"Deutschland","map.SWE":"Schweden","map.FIN":"Finnland",
+ "start.tag":"Ablauf","start.h2":"In drei Schritten zum Auftrag",
+ "st1.t":"Eckdaten senden","st1.d":"Schreiben Sie uns oder rufen Sie an: was zu tun ist, wo das Schiff oder die Werft liegt und welcher Zeitraum geplant ist. Zeichnungen oder Unterlagen helfen, falls vorhanden.",
+ "st2.t":"Umfang klären","st2.d":"Wir gehen den Auftrag mit Ihnen durch und vereinbaren Umfang, Zeitplan und Konditionen.",
+ "st3.t":"Arbeitsbeginn","st3.d":"Installation, Inbetriebnahme, Messungen oder Verteilertafeln, wie vereinbart.",
+ "contact.tag":"Kontakt","contact.h2":"Kontakt aufnehmen","contact.p":"Beschreiben Sie den Auftrag telefonisch, per E‑Mail oder über das Formular.","contact.phone":"Telefon","contact.mail":"E-Mail",
+ "f.title":"Anfrage","f.note":"Mit * markierte Felder sind Pflichtfelder.","f.name":"Ihr Name","f.company":"Firma","f.email":"E-Mail","f.phone":"Telefon",
+ "f.where":"Wo ist der Einsatz?","f.whereP":"Werft, Hafen, Land","f.msg":"Was ist zu tun?","f.submit":"Anfrage senden",
+ "f.hint":"Die Schaltfläche öffnet Ihr E‑Mail-Programm mit der ausgefüllten Anfrage.","f.fallback":"oder direkt schreiben:",
+ "e.name":"Bitte geben Sie Ihren Namen ein.","e.email":"Bitte geben Sie eine gültige E-Mail-Adresse ein.","e.msg":"Bitte beschreiben Sie den Auftrag.",
+ "f.ok":"Ihr E‑Mail-Programm sollte sich jetzt mit der Anfrage öffnen. Falls nicht, schreiben Sie direkt an info.el4you@gmail.com.",
+ "m.subject":"Anfrage über die Website","m.name":"Name","m.company":"Firma","m.email":"E-Mail","m.phone":"Telefon","m.where":"Einsatzort","m.msg":"Auftrag",
+ "foot.company":"Firma","foot.reg":"Registernummer","foot.vat":"USt-IdNr.","foot.top":"Nach oben ↑"
+},
+et:{
+ "meta.title":"EL4YOU OÜ: elektripaigaldus laevaehituses",
+ "meta.desc":"Elektripaigaldus, kasutuselevõtt, mõõtmised ja jaotuskilpide valmistamine laevaehituses. Töötame Eestis ja Saksamaal.",
+ "skip":"Liigu sisu juurde","navAria":"Peamenüü","langAria":"Keel","cta":"Võta ühendust","callAria":"Helista: +372 5559 3398",
+ "nav.services":"Teenused","nav.where":"Kus töötame","nav.start":"Kuidas alustada","nav.contact":"Kontakt",
+ "hero.eyebrow":"Laevaehitus · Elektritööd",
+ "hero.h1":"Elektri­paigaldus <em>laeva­ehituses</em>",
+ "hero.lead":"Elektripaigaldus, kasutuselevõtt, mõõtmised ja jaotuskilpide valmistamine laevatehastele ning laevaehituse alltöövõtjatele. Praegu töötame Eestis ja Saksamaal.",
+ "alt.hero":"Laeva masinaruumi koridor, lae all kaablitrassid",
+ "plate.aria":"Ettevõtte kokkuvõte","plate.sector":"Valdkond","plate.sectorV":"Laevaehitus","plate.scope":"Teenused",
+ "plate.scopeV":"Paigaldus · Kasutuselevõtt · Mõõtmised · Jaotuskilbid","plate.now":"Praegu","plate.nowV":"Eesti, Saksamaa",
+ "plate.past":"Varem ka","plate.pastV":"Rootsi, Soome",
+ "svc.tag":"Teenused","svc.h2":"Mida teeme","svc.lead":"Elektritööd laevaehituses: paigaldus ja kasutuselevõtt, mõõtmised ja jaotuskilbid.",
+ "s1.t":"Elektri­paigaldus","s1.d":"Elektripaigaldustööd laeval: kaablite paigaldus, ühendused ja elektriseadmete montaaž.",
+ "s2.t":"Kasutusele­võtt","s2.d":"Käivitamine ja seadistamine: võtame paigaldatud elektrisüsteemid kasutusele ja häälestame need.",
+ "s3.t":"Mõõtmised","s3.d":"Elektrilised mõõtmised paigaldistel ja seadmetel kohapeal.",
+ "s4.t":"Jaotuskilbid","s4.d":"Jaotuskilpide valmistamine teie projekti jaoks.",
+ "alt.s1":"Kaablikaitsetorud piki teraslage","alt.s2":"Rida siniseid elektrikilpe","alt.s3":"Kinnastes käed mõõdavad multimeetriga","alt.s4":"Juhtmestatud releed ja klemmid elektrikilbis",
+ "where.tag":"Kus töötame","where.h2":"Eesti ja Saksamaa","where.p":"Praegu töötame Eestis ja Saksamaal. Varem oleme töötanud ka Rootsis ja Soomes.",
+ "leg.now":"Praegu","leg.nowV":"Eesti, Saksamaa","leg.past":"Varem ka","leg.pastV":"Rootsi, Soome",
+ "map.title":"Põhja-Euroopa kaart: Eesti ja Saksamaa, kus töötame praegu; Rootsi ja Soome, kus oleme varem töötanud.",
+ "map.EST":"Eesti","map.DEU":"Saksamaa","map.SWE":"Rootsi","map.FIN":"Soome",
+ "start.tag":"Kuidas alustada","start.h2":"Kolm sammu tööni",
+ "st1.t":"Saatke andmed","st1.d":"Kirjutage või helistage: mida on vaja teha, kus asub laev või tehas ja millal töö on plaanis. Joonised või dokumendid on abiks, kui need on olemas.",
+ "st2.t":"Lepime mahu kokku","st2.d":"Arutame töö teiega läbi ning lepime kokku mahu, ajakava ja tingimused.",
+ "st3.t":"Töö algab","st3.d":"Paigaldus, kasutuselevõtt, mõõtmised või jaotuskilbid, nagu kokku lepitud.",
+ "contact.tag":"Kontakt","contact.h2":"Võta ühendust","contact.p":"Kirjeldage tööd telefoni või e‑posti teel või vormi kaudu.","contact.phone":"Telefon","contact.mail":"E-post",
+ "f.title":"Päring","f.note":"Tärniga * märgitud väljad on kohustuslikud.","f.name":"Teie nimi","f.company":"Ettevõte","f.email":"E-post","f.phone":"Telefon",
+ "f.where":"Kus töö toimub?","f.whereP":"Laevatehas, sadam, riik","f.msg":"Mida on vaja teha?","f.submit":"Saada päring",
+ "f.hint":"Nupp avab teie e‑posti programmi valmis päringuga.","f.fallback":"või kirjutage otse:",
+ "e.name":"Palun sisestage oma nimi.","e.email":"Palun sisestage korrektne e-posti aadress.","e.msg":"Palun kirjeldage tööd.",
+ "f.ok":"Teie e‑posti programm peaks nüüd avanema koos päringuga. Kui see ei avane, kirjutage otse aadressile info.el4you@gmail.com.",
+ "m.subject":"Päring veebilehelt","m.name":"Nimi","m.company":"Ettevõte","m.email":"E-post","m.phone":"Telefon","m.where":"Asukoht","m.msg":"Töö",
+ "foot.company":"Ettevõte","foot.reg":"Registrikood","foot.vat":"KMKR nr","foot.top":"Üles ↑"
+}};
+var cur="en";
+function t(k){return (T[cur]&&T[cur][k]!=null)?T[cur][k]:T.en[k];}
+function apply(lang){
+  if(!T[lang]) lang="en";
+  cur=lang;
+  document.documentElement.lang=lang;
+  document.title=t("meta.title");
+  var md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute("content",t("meta.desc"));
+  document.querySelectorAll("[data-i18n]").forEach(function(el){var v=t(el.getAttribute("data-i18n")); if(v!=null) el.innerHTML=v;});
+  document.querySelectorAll("[data-i18n-attr]").forEach(function(el){
+    el.getAttribute("data-i18n-attr").split(";").forEach(function(p){var kv=p.split(":"); var v=t(kv[1]); if(v!=null) el.setAttribute(kv[0],v);});
+  });
+  document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-lang")===lang));});
+  ["name","email","msg"].forEach(function(k){var e=document.getElementById("e-"+k); if(e&&e.textContent) e.textContent=t("e."+k);});
+  var st=document.getElementById("f-status"); if(st&&st.textContent) st.textContent=t("f.ok");
+}
+function setLang(lang){
+  apply(lang);
+  try{localStorage.setItem("el4you-lang",lang);}catch(e){}
+  try{var u=new URL(location.href); if(lang==="en") u.searchParams.delete("lang"); else u.searchParams.set("lang",lang); history.replaceState(null,"",u.pathname+u.search+u.hash);}catch(e){}
+}
+document.querySelectorAll(".lang button").forEach(function(b){b.addEventListener("click",function(){setLang(b.getAttribute("data-lang"));});});
+var start="en";
+try{var q=new URLSearchParams(location.search).get("lang"); if(q&&T[q]) start=q; else {var s=localStorage.getItem("el4you-lang"); if(s&&T[s]) start=s;}}catch(e){}
+if(start!=="en") apply(start); else {cur="en";}
+
+/* request form: builds a mailto: (no backend yet) */
+var form=document.getElementById("req");
+function field(id){return document.getElementById(id);}
+function setErr(input,key,msg){var e=field("e-"+key); input.setAttribute("aria-invalid",msg?"true":"false"); e.textContent=msg?t("e."+key):"";}
+form.addEventListener("submit",function(ev){
+  ev.preventDefault();
+  var name=field("f-name"),email=field("f-email"),msg=field("f-msg");
+  var okName=name.value.trim().length>0;
+  var okMail=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim());
+  var okMsg=msg.value.trim().length>0;
+  setErr(name,"name",!okName); setErr(email,"email",!okMail); setErr(msg,"msg",!okMsg);
+  var st=field("f-status"); st.textContent="";
+  if(!okName){name.focus();return;} if(!okMail){email.focus();return;} if(!okMsg){msg.focus();return;}
+  var company=field("f-company").value.trim(), phone=field("f-phone").value.trim(), where=field("f-where").value.trim();
+  var subject=t("m.subject")+": "+(company||name.value.trim());
+  var lines=[t("m.name")+": "+name.value.trim()];
+  if(company) lines.push(t("m.company")+": "+company);
+  lines.push(t("m.email")+": "+email.value.trim());
+  if(phone) lines.push(t("m.phone")+": "+phone);
+  if(where) lines.push(t("m.where")+": "+where);
+  lines.push("", t("m.msg")+":", msg.value.trim());
+  var href="mailto:"+EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(lines.join("\r\n"));
+  st.textContent=t("f.ok");
+  var a=document.createElement("a"); a.href=href; a.hidden=true; document.body.appendChild(a); a.click(); a.remove();
+});
+["f-name","f-email","f-msg"].forEach(function(id){field(id).addEventListener("input",function(){if(this.getAttribute("aria-invalid")==="true"){var k=id.slice(2); var bad=k==="email"?!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(this.value.trim()):!this.value.trim(); if(!bad) setErr(this,k,false);}});});
+})();
+</script>
+</body>
+</html>
