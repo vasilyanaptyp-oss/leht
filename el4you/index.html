@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>EL4YOU OÜ: electrical installation for shipbuilding</title>
-<meta name="description" content="Electrical installation, commissioning, measurements and manufacturing of distribution switchboards for shipbuilding. Working in Estonia and Germany.">
+<meta name="description" content="Electrical installation, commissioning and manufacturing of distribution switchboards for shipbuilding. Working in Estonia and Germany.">
 <meta name="theme-color" content="#0B141C">
 <link rel="icon" href="assets/brand/el4you-mark.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/brand/el4you-mark-512.png">
@@ -55,7 +55,7 @@ p{margin:0}
 /* header */
 .top{position:sticky;top:0;z-index:20;background:var(--hull);border-bottom:1px solid var(--line-d)}
 .top .wrap{display:flex;align-items:center;gap:16px;height:64px}
-.brand{display:flex;align-items:center;min-height:44px;margin-right:auto}
+.brand{display:flex;align-items:center;min-height:44px;margin-right:auto;flex-shrink:0}
 .brand img{height:28px;width:auto}
 .nav{display:none}
 .nav a{color:var(--txt-d2);text-decoration:none;font-weight:500;font-size:.9375rem;display:inline-flex;align-items:center;min-height:44px;padding:0 4px}
@@ -75,6 +75,7 @@ p{margin:0}
   .top .btn{display:inline-flex}
   html{scroll-padding-top:84px}
 }
+@media (min-width:960px) and (max-width:1099px){.top .wrap{gap:20px}}
 
 /* hero */
 .hero{position:relative;background:var(--hull);color:var(--txt-d);overflow:hidden}
@@ -138,7 +139,8 @@ p{margin:0}
 .label .code{font:500 .8125rem/1 var(--mono);color:#fff;background:var(--blue);padding:6px 7px;letter-spacing:.06em;flex:none}
 .label h3{font-size:clamp(.875rem,.78rem + .45vw,1rem);font-stretch:108%;font-weight:740;text-transform:uppercase;letter-spacing:.035em;line-height:1.2;hyphens:manual}
 .module p{margin:16px 14px 0;color:var(--ink-2);font-size:1rem;line-height:1.55}
-@media (min-width:700px){.modules{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}
+@media (min-width:700px){.modules{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+  .module.wide{grid-column:1/-1}.module.wide figure{aspect-ratio:16/7}.module.wide figure img{object-position:50% 45%}}
 @media (min-width:1100px){
   .services .grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:56px}
   .services .sec-head{position:sticky;top:120px;align-self:start}
@@ -198,6 +200,10 @@ p{margin:0}
 .direct a span{font:500 .6875rem/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--txt-d2)}
 .direct a b{font-weight:680;font-stretch:108%;font-size:clamp(1.25rem,.9rem + 1.6vw,2rem);line-height:1.2;overflow-wrap:anywhere}
 .direct a:hover b{color:var(--blue-hi)}
+.phone-row{display:flex;flex-wrap:wrap;align-items:center;column-gap:16px;border-bottom:1px solid var(--line-d)}
+.phone-row>a:first-child{flex:0 1 auto;border-bottom:0}
+.direct .wa{flex-direction:row;min-height:44px;padding:0 18px;margin:8px 0;border:2px solid rgba(237,241,244,.45);font:640 .9375rem/1.1 var(--sans);font-stretch:108%;color:var(--txt-d)}
+.direct .wa:hover{border-color:var(--txt-d);background:rgba(255,255,255,.06)}
 .form{background:var(--plate);color:var(--ink);padding:24px 18px 22px;border:1px solid #C3C9C4;position:relative}
 .form::before{content:"";position:absolute;left:-1px;top:-1px;width:64px;height:6px;background:var(--blue)}
 .form h3{font-size:1.25rem;font-stretch:110%;margin-bottom:6px}
@@ -249,7 +255,7 @@ p{margin:0}
     <a class="brand" href="#top"><img src="assets/brand/el4you-wordmark-white.svg" alt="EL4YOU" width="146" height="35"></a>
     <nav class="nav" aria-label="Main" data-i18n-attr="aria-label:navAria">
       <a href="#services" data-i18n="nav.services">Services</a>
-      <a href="#where" data-i18n="nav.where">Where we work</a>
+      <a href="#projects" data-i18n="nav.where">Projects involving us</a>
       <a href="#start" data-i18n="nav.start">How to start</a>
       <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
@@ -277,7 +283,7 @@ p{margin:0}
     <div class="hero-copy wrap">
       <p class="eyebrow" data-i18n="hero.eyebrow">Shipbuilding · Electrical works</p>
       <h1 id="h1" data-i18n="hero.h1">Electrical installation <em>for shipbuilding</em></h1>
-      <p class="lead" data-i18n="hero.lead">Installation, commissioning, measurements and manufacturing of distribution switchboards for shipyards and marine contractors. Currently working in Estonia and Germany.</p>
+      <p class="lead" data-i18n="hero.lead">Installation, commissioning and manufacturing of distribution switchboards for shipyards and marine contractors. Currently working in Estonia and Germany.</p>
       <div class="ctas">
         <a class="btn" href="#contact"><span data-i18n="cta">Get in touch</span><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M9.5 4.5 14 9l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
         <a class="btn ghost tel" href="tel:+37255593398" aria-label="Call +372 5559 3398" data-i18n-attr="aria-label:callAria"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3h3l1.5 4.5-2.2 1.4a11 11 0 0 0 6.2 6.2l1.4-2.2L21 14.4v3A2.6 2.6 0 0 1 18.4 20 15.4 15.4 0 0 1 4 5.6 2.6 2.6 0 0 1 6.6 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>+372 5559 3398</a>
@@ -288,7 +294,7 @@ p{margin:0}
     <div class="plate-top"><span class="plate-name">EL4YOU OÜ</span><span class="plate-code">EE · DE</span></div>
     <dl>
       <div><dt data-i18n="plate.sector">Sector</dt><dd data-i18n="plate.sectorV">Shipbuilding</dd></div>
-      <div><dt data-i18n="plate.scope">Scope</dt><dd data-i18n="plate.scopeV">Installation · Commissioning · Measurements · Switchboards</dd></div>
+      <div><dt data-i18n="plate.scope">Scope</dt><dd data-i18n="plate.scopeV">Installation · Commissioning · Switchboards</dd></div>
       <div><dt data-i18n="plate.now">Working now</dt><dd data-i18n="plate.nowV">Estonia, Germany</dd></div>
       <div><dt data-i18n="plate.past">Also worked in</dt><dd data-i18n="plate.pastV">Sweden, Finland</dd></div>
     </dl>
@@ -300,10 +306,10 @@ p{margin:0}
     <div class="sec-head">
       <p class="tag"><span class="n">01</span><span data-i18n="svc.tag">Services</span></p>
       <h2 class="h2" id="svc-h" data-i18n="svc.h2">What we do</h2>
-      <p class="sec-lead" data-i18n="svc.lead">Electrical works in shipbuilding: installation and commissioning, measurements and distribution switchboards.</p>
+      <p class="sec-lead" data-i18n="svc.lead">Electrical works in shipbuilding: installation, commissioning and distribution switchboards.</p>
     </div>
     <ol class="modules">
-      <li class="module">
+      <li class="module wide">
         <figure><img src="assets/img/s-installation.webp" width="1120" height="700" loading="lazy" alt="Cable conduits routed along a steel ceiling" data-i18n-attr="alt:alt.s1"></figure>
         <div class="label"><span class="code">F1</span><h3 data-i18n="s1.t">Electrical installation</h3></div>
         <p data-i18n="s1.d">Electrical installation works on board: cable laying, connections and mounting of electrical equipment.</p>
@@ -314,23 +320,18 @@ p{margin:0}
         <p data-i18n="s2.d">Start-up and adjustment: we put the installed electrical systems into operation and set them up.</p>
       </li>
       <li class="module">
-        <figure><img src="assets/img/s-measurements.webp" width="1120" height="700" loading="lazy" alt="Gloved hands taking a reading with a multimeter" data-i18n-attr="alt:alt.s3"></figure>
-        <div class="label"><span class="code">F3</span><h3 data-i18n="s3.t">Measurements</h3></div>
-        <p data-i18n="s3.d">Electrical measurements of installations and equipment on site.</p>
-      </li>
-      <li class="module">
-        <figure><img src="assets/img/s-switchboards.webp" width="1120" height="700" loading="lazy" alt="Wired relays and terminals inside a switchboard" data-i18n-attr="alt:alt.s4"></figure>
-        <div class="label"><span class="code">F4</span><h3 data-i18n="s4.t">Distribution switchboards</h3></div>
-        <p data-i18n="s4.d">Manufacturing of distribution switchboards for your project.</p>
+        <figure><img src="assets/img/s-switchboards.webp" width="1120" height="700" loading="lazy" alt="Wired relays and terminals inside a switchboard" data-i18n-attr="alt:alt.s3"></figure>
+        <div class="label"><span class="code">F3</span><h3 data-i18n="s3.t">Distribution switchboards</h3></div>
+        <p data-i18n="s3.d">Manufacturing of distribution switchboards for your project.</p>
       </li>
     </ol>
   </div>
 </section>
 
-<section class="where dark" id="where" aria-labelledby="where-h">
+<section class="where dark" id="projects" aria-labelledby="where-h">
   <div class="wrap where-grid">
     <div>
-      <p class="tag"><span class="n">02</span><span data-i18n="where.tag">Where we work</span></p>
+      <p class="tag"><span class="n">02</span><span data-i18n="where.tag">Projects involving us</span></p>
       <h2 class="h2" id="where-h" data-i18n="where.h2">Estonia and Germany</h2>
       <p class="sec-lead" data-i18n="where.p">We currently work in Estonia and Germany. We have also worked in Sweden and Finland.</p>
       <ul class="legend">
@@ -359,7 +360,7 @@ p{margin:0}
     <ol class="flow">
       <li><span class="num" aria-hidden="true">1</span><h3 data-i18n="st1.t">Send the details</h3><p data-i18n="st1.d">Write or call: what needs to be done, where the vessel or the yard is, and the planned dates. Drawings or documents help if you have them.</p></li>
       <li><span class="num" aria-hidden="true">2</span><h3 data-i18n="st2.t">Agree on the scope</h3><p data-i18n="st2.d">We go through the job with you and agree on scope, schedule and terms.</p></li>
-      <li><span class="num" aria-hidden="true">3</span><h3 data-i18n="st3.t">Work starts</h3><p data-i18n="st3.d">Installation, commissioning, measurements or switchboards, as agreed.</p></li>
+      <li><span class="num" aria-hidden="true">3</span><h3 data-i18n="st3.t">Work starts</h3><p data-i18n="st3.d">Installation, commissioning or switchboards, as agreed.</p></li>
     </ol>
   </div>
 </section>
@@ -371,7 +372,10 @@ p{margin:0}
       <h2 class="h2" id="contact-h" data-i18n="contact.h2">Get in touch</h2>
       <p class="sec-lead" data-i18n="contact.p">Tell us about the job by phone, by e&#8209;mail or with the form.</p>
       <div class="direct">
-        <a href="tel:+37255593398"><span data-i18n="contact.phone">Phone</span><b>+372 5559 3398</b></a>
+        <div class="phone-row">
+          <a href="tel:+37255593398"><span data-i18n="contact.phone">Phone</span><b>+372 5559 3398</b></a>
+          <a class="btn ghost sm wa" href="https://wa.me/37255593398" target="_blank" rel="noopener" aria-label="Write on WhatsApp: +372 5559 3398" data-i18n-attr="aria-label:waAria"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 20.4l1.2-4.3A9 9 0 1 1 8 19.3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path transform="translate(12.2 11.7) scale(.5) translate(-12 -12)" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/></svg>WhatsApp</a>
+        </div>
         <a href="mailto:info.el4you@gmail.com"><span data-i18n="contact.mail">E-mail</span><b>info.el4you@gmail.com</b></a>
       </div>
     </div>
@@ -424,30 +428,29 @@ var EMAIL="info.el4you@gmail.com";
 var T={
 en:{
  "meta.title":"EL4YOU OÜ: electrical installation for shipbuilding",
- "meta.desc":"Electrical installation, commissioning, measurements and manufacturing of distribution switchboards for shipbuilding. Working in Estonia and Germany.",
- "skip":"Skip to content","navAria":"Main","langAria":"Language","cta":"Get in touch","callAria":"Call +372 5559 3398",
- "nav.services":"Services","nav.where":"Where we work","nav.start":"How to start","nav.contact":"Contact",
+ "meta.desc":"Electrical installation, commissioning and manufacturing of distribution switchboards for shipbuilding. Working in Estonia and Germany.",
+ "skip":"Skip to content","navAria":"Main","langAria":"Language","cta":"Get in touch","callAria":"Call +372 5559 3398","waAria":"Write on WhatsApp: +372 5559 3398",
+ "nav.services":"Services","nav.where":"Projects involving us","nav.start":"How to start","nav.contact":"Contact",
  "hero.eyebrow":"Shipbuilding · Electrical works",
  "hero.h1":"Electrical installation <em>for shipbuilding</em>",
- "hero.lead":"Installation, commissioning, measurements and manufacturing of distribution switchboards for shipyards and marine contractors. Currently working in Estonia and Germany.",
+ "hero.lead":"Installation, commissioning and manufacturing of distribution switchboards for shipyards and marine contractors. Currently working in Estonia and Germany.",
  "alt.hero":"Engine room corridor on a ship with cable runs under the deckhead",
  "plate.aria":"Company summary","plate.sector":"Sector","plate.sectorV":"Shipbuilding","plate.scope":"Scope",
- "plate.scopeV":"Installation · Commissioning · Measurements · Switchboards","plate.now":"Working now","plate.nowV":"Estonia, Germany",
+ "plate.scopeV":"Installation · Commissioning · Switchboards","plate.now":"Working now","plate.nowV":"Estonia, Germany",
  "plate.past":"Also worked in","plate.pastV":"Sweden, Finland",
- "svc.tag":"Services","svc.h2":"What we do","svc.lead":"Electrical works in shipbuilding: installation and commissioning, measurements and distribution switchboards.",
+ "svc.tag":"Services","svc.h2":"What we do","svc.lead":"Electrical works in shipbuilding: installation, commissioning and distribution switchboards.",
  "s1.t":"Electrical installation","s1.d":"Electrical installation works on board: cable laying, connections and mounting of electrical equipment.",
  "s2.t":"Commissioning","s2.d":"Start-up and adjustment: we put the installed electrical systems into operation and set them up.",
- "s3.t":"Measurements","s3.d":"Electrical measurements of installations and equipment on site.",
- "s4.t":"Distribution switchboards","s4.d":"Manufacturing of distribution switchboards for your project.",
- "alt.s1":"Cable conduits routed along a steel ceiling","alt.s2":"Row of blue electrical switchgear panels","alt.s3":"Gloved hands taking a reading with a multimeter","alt.s4":"Wired relays and terminals inside a switchboard",
- "where.tag":"Where we work","where.h2":"Estonia and Germany","where.p":"We currently work in Estonia and Germany. We have also worked in Sweden and Finland.",
+ "s3.t":"Distribution switchboards","s3.d":"Manufacturing of distribution switchboards for your project.",
+ "alt.s1":"Cable conduits routed along a steel ceiling","alt.s2":"Row of blue electrical switchgear panels","alt.s3":"Wired relays and terminals inside a switchboard",
+ "where.tag":"Projects involving us","where.h2":"Estonia and Germany","where.p":"We currently work in Estonia and Germany. We have also worked in Sweden and Finland.",
  "leg.now":"Working now","leg.nowV":"Estonia, Germany","leg.past":"Also worked in","leg.pastV":"Sweden, Finland",
  "map.title":"Map of Northern Europe: Estonia and Germany, where we work now; Sweden and Finland, where we have also worked.",
  "map.EST":"Estonia","map.DEU":"Germany","map.SWE":"Sweden","map.FIN":"Finland",
  "start.tag":"How to start a job","start.h2":"Three steps to start",
  "st1.t":"Send the details","st1.d":"Write or call: what needs to be done, where the vessel or the yard is, and the planned dates. Drawings or documents help if you have them.",
  "st2.t":"Agree on the scope","st2.d":"We go through the job with you and agree on scope, schedule and terms.",
- "st3.t":"Work starts","st3.d":"Installation, commissioning, measurements or switchboards, as agreed.",
+ "st3.t":"Work starts","st3.d":"Installation, commissioning or switchboards, as agreed.",
  "contact.tag":"Contact","contact.h2":"Get in touch","contact.p":"Tell us about the job by phone, by e‑mail or with the form.","contact.phone":"Phone","contact.mail":"E-mail",
  "f.title":"Request","f.note":"Fields marked * are required.","f.name":"Your name","f.company":"Company","f.email":"E-mail","f.phone":"Phone",
  "f.where":"Where is the job?","f.whereP":"Shipyard, port, country","f.msg":"What needs to be done?","f.submit":"Send request",
@@ -459,30 +462,29 @@ en:{
 },
 de:{
  "meta.title":"EL4YOU OÜ: Elektroinstallation im Schiffbau",
- "meta.desc":"Elektroinstallation, Inbetriebnahme, Messungen und Fertigung von Verteilertafeln für den Schiffbau. Tätig in Estland und Deutschland.",
- "skip":"Zum Inhalt springen","navAria":"Hauptmenü","langAria":"Sprache","cta":"Kontakt aufnehmen","callAria":"Anrufen: +372 5559 3398",
- "nav.services":"Leistungen","nav.where":"Einsatzgebiete","nav.start":"Ablauf","nav.contact":"Kontakt",
+ "meta.desc":"Elektroinstallation, Inbetriebnahme und Fertigung von Verteilertafeln für den Schiffbau. Tätig in Estland und Deutschland.",
+ "skip":"Zum Inhalt springen","navAria":"Hauptmenü","langAria":"Sprache","cta":"Kontakt aufnehmen","callAria":"Anrufen: +372 5559 3398","waAria":"Auf WhatsApp schreiben: +372 5559 3398",
+ "nav.services":"Leistungen","nav.where":"Projektbeteiligungen","nav.start":"Ablauf","nav.contact":"Kontakt",
  "hero.eyebrow":"Schiffbau · Elektroarbeiten",
  "hero.h1":"Elektro­installation <em>im Schiffbau</em>",
- "hero.lead":"Installation, Inbetriebnahme, Messungen und Fertigung von Verteilertafeln für Werften und Zulieferer im Schiffbau. Derzeit tätig in Estland und Deutschland.",
+ "hero.lead":"Installation, Inbetriebnahme und Fertigung von Verteilertafeln für Werften und Zulieferer im Schiffbau. Derzeit tätig in Estland und Deutschland.",
  "alt.hero":"Gang im Maschinenraum eines Schiffes mit Kabeltrassen unter der Decke",
  "plate.aria":"Firmenübersicht","plate.sector":"Branche","plate.sectorV":"Schiffbau","plate.scope":"Leistungen",
- "plate.scopeV":"Installation · Inbetriebnahme · Messungen · Verteilertafeln","plate.now":"Derzeit tätig in","plate.nowV":"Estland, Deutschland",
+ "plate.scopeV":"Installation · Inbetriebnahme · Verteilertafeln","plate.now":"Derzeit tätig in","plate.nowV":"Estland, Deutschland",
  "plate.past":"Bisher auch in","plate.pastV":"Schweden, Finnland",
- "svc.tag":"Leistungen","svc.h2":"Was wir machen","svc.lead":"Elektroarbeiten im Schiffbau: Installation und Inbetriebnahme, Messungen und Verteilertafeln.",
+ "svc.tag":"Leistungen","svc.h2":"Was wir machen","svc.lead":"Elektroarbeiten im Schiffbau: Installation, Inbetriebnahme und Verteilertafeln.",
  "s1.t":"Elektro­installation","s1.d":"Elektroinstallationsarbeiten an Bord: Kabelverlegung, Anschlüsse und Montage der elektrischen Ausrüstung.",
  "s2.t":"Inbetrieb­nahme","s2.d":"Inbetriebnahme und Einstellung: Wir nehmen die installierten elektrischen Anlagen in Betrieb und stellen sie ein.",
- "s3.t":"Messungen","s3.d":"Elektrische Messungen an Anlagen und Ausrüstung vor Ort.",
- "s4.t":"Verteiler­tafeln","s4.d":"Fertigung von Verteilertafeln für Ihr Projekt.",
- "alt.s1":"Kabelschutzrohre entlang einer Stahldecke","alt.s2":"Reihe blauer Schaltschränke","alt.s3":"Hände in Arbeitshandschuhen messen mit einem Multimeter","alt.s4":"Verdrahtete Relais und Klemmen in einem Schaltschrank",
- "where.tag":"Einsatzgebiete","where.h2":"Estland und Deutschland","where.p":"Derzeit arbeiten wir in Estland und Deutschland. Wir haben auch in Schweden und Finnland gearbeitet.",
+ "s3.t":"Verteiler­tafeln","s3.d":"Fertigung von Verteilertafeln für Ihr Projekt.",
+ "alt.s1":"Kabelschutzrohre entlang einer Stahldecke","alt.s2":"Reihe blauer Schaltschränke","alt.s3":"Verdrahtete Relais und Klemmen in einem Schaltschrank",
+ "where.tag":"Projekte mit unserer Beteiligung","where.h2":"Estland und Deutschland","where.p":"Derzeit arbeiten wir in Estland und Deutschland. Wir haben auch in Schweden und Finnland gearbeitet.",
  "leg.now":"Derzeit tätig in","leg.nowV":"Estland, Deutschland","leg.past":"Bisher auch in","leg.pastV":"Schweden, Finnland",
  "map.title":"Karte Nordeuropas: Estland und Deutschland, wo wir derzeit arbeiten; Schweden und Finnland, wo wir ebenfalls gearbeitet haben.",
  "map.EST":"Estland","map.DEU":"Deutschland","map.SWE":"Schweden","map.FIN":"Finnland",
  "start.tag":"Ablauf","start.h2":"In drei Schritten zum Auftrag",
  "st1.t":"Eckdaten senden","st1.d":"Schreiben Sie uns oder rufen Sie an: was zu tun ist, wo das Schiff oder die Werft liegt und welcher Zeitraum geplant ist. Zeichnungen oder Unterlagen helfen, falls vorhanden.",
  "st2.t":"Umfang klären","st2.d":"Wir gehen den Auftrag mit Ihnen durch und vereinbaren Umfang, Zeitplan und Konditionen.",
- "st3.t":"Arbeitsbeginn","st3.d":"Installation, Inbetriebnahme, Messungen oder Verteilertafeln, wie vereinbart.",
+ "st3.t":"Arbeitsbeginn","st3.d":"Installation, Inbetriebnahme oder Verteilertafeln, wie vereinbart.",
  "contact.tag":"Kontakt","contact.h2":"Kontakt aufnehmen","contact.p":"Beschreiben Sie den Auftrag telefonisch, per E‑Mail oder über das Formular.","contact.phone":"Telefon","contact.mail":"E-Mail",
  "f.title":"Anfrage","f.note":"Mit * markierte Felder sind Pflichtfelder.","f.name":"Ihr Name","f.company":"Firma","f.email":"E-Mail","f.phone":"Telefon",
  "f.where":"Wo ist der Einsatz?","f.whereP":"Werft, Hafen, Land","f.msg":"Was ist zu tun?","f.submit":"Anfrage senden",
@@ -494,30 +496,29 @@ de:{
 },
 et:{
  "meta.title":"EL4YOU OÜ: elektripaigaldus laevaehituses",
- "meta.desc":"Elektripaigaldus, kasutuselevõtt, mõõtmised ja jaotuskilpide valmistamine laevaehituses. Töötame Eestis ja Saksamaal.",
- "skip":"Liigu sisu juurde","navAria":"Peamenüü","langAria":"Keel","cta":"Võta ühendust","callAria":"Helista: +372 5559 3398",
- "nav.services":"Teenused","nav.where":"Kus töötame","nav.start":"Kuidas alustada","nav.contact":"Kontakt",
+ "meta.desc":"Elektripaigaldus, kasutuselevõtt ja jaotuskilpide valmistamine laevaehituses. Töötame Eestis ja Saksamaal.",
+ "skip":"Liigu sisu juurde","navAria":"Peamenüü","langAria":"Keel","cta":"Võta ühendust","callAria":"Helista: +372 5559 3398","waAria":"Kirjuta WhatsAppis: +372 5559 3398",
+ "nav.services":"Teenused","nav.where":"Projektid, milles osaleme","nav.start":"Kuidas alustada","nav.contact":"Kontakt",
  "hero.eyebrow":"Laevaehitus · Elektritööd",
  "hero.h1":"Elektri­paigaldus <em>laeva­ehituses</em>",
- "hero.lead":"Elektripaigaldus, kasutuselevõtt, mõõtmised ja jaotuskilpide valmistamine laevatehastele ning laevaehituse alltöövõtjatele. Praegu töötame Eestis ja Saksamaal.",
+ "hero.lead":"Elektripaigaldus, kasutuselevõtt ja jaotuskilpide valmistamine laevatehastele ning laevaehituse alltöövõtjatele. Praegu töötame Eestis ja Saksamaal.",
  "alt.hero":"Laeva masinaruumi koridor, lae all kaablitrassid",
  "plate.aria":"Ettevõtte kokkuvõte","plate.sector":"Valdkond","plate.sectorV":"Laevaehitus","plate.scope":"Teenused",
- "plate.scopeV":"Paigaldus · Kasutuselevõtt · Mõõtmised · Jaotuskilbid","plate.now":"Praegu","plate.nowV":"Eesti, Saksamaa",
+ "plate.scopeV":"Paigaldus · Kasutuselevõtt · Jaotuskilbid","plate.now":"Praegu","plate.nowV":"Eesti, Saksamaa",
  "plate.past":"Varem ka","plate.pastV":"Rootsi, Soome",
- "svc.tag":"Teenused","svc.h2":"Mida teeme","svc.lead":"Elektritööd laevaehituses: paigaldus ja kasutuselevõtt, mõõtmised ja jaotuskilbid.",
+ "svc.tag":"Teenused","svc.h2":"Mida teeme","svc.lead":"Elektritööd laevaehituses: paigaldus, kasutuselevõtt ja jaotuskilbid.",
  "s1.t":"Elektri­paigaldus","s1.d":"Elektripaigaldustööd laeval: kaablite paigaldus, ühendused ja elektriseadmete montaaž.",
  "s2.t":"Kasutusele­võtt","s2.d":"Käivitamine ja seadistamine: võtame paigaldatud elektrisüsteemid kasutusele ja häälestame need.",
- "s3.t":"Mõõtmised","s3.d":"Elektrilised mõõtmised paigaldistel ja seadmetel kohapeal.",
- "s4.t":"Jaotuskilbid","s4.d":"Jaotuskilpide valmistamine teie projekti jaoks.",
- "alt.s1":"Kaablikaitsetorud piki teraslage","alt.s2":"Rida siniseid elektrikilpe","alt.s3":"Kinnastes käed mõõdavad multimeetriga","alt.s4":"Juhtmestatud releed ja klemmid elektrikilbis",
- "where.tag":"Kus töötame","where.h2":"Eesti ja Saksamaa","where.p":"Praegu töötame Eestis ja Saksamaal. Varem oleme töötanud ka Rootsis ja Soomes.",
+ "s3.t":"Jaotuskilbid","s3.d":"Jaotuskilpide valmistamine teie projekti jaoks.",
+ "alt.s1":"Kaablikaitsetorud piki teraslage","alt.s2":"Rida siniseid elektrikilpe","alt.s3":"Juhtmestatud releed ja klemmid elektrikilbis",
+ "where.tag":"Projektid, milles osaleme","where.h2":"Eesti ja Saksamaa","where.p":"Praegu töötame Eestis ja Saksamaal. Varem oleme töötanud ka Rootsis ja Soomes.",
  "leg.now":"Praegu","leg.nowV":"Eesti, Saksamaa","leg.past":"Varem ka","leg.pastV":"Rootsi, Soome",
  "map.title":"Põhja-Euroopa kaart: Eesti ja Saksamaa, kus töötame praegu; Rootsi ja Soome, kus oleme varem töötanud.",
  "map.EST":"Eesti","map.DEU":"Saksamaa","map.SWE":"Rootsi","map.FIN":"Soome",
  "start.tag":"Kuidas alustada","start.h2":"Kolm sammu tööni",
  "st1.t":"Saatke andmed","st1.d":"Kirjutage või helistage: mida on vaja teha, kus asub laev või tehas ja millal töö on plaanis. Joonised või dokumendid on abiks, kui need on olemas.",
  "st2.t":"Lepime mahu kokku","st2.d":"Arutame töö teiega läbi ning lepime kokku mahu, ajakava ja tingimused.",
- "st3.t":"Töö algab","st3.d":"Paigaldus, kasutuselevõtt, mõõtmised või jaotuskilbid, nagu kokku lepitud.",
+ "st3.t":"Töö algab","st3.d":"Paigaldus, kasutuselevõtt või jaotuskilbid, nagu kokku lepitud.",
  "contact.tag":"Kontakt","contact.h2":"Võta ühendust","contact.p":"Kirjeldage tööd telefoni või e‑posti teel või vormi kaudu.","contact.phone":"Telefon","contact.mail":"E-post",
  "f.title":"Päring","f.note":"Tärniga * märgitud väljad on kohustuslikud.","f.name":"Teie nimi","f.company":"Ettevõte","f.email":"E-post","f.phone":"Telefon",
  "f.where":"Kus töö toimub?","f.whereP":"Laevatehas, sadam, riik","f.msg":"Mida on vaja teha?","f.submit":"Saada päring",
