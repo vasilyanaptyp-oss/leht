@@ -9,12 +9,12 @@
   var RU = {
     skip: 'Перейти к содержанию', navAria: 'Главное меню', ftrNavAria: 'Меню в подвале', menuOpen: 'Открыть меню',
     navServ: 'Услуги', navWork: 'Наши работы', navHow: 'Как мы работаем', navContact: 'Контакты',
-    heroWhere: 'Виймси и Таллин', h1: 'Кухни и мебель на заказ',
+    heroWhere: 'Эстония', h1: 'Кухни и мебель на заказ',
     heroAlt: 'Угловая кухня с зеленоватыми фасадами, высокими шкафами в тёмном древесном тоне и золотистыми ручками',
     call: 'Позвонить', cta: 'Запросите предложение',
     heroLead: 'Мы семейная мастерская: делаем кухни и мебель по размерам вашего дома. Замеряем, проектируем, изготавливаем и устанавливаем.',
     heroReg: 'Semar kitchens OÜ, рег. код 16677638',
-    servH: 'Услуги', servIntro: 'Изготавливаем и устанавливаем кухни и встроенную мебель в домах Виймси и Таллина.',
+    servH: 'Услуги', servIntro: 'Изготавливаем кухни и мебель на заказ в Эстонии. Возможна доставка и за её пределы.', tel2Lbl: 'На эстонском:',
     s1h: 'Кухонная мебель', s1p: 'Делаем кухню по размерам вашего помещения и устанавливаем её. Фасады выставляем с ровными зазорами.',
     s1alt: 'Кухонные шкафы и ящики терракотового цвета, тёмная столешница',
     s2h: 'Столешницы', s2p: 'Устанавливаем столешницу и встраиваем в неё мойку и варочную панель.',
@@ -47,7 +47,7 @@
     contactH: 'Контакты', contactLead: 'Звоните, пишите в WhatsApp или запросите предложение через форму.',
     waWrite: 'Написать в WhatsApp', cMail: 'E-mail', cArea: 'Где работаем',
     formH: 'Запросите предложение', fName: 'Имя', fPhone: 'Телефон', fCity: 'Город или волость', fOpt: '(необязательно)',
-    fCityPh: 'Например: Виймси', fType: 'Тип проекта', fTypeNone: 'Выберите', fTypeKitchen: 'Кухня', fTypeWardrobe: 'Шкаф',
+    fCityPh: 'Например: Таллин', fType: 'Тип проекта', fTypeNone: 'Выберите', fTypeKitchen: 'Кухня', fTypeWardrobe: 'Шкаф',
     fTypeBath: 'Мебель для ванной', fTypeOther: 'Другое', fSource: 'Откуда вы о нас узнали?', fSourcePh: 'Например: от знакомых или из интернета',
     fSubmit: 'Отправить запрос', fNote: 'Кнопка откроет вашу почтовую программу с готовым письмом.', fAlt: 'Или напишите напрямую:',
     copyAddr: 'Скопировать адрес', copyText: 'Скопировать текст письма',
@@ -57,12 +57,12 @@
   var EN = {
     skip: 'Skip to content', navAria: 'Main menu', ftrNavAria: 'Footer menu', menuOpen: 'Open menu',
     navServ: 'Services', navWork: 'Our work', navHow: 'How we work', navContact: 'Contact',
-    heroWhere: 'Viimsi and Tallinn', h1: 'Kitchens and furniture made to order',
+    heroWhere: 'Estonia', h1: 'Kitchens and furniture made to order',
     heroAlt: 'Corner kitchen with green-grey fronts, tall cabinets in a dark wood tone and golden handles',
     call: 'Call', cta: 'Request a quote',
     heroLead: 'We are a family workshop making kitchens and furniture to fit your home. We measure, design, build and install.',
     heroReg: 'Semar kitchens OÜ, registry code 16677638',
-    servH: 'Services', servIntro: 'We make and install kitchens and built-in furniture for homes in Viimsi and Tallinn.',
+    servH: 'Services', servIntro: 'We make kitchens and furniture to order in Estonia. Delivery outside Estonia is also possible.', tel2Lbl: 'In Estonian:',
     s1h: 'Kitchen furniture', s1p: 'We make the kitchen to the measurements of your room and install it. We align the fronts with even gaps.',
     s1alt: 'Terracotta kitchen cabinets and drawers, a dark worktop',
     s2h: 'Worktops', s2p: 'We fit the worktop and set the sink and the hob into it.',
@@ -95,7 +95,7 @@
     contactH: 'Contact', contactLead: 'Call, message us on WhatsApp or request a quote with the form.',
     waWrite: 'Message on WhatsApp', cMail: 'E-mail', cArea: 'Area',
     formH: 'Request a quote', fName: 'Name', fPhone: 'Phone', fCity: 'Town or parish', fOpt: '(optional)',
-    fCityPh: 'For example: Viimsi', fType: 'Project type', fTypeNone: 'Choose', fTypeKitchen: 'Kitchen', fTypeWardrobe: 'Wardrobe',
+    fCityPh: 'For example: Tallinn', fType: 'Project type', fTypeNone: 'Choose', fTypeKitchen: 'Kitchen', fTypeWardrobe: 'Wardrobe',
     fTypeBath: 'Bathroom furniture', fTypeOther: 'Other', fSource: 'How did you hear about us?', fSourcePh: 'For example: from friends or online',
     fSubmit: 'Send request', fNote: 'The button opens your e-mail program with a ready message.', fAlt: 'Or write directly:',
     copyAddr: 'Copy address', copyText: 'Copy message text',
@@ -105,11 +105,11 @@
   var DICT = { ru: RU, en: EN };
   var META = {
     et: { title: 'Köögid ja mööbel eritellimusel | Semar kitchens OÜ',
-          desc: 'Semar kitchens on pereettevõte: teeme köögid ja mööbli eritellimusel. Mõõdame, projekteerime, valmistame ja paigaldame. Viimsi ja Tallinn. Helistage +372 5554 9755.' },
+          desc: 'Semar kitchens on pereettevõte: teeme köögid ja mööbli eritellimusel. Mõõdame, projekteerime, valmistame ja paigaldame. Üle Eesti. Helistage +372 5594 6489.' },
     ru: { title: 'Кухни и мебель на заказ | Semar kitchens OÜ',
-          desc: 'Semar kitchens: семейная мастерская кухонь и мебели на заказ. Замер, проект, изготовление и монтаж. Виймси и Таллин. Звоните +372 5554 9755.' },
+          desc: 'Semar kitchens: семейная мастерская кухонь и мебели на заказ. Замер, проект, изготовление и монтаж. Вся Эстония. Звоните +372 5554 9755.' },
     en: { title: 'Kitchens and furniture made to order | Semar kitchens OÜ',
-          desc: 'Semar kitchens is a family workshop making kitchens and furniture to order. Measuring, design, manufacturing and installation. Viimsi and Tallinn. Call +372 5554 9755.' }
+          desc: 'Semar kitchens is a family workshop making kitchens and furniture to order. Measuring, design, manufacturing and installation. All of Estonia. Call +372 5554 9755.' }
   };
   var MSG = {
     et: { menuOpen: 'Ava menüü', menuClose: 'Sulge menüü',
@@ -162,6 +162,14 @@
     Array.prototype.forEach.call(doc.querySelectorAll('.lang__b'), function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang)); });
     menuLabel();
     clearErrors();
+    // 03.11 (Sergei): Estonian callers reach Marina, Russian and English callers Sergei; the other number is shown under the big one
+    var TEL = { et: ['+37255946489', '+372 5594 6489'], ru: ['+37255549755', '+372 5554 9755'], en: ['+37255549755', '+372 5554 9755'] };
+    var ALT = lang === 'et' ? TEL.ru : TEL.et;
+    Array.prototype.forEach.call(doc.querySelectorAll('a[data-tel]'), function (a) {
+      var n = a.getAttribute('data-tel') === 'main' ? TEL[lang] : ALT;
+      a.setAttribute('href', 'tel:' + n[0]);
+      if (/^\+372/.test(a.textContent.trim())) a.textContent = n[1];
+    });
     if (lbOpen) showPhoto(cur);
     if (save) { try { localStorage.setItem('semar-lang', lang); } catch (e) {} }
     root.classList.remove('i18n-wait');

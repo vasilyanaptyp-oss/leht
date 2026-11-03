@@ -170,8 +170,8 @@ main:focus { outline: none; }
 }
 
 /* services: a run of cabinet fronts with shadow gaps and oak handles */
-.fronts { display: grid; gap: 2px; background: var(--sand); border: 2px solid var(--sand); }
-.front { background: var(--paper); display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; padding: 14px; align-items: start; align-content: start; }
+.fronts { display: grid; gap: 14px; }   /* 03.11 Sergei: more air between the photos (was 2px «shadow gaps») */
+.front { background: var(--paper); border: 1px solid var(--sand); display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; padding: 14px; align-items: start; align-content: start; }
 .front h3 { overflow-wrap: break-word; hyphens: manual; }
 @media (max-width: 379px) {
   .front { grid-template-columns: 84px minmax(0, 1fr); gap: 12px; padding: 12px; }
@@ -191,7 +191,7 @@ main:focus { outline: none; }
   .front p { font-size: 18px; max-width: 42ch; }
 }
 @media (min-width: 1100px) {
-  .fronts { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .fronts { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; }
   .front { grid-template-columns: 1fr; padding: 0 0 28px; gap: 0; }
   .front img { width: 100%; height: auto; aspect-ratio: 4 / 5; }
   .front__txt { padding: 26px 22px 0; }
@@ -372,3 +372,7 @@ main:focus { outline: none; }
 /* 02.11 Artur: real WhatsApp glyph in WhatsApp green */
 .btn .ico--wa, .btn--line .ico--wa, .btn--line:hover .ico--wa { width: 22px; height: 22px; color: #25D366; fill: #25D366; }
 .ico--wa { fill: #25D366; color: #25D366; }
+
+/* 03.11: second phone under the big one (Estonian / Russian speaker) */
+.tel2 { margin-top: 6px; font-size: 17px; color: var(--graphite-500); }
+.tel2 a { color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
