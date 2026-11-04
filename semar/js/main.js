@@ -294,6 +294,15 @@
   });
   if (liveTabs.length) selectTab(liveTabs.filter(function (x) { return x.getAttribute('aria-selected') === 'true'; })[0] || liveTabs[0]);
   if (tablist && liveTabs.length < 2) tablist.hidden = true;   // one category only: no tab row
+  /* ---------- 04.11: a service card opens its photos in the gallery (Sergei tapped the bathroom card) ---------- */
+  Array.prototype.slice.call(doc.querySelectorAll('.front[data-goto]')).forEach(function (card) {
+    var tab = doc.getElementById(card.getAttribute('data-goto'));
+    if (!tab || tab.hidden) return;
+    card.tabIndex = 0; card.setAttribute('role', 'link'); card.classList.add('front--go');
+    function go() { selectTab(tab); var sec = doc.getElementById('tood'); if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    card.addEventListener('click', go);
+    card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+  });
 
   /* ---------- gallery lightbox: prev/next stay inside the category on show ---------- */
   var lb = doc.getElementById('lb'), lbImg = doc.getElementById('lb-img'), lbCap = doc.getElementById('lb-cap'), lbCount = doc.getElementById('lb-count');

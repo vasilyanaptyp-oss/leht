@@ -456,3 +456,7 @@ main:focus { outline: none; }
 .tel2 { margin-top: 6px; font-size: 17px; color: var(--graphite-500); }
 .tel2 a { color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; display: inline-flex; align-items: center; min-height: 44px; }   /* 04.11: 44 px tap target */
 .ftr__nav a { min-width: 44px; }
+/* 04.11: service cards open their photos */
+.front--go { cursor: pointer; }
+.front--go:hover { border-color: currentColor; }
+.front--go:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
