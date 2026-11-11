@@ -1,356 +1,221 @@
-/* LINN ARTEHITUS OÜ: language switch (ET / RU), mail form, small header and reveal effects. */
 (function () {
-  "use strict";
+  'use strict';
 
-  var EMAIL = "linnartehitus@gmail.com";
-  var doc = document.documentElement;
-  doc.classList.add("js");
+  var MAIL = 'linnartehitus@gmail.com';
 
-  var RU = {
-    "meta.title": "LINN ARTEHITUS OÜ | Строительство и ремонт в Таллинне",
-    "meta.desc": "LINN ARTEHITUS OÜ строит и ремонтирует жилые и коммерческие здания в Таллинне. Новые здания, реконструкция и ремонт. Пишите: linnartehitus@gmail.com",
-    "skip": "Перейти к содержанию",
-    "brand.aria": "LINN ARTEHITUS OÜ, в начало страницы",
-    "nav.aria": "Главное меню",
-    "nav.services": "Услуги",
-    "nav.why": "Почему мы",
-    "nav.work": "Работы",
-    "nav.process": "Как работаем",
-    "nav.contact": "Контакты",
-    "top.cta": "Написать нам",
-
-    "hero.alt": "Каменщик кладёт кирпичную стену на фоне городских многоэтажек",
-    "hero.title": "Строим и ремонтируем здания в <em>Таллинне</em>",
-    "hero.lead": "Жилые и коммерческие здания, ремонт квартир и домов. Опишите вашу работу, и мы вам ответим.",
-    "hero.cta": "Написать нам",
-    "hero.reg": "В коммерческом регистре с 10.11.2017 · регистрационный код 14368778",
-
-    "services.title": "Что мы делаем",
-    "services.intro": "Строим новые здания и приводим в порядок старые. Вот наши основные работы.",
-    "s1.name": "Строительство жилых домов",
-    "s1.text": "Частные и другие жилые дома. Фундамент, стены, перекрытия и кровля.",
-    "s1.tags": "Фундамент · Стены · Кровля",
-    "svc.ask": "Запросить предложение",
-    "s1.alt": "Строящийся жилой дом в лесах и башенный кран",
-    "s2.name": "Нежилые здания",
-    "s2.text": "Коммерческие, складские и вспомогательные здания. Строим новые и выполняем общестроительные работы в существующих.",
-    "s2.tags": "Коммерческие здания · Склады · Хозпостройки",
-    "s2.alt": "Фасадные работы с подъёмной платформы на стене здания",
-    "s3.name": "Реконструкция и ремонт",
-    "s3.text": "Квартиры, дома и коммерческие помещения. Демонтаж, новые стены, полы и отделка.",
-    "s3.tags": "Квартиры · Дома · Помещения",
-    "s3.alt": "Рабочий шлифует потолок из гипсокартона в ремонтируемом помещении",
-
-    "why.title": "Строительная компания из Таллинна, с 2017 года",
-    "why.link": "Проверить данные в регистре",
-    "w1.t": "Открытые данные",
-    "w1.p": "Мы в коммерческом регистре с 10.11.2017, регистрационный код 14368778. Все данные можно проверить.",
-    "w2.t": "Напрямую с руководителем",
-    "w2.p": "Ваше письмо попадает прямо к руководителю компании. Обсуждаем работу без посредников.",
-    "w3.t": "Счета с НДС",
-    "w3.p": "Мы плательщик НДС, KMKR EE102127946. Подходит и для фирм, и для квартирных товариществ.",
-    "w4.t": "Местная компания",
-    "w4.p": "Компания находится в Таллинне, в районе Ласнамяэ.",
-
-    "gallery.title": "Виды работ",
-    "gallery.intro": "Примеры работ, которые мы выполняем на стройке и в ремонте.",
-    "g1.c": "Фундамент",
-    "g1.alt": "Заливка бетона в фундаментную яму",
-    "g2.c": "Фасадные работы",
-    "g2.alt": "Рабочие на фасадных лесах старого каменного дома",
-    "g3.c": "Кровельные работы",
-    "g3.alt": "Кровельные работы: укладка нового покрытия",
-    "g4.c": "Установка окон",
-    "g4.alt": "Установка окна в светлой комнате",
-    "g5.c": "Внутренняя отделка",
-    "g5.alt": "Шпаклёвка стены при внутренней отделке",
-    "g6.c": "Полы",
-    "g6.alt": "Подготовка основания пола под плитку",
-
-    "process.title": "Как мы работаем",
-    "process.alt": "Рулетка и план квартиры на столе",
-    "p1.t": "Напишите нам",
-    "p1.p": "Опишите, что нужно сделать и где. Фото и чертежи помогут лучше понять задачу.",
-    "p2.t": "Договариваемся",
-    "p2.p": "Смотрим объект и обсуждаем объём работ, сроки и цену.",
-    "p3.t": "Выполняем работу",
-    "p3.p": "Работаем в согласованные сроки и сдаём вам готовый результат.",
-
-    "contact.title": "Расскажите о своём объекте",
-    "contact.lead": "Напишите нам или заполните форму. Форма подготовит готовое письмо в вашей почтовой программе.",
-    "contact.email": "E-mail",
-    "contact.city": "Где мы",
-    "contact.cityv": "Таллинн, Харьюмаа",
-    "contact.firm": "Компания",
-    "contact.reg": "Регистрационный код 14368778",
-
-    "f.name": "Имя",
-    "f.contact": "E-mail или телефон",
-    "f.type": "Вид работ",
-    "f.t1": "Строительство жилого дома",
-    "f.t2": "Строительство нежилого здания",
-    "f.t3": "Реконструкция",
-    "f.t4": "Ремонт",
-    "f.t5": "Другая работа",
-    "f.place": "Где находится объект",
-    "f.opt": "(необязательно)",
-    "f.placeph": "напр. Таллинн, Ласнамяэ",
-    "f.msg": "Сообщение",
-    "f.msgph": "Что нужно сделать?",
-    "f.send": "Отправить по e-mail",
-    "f.note": "Кнопка откроет вашу почтовую программу с готовым письмом. Если она не открылась, напишите на linnartehitus@gmail.com.",
-
-    "foot.reg": "Регистрационный код 14368778",
-    "foot.addr": "Юридический адрес: Katusepapi tn 6, 11412 Tallinn",
-    "foot.lang": "Eesti keeles"
-  };
-
-  /* Texts that only live in JS (form messages, mail subject and body). */
-  var MSG = {
+  var T = {
     et: {
-      "err.name": "Palun kirjutage oma nimi.",
-      "err.contact": "Palun lisage e-post või telefon, et saaksime vastata.",
-      "err.msg": "Palun kirjeldage lühidalt, mida on vaja teha.",
-      "ok": "E-kiri on avatud teie e-posti programmis. Kontrollige see üle ja vajutage seal Saada.",
-      "subject": "Päring kodulehelt",
-      "b.name": "Nimi",
-      "b.contact": "Kontakt",
-      "b.type": "Töö liik",
-      "b.place": "Objekti asukoht",
-      "foot.lang": "Русская версия",
-      "lang.label": "Keel"
+      title: 'LINN ARTEHITUS OÜ · Siseviimistlus ja remont Tallinnas',
+      desc: 'Siseviimistlus ja remont Tallinnas: seinte pahteldamine ja värvimine, plaatimine, põrandad, kipsitööd, siseuksed, korteri remont võtmed kätte. Kirjutage: linnartehitus@gmail.com',
+      navLabel: 'Menüü', langLabel: 'Keel',
+      navServices: 'Teenused', navWorks: 'Tehtud tööd', navHow: 'Kuidas töötame', navContact: 'Kontakt',
+      cta: 'Kirjuta meile',
+      h1: 'Siseviimistlus<br>ja remont<br>Tallinnas.',
+      lead: 'Seinad, laed, põrandad, plaadid ja uksed. Kirjutage, mida on vaja teha, ja vastame pakkumisega.',
+      heroAlt: 'Valgete seinte ja pähklipuu tooni põrandaga tuba pärast viimistlust, päike langeb põrandale',
+      introBig: 'Teeme ruumid seest valmis. <em>Ühest seinast terve korterini.</em>',
+      introText: 'Tallinna ettevõte, äriregistris alates 10.11.2017. Töid tellides suhtlete otse meiega ja saate arve käibemaksuga.',
+      factReg: 'Registrikood', factVat: 'KMKR', factSince: 'Äriregistris', factSinceVal: 'alates 10.11.2017',
+      regLink: 'Vaata äriregistri kaarti',
+      servLabel: 'Teenused', servTitle: 'Mida teeme', ask: 'Küsi pakkumist',
+      s1T: 'Seinte pahteldamine ja värvimine', s1P: 'Tasandame, pahteldame, lihvime ja värvime seinad ja laed.', s1Alt: 'Värvirull heledal seinal',
+      s2T: 'Plaatimine vannitoas ja köögis', s2P: 'Paigaldame seina- ja põrandaplaadid vannituppa, kööki ja esikusse.', s2Alt: 'Heledate marmorimustriga plaatidega vannituba',
+      s3T: 'Põrandate paigaldus', s3P: 'Laminaat, parkett ja vinüül koos aluspinna ettevalmistuse ja liistudega.', s3Alt: 'Uus tume puitpõrand heledas toas',
+      s4T: 'Kipsplaadist seinad ja laed', s4P: 'Ehitame vaheseinad ja ripplaed ning valmistame pinnad viimistluseks ette.', s4Alt: 'Kipsplaadist lae lihvimine',
+      s5T: 'Siseuste paigaldus', s5P: 'Paigaldame siseuksed koos lengide ja piirdeliistudega.', s5Alt: 'Valge siseuks heledas esikus',
+      s6T: 'Korteri remont võtmed kätte', s6P: 'Kogu siseviimistlus ühest kohast, esimesest pahtlikihist viimase liistuni.', s6Alt: 'Valmis viimistlusega hele korter',
+      detLabel: 'Viimistlus', detTitle: 'Sirged seinad,<br>puhtad nurgad,<br>täpsed liistud.',
+      detText: 'Viimistlust vaadatakse lähedalt. Seepärast teeme hoolega ka selle, mis jääb mööbli taha.',
+      detAlt: 'Valge põrandaliist ja seinapaneel puitpõranda kohal',
+      worksLabel: 'Objektid', worksTitle: 'Tehtud tööd',
+      howLabel: 'Töö käik', howTitle: 'Kuidas töötame',
+      h1T: 'Kirjutage meile', h1P: 'Kirjeldage ruume ja töid. Fotod ja mõõdud aitavad vastata täpsemalt.',
+      h2T: 'Lepime kokku', h2P: 'Mahu, tähtaja ja hinna paneme kirja enne töö algust.',
+      h3T: 'Teeme ja anname üle', h3P: 'Teeme töö ära ja vaatame tulemuse koos teiega üle.',
+      conLabel: 'Kontakt', conTitle: 'Kirjutage, mida on vaja teha.', conCity: 'Tallinn, Eesti',
+      fName: 'Nimi', fContact: 'E-post või telefon', fType: 'Tööde liik', fAddr: 'Objekti aadress', fAddrPh: 'Linn, tänav',
+      fMsg: 'Sõnum', fMsgPh: 'Mis ruumid, mis tööd, millal', fSend: 'Saada päring',
+      fNote: 'Nupp avab teie e-posti programmi valmis kirjaga.',
+      o1: 'Pahteldamine ja värvimine', o2: 'Plaatimine', o3: 'Põrandad', o4: 'Kipsplaadist seinad ja laed', o5: 'Siseuksed', o6: 'Korteri remont võtmed kätte', o0: 'Muu',
+      footAddr: 'Juriidiline aadress: Katusepapi tn 6, 11412 Tallinn',
+      other: 'Русский',
+      errName: 'Palun kirjutage oma nimi', errContact: 'Palun lisage e-post või telefon', errMsg: 'Palun kirjeldage lühidalt tööd',
+      subject: 'Päring kodulehelt', mailSubject: 'Päring kodulehelt',
+      bName: 'Nimi', bContact: 'Kontakt', bType: 'Tööde liik', bAddr: 'Aadress', bMsg: 'Sõnum'
     },
     ru: {
-      "err.name": "Пожалуйста, укажите имя.",
-      "err.contact": "Укажите e-mail или телефон, чтобы мы могли ответить.",
-      "err.msg": "Коротко опишите, что нужно сделать.",
-      "ok": "Письмо открыто в вашей почтовой программе. Проверьте его и нажмите там «Отправить».",
-      "subject": "Запрос с сайта",
-      "b.name": "Имя",
-      "b.contact": "Контакт",
-      "b.type": "Вид работ",
-      "b.place": "Где объект",
-      "foot.lang": "Eesti keeles",
-      "lang.label": "Язык"
+      title: 'LINN ARTEHITUS OÜ · Внутренняя отделка и ремонт в Таллине',
+      desc: 'Внутренняя отделка и ремонт в Таллине: шпаклёвка и покраска стен, плитка, полы, гипсокартон, межкомнатные двери, ремонт квартиры под ключ. Пишите: linnartehitus@gmail.com',
+      navLabel: 'Меню', langLabel: 'Язык',
+      navServices: 'Услуги', navWorks: 'Наши работы', navHow: 'Как работаем', navContact: 'Контакты',
+      cta: 'Написать',
+      h1: 'Внутренняя<br>отделка и ремонт<br>в Таллине.',
+      lead: 'Стены, потолки, полы, плитка и двери. Напишите, что нужно сделать, и мы ответим с предложением.',
+      heroAlt: 'Комната с белыми стенами и полом цвета ореха после отделки, на полу солнечный свет',
+      introBig: 'Доводим помещения до готового вида. <em>От одной стены до целой квартиры.</em>',
+      introText: 'Фирма из Таллина, в коммерческом регистре с 10.11.2017. Вы общаетесь напрямую с нами и получаете счёт с НДС.',
+      factReg: 'Регистрационный код', factVat: 'KMKR', factSince: 'В регистре', factSinceVal: 'с 10.11.2017',
+      regLink: 'Карточка в коммерческом регистре',
+      servLabel: 'Услуги', servTitle: 'Что делаем', ask: 'Запросить цену',
+      s1T: 'Шпаклёвка и покраска стен', s1P: 'Выравниваем, шпаклюем, шлифуем и красим стены и потолки.', s1Alt: 'Малярный валик на светлой стене',
+      s2T: 'Плитка в ванной и на кухне', s2P: 'Кладём настенную и напольную плитку в ванной, на кухне и в прихожей.', s2Alt: 'Ванная со светлой плиткой под мрамор',
+      s3T: 'Укладка полов', s3P: 'Ламинат, паркет и винил с подготовкой основания и плинтусами.', s3Alt: 'Новый тёмный деревянный пол в светлой комнате',
+      s4T: 'Стены и потолки из гипсокартона', s4P: 'Ставим перегородки и подвесные потолки, готовим поверхности под отделку.', s4Alt: 'Шлифовка потолка из гипсокартона',
+      s5T: 'Монтаж межкомнатных дверей', s5P: 'Устанавливаем двери с коробками и наличниками.', s5Alt: 'Белая межкомнатная дверь в светлой прихожей',
+      s6T: 'Ремонт квартиры под ключ', s6P: 'Вся внутренняя отделка в одних руках, от первого слоя шпаклёвки до последнего плинтуса.', s6Alt: 'Светлая квартира с готовой отделкой',
+      detLabel: 'Отделка', detTitle: 'Ровные стены,<br>чистые углы,<br>точные плинтусы.',
+      detText: 'Отделку рассматривают вблизи. Поэтому аккуратно делаем и то, что потом закроет мебель.',
+      detAlt: 'Белый плинтус и стеновая панель над деревянным полом',
+      worksLabel: 'Объекты', worksTitle: 'Наши работы',
+      howLabel: 'Порядок работы', howTitle: 'Как работаем',
+      h1T: 'Напишите нам', h1P: 'Опишите помещения и работы. Фото и размеры помогут ответить точнее.',
+      h2T: 'Договариваемся', h2P: 'Объём, срок и цену фиксируем до начала работ.',
+      h3T: 'Делаем и сдаём', h3P: 'Выполняем работу и вместе с вами проверяем результат.',
+      conLabel: 'Контакты', conTitle: 'Напишите, что нужно сделать.', conCity: 'Таллин, Эстония',
+      fName: 'Имя', fContact: 'E-mail или телефон', fType: 'Вид работ', fAddr: 'Адрес объекта', fAddrPh: 'Город, улица',
+      fMsg: 'Сообщение', fMsgPh: 'Какие помещения, какие работы, когда', fSend: 'Отправить запрос',
+      fNote: 'Кнопка откроет вашу почтовую программу с готовым письмом.',
+      o1: 'Шпаклёвка и покраска', o2: 'Плитка', o3: 'Полы', o4: 'Стены и потолки из гипсокартона', o5: 'Межкомнатные двери', o6: 'Ремонт квартиры под ключ', o0: 'Другое',
+      footAddr: 'Юридический адрес: Katusepapi tn 6, 11412 Tallinn',
+      other: 'Eesti keeles',
+      errName: 'Напишите, пожалуйста, имя', errContact: 'Укажите e-mail или телефон', errMsg: 'Коротко опишите работу',
+      subject: 'Запрос с сайта', mailSubject: 'Запрос с сайта',
+      bName: 'Имя', bContact: 'Контакт', bType: 'Вид работ', bAddr: 'Адрес', bMsg: 'Сообщение'
     }
   };
 
-  var ET = {}; /* filled from the page itself, so Estonian lives only in the HTML */
-  var current = "et";
+  var lang = 'et';
+  var doc = document;
+  function $(s, r) { return (r || doc).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || doc).querySelectorAll(s)); }
 
-  function each(sel, fn) {
-    Array.prototype.forEach.call(document.querySelectorAll(sel), fn);
+  function stored() { try { return localStorage.getItem('la-lang'); } catch (e) { return null; } }
+  function store(v) { try { localStorage.setItem('la-lang', v); } catch (e) { /* private mode */ } }
+
+  function mailHref() {
+    return 'mailto:' + MAIL + '?subject=' + encodeURIComponent(T[lang].mailSubject);
   }
 
-  function collectEstonian() {
-    ET["meta.title"] = document.title;
-    var md = document.querySelector('meta[name="description"]');
-    ET["meta.desc"] = md ? md.getAttribute("content") : "";
-    each("[data-i18n]", function (el) { ET[el.getAttribute("data-i18n")] = el.innerHTML; });
-    each("[data-i18n-alt]", function (el) { ET[el.getAttribute("data-i18n-alt")] = el.getAttribute("alt"); });
-    each("[data-i18n-ph]", function (el) { ET[el.getAttribute("data-i18n-ph")] = el.getAttribute("placeholder"); });
-    each("[data-i18n-aria]", function (el) { ET[el.getAttribute("data-i18n-aria")] = el.getAttribute("aria-label"); });
+  function setLang(next, remember) {
+    if (!T[next]) next = 'et';
+    lang = next;
+    var d = T[lang];
+    doc.documentElement.lang = lang;
+    doc.title = d.title;
+    var md = $('meta[name="description"]');
+    if (md) md.setAttribute('content', d.desc);
+    $$('[data-i18n]').forEach(function (el) { var k = el.getAttribute('data-i18n'); if (d[k] != null) el.textContent = d[k]; });
+    $$('[data-i18n-html]').forEach(function (el) { var k = el.getAttribute('data-i18n-html'); if (d[k] != null) el.innerHTML = d[k]; });
+    $$('[data-i18n-alt]').forEach(function (el) { var k = el.getAttribute('data-i18n-alt'); if (d[k] != null) el.alt = d[k]; });
+    $$('[data-i18n-ph]').forEach(function (el) { var k = el.getAttribute('data-i18n-ph'); if (d[k] != null) el.placeholder = d[k]; });
+    $$('[data-i18n-aria]').forEach(function (el) { var k = el.getAttribute('data-i18n-aria'); if (d[k] != null) el.setAttribute('aria-label', d[k]); });
+    $$('[data-lang]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang)); });
+    $$('[data-lang-toggle]').forEach(function (b) { b.textContent = d.other; b.lang = lang === 'et' ? 'ru' : 'et'; });
+    $$('[data-mail]').forEach(function (a) { a.href = mailHref(); });
+    $$('.f__err').forEach(function (p) { p.hidden = true; });
+    $$('.f--bad').forEach(function (f) { f.classList.remove('f--bad'); });
+    if (remember) store(lang);
   }
 
-  function t(key, lang) {
-    var dict = lang === "ru" ? RU : ET;
-    return Object.prototype.hasOwnProperty.call(dict, key) ? dict[key] : ET[key];
-  }
-
-  function setLang(lang, opts) {
-    lang = lang === "ru" ? "ru" : "et";
-    current = lang;
-    doc.setAttribute("lang", lang);
-    document.title = t("meta.title", lang);
-    var md = document.querySelector('meta[name="description"]');
-    if (md) md.setAttribute("content", t("meta.desc", lang));
-
-    each("[data-i18n]", function (el) {
-      var key = el.getAttribute("data-i18n");
-      if (key === "foot.lang") { el.textContent = MSG[lang]["foot.lang"]; return; }
-      var v = t(key, lang);
-      if (v != null) el.innerHTML = v;
-    });
-    each("[data-i18n-alt]", function (el) { el.setAttribute("alt", t(el.getAttribute("data-i18n-alt"), lang)); });
-    each("[data-i18n-ph]", function (el) { el.setAttribute("placeholder", t(el.getAttribute("data-i18n-ph"), lang)); });
-    each("[data-i18n-aria]", function (el) { el.setAttribute("aria-label", t(el.getAttribute("data-i18n-aria"), lang)); });
-    each(".lang__btn", function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-lang") === lang)); });
-    var foot = document.querySelector("[data-lang-toggle]");
-    if (foot) foot.setAttribute("lang", lang === "ru" ? "et" : "ru");
-
-    /* hero mail button: subject in the page language */
-    each('a[data-mailsubject="hero"]', function (a) {
-      a.setAttribute("href", "mailto:" + EMAIL + "?subject=" + encodeURIComponent(MSG[lang].subject));
-    });
-
-    /* clear old form errors, they were in the other language */
-    each(".field__err", function (p) { p.textContent = ""; });
-    each(".field [aria-invalid]", function (f) { f.removeAttribute("aria-invalid"); });
-    var ok = document.getElementById("form-ok");
-    if (ok) ok.textContent = "";
-
-    if (!opts || !opts.silent) {
-      try { localStorage.setItem("la-lang", lang); } catch (e) { /* storage blocked */ }
-      try {
-        var url = new URL(window.location.href);
-        if (lang === "ru") url.searchParams.set("lang", "ru"); else url.searchParams.delete("lang");
-        history.replaceState(null, "", url.pathname + url.search + url.hash);
-      } catch (e) { /* file:// or old browser */ }
-    }
-  }
-
-  function initialLang() {
-    try {
-      var q = new URLSearchParams(window.location.search).get("lang");
-      if (q === "ru" || q === "et") return q;
-    } catch (e) { /* ignore */ }
-    try {
-      var s = localStorage.getItem("la-lang");
-      if (s === "ru" || s === "et") return s;
-    } catch (e) { /* ignore */ }
-    return "et";
-  }
-
-  /* ---------- mail form ---------- */
-  function buildMailto(data, lang) {
-    var m = MSG[lang === "ru" ? "ru" : "et"];
-    var subject = m.subject + (data.type ? ": " + data.type : "");
+  function buildMailto(v) {
+    var d = T[lang];
+    var typeText = d['o' + String(v.type || 's0').slice(1)] || d.o0;
     var lines = [
-      m["b.name"] + ": " + (data.name || ""),
-      m["b.contact"] + ": " + (data.contact || ""),
-      m["b.type"] + ": " + (data.type || "")
+      d.bName + ': ' + (v.name || ''),
+      d.bContact + ': ' + (v.contact || ''),
+      d.bType + ': ' + typeText
     ];
-    if (data.place) lines.push(m["b.place"] + ": " + data.place);
-    lines.push("", data.message || "");
-    return "mailto:" + EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\r\n"));
+    if (v.addr) lines.push(d.bAddr + ': ' + v.addr);
+    lines.push('', d.bMsg + ':', v.msg || '');
+    return 'mailto:' + MAIL +
+      '?subject=' + encodeURIComponent(d.subject + ': ' + typeText) +
+      '&body=' + encodeURIComponent(lines.join('\r\n'));
   }
 
-  function readForm(form) {
-    var sel = form.querySelector("#f-type");
+  function formValues() {
     return {
-      name: form.querySelector("#f-name").value.trim(),
-      contact: form.querySelector("#f-contact").value.trim(),
-      type: sel ? sel.options[sel.selectedIndex].text.trim() : "",
-      place: form.querySelector("#f-place").value.trim(),
-      message: form.querySelector("#f-msg").value.trim()
+      name: $('#f-name').value.trim(),
+      contact: $('#f-contact').value.trim(),
+      type: $('#f-type').value,
+      addr: $('#f-addr').value.trim(),
+      msg: $('#f-msg').value.trim()
     };
   }
 
-  function validate(form) {
-    var m = MSG[current];
-    var checks = [
-      ["#f-name", "#e-name", "err.name"],
-      ["#f-contact", "#e-contact", "err.contact"],
-      ["#f-msg", "#e-msg", "err.msg"]
-    ];
-    var first = null;
-    checks.forEach(function (c) {
-      var input = form.querySelector(c[0]);
-      var err = form.querySelector(c[1]);
-      if (!input.value.trim()) {
-        input.setAttribute("aria-invalid", "true");
-        err.textContent = m[c[2]];
-        if (!first) first = input;
-      } else {
-        input.removeAttribute("aria-invalid");
-        err.textContent = "";
+  function validate() {
+    var d = T[lang], v = formValues(), first = null;
+    [['name', 'f-name', 'e-name', d.errName, v.name.length > 1],
+     ['contact', 'f-contact', 'e-contact', d.errContact, v.contact.length > 4],
+     ['msg', 'f-msg', 'e-msg', d.errMsg, v.msg.length > 2]].forEach(function (r) {
+      var input = doc.getElementById(r[1]), err = doc.getElementById(r[2]);
+      var bad = !r[4];
+      input.parentNode.classList.toggle('f--bad', bad);
+      input.setAttribute('aria-invalid', String(bad));
+      if (bad) { err.textContent = r[3]; input.setAttribute('aria-describedby', r[2]); } else { input.removeAttribute('aria-describedby'); }
+      err.hidden = !bad;
+      if (bad && !first) first = input;
+    });
+    if (first) first.focus();
+    return first ? null : v;
+  }
+
+  // language: ?lang=ru wins, then the remembered choice, then Estonian
+  var q = null;
+  try { q = new URLSearchParams(location.search).get('lang'); } catch (e) { /* old browser */ }
+  var start = T[q] ? q : (T[stored()] ? stored() : 'et');
+  setLang(start, !!T[q]);
+
+  $$('[data-lang]').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.getAttribute('data-lang'), true); });
+  });
+  $$('[data-lang-toggle]').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(lang === 'et' ? 'ru' : 'et', true); });
+  });
+
+  // "ask for a price" links preselect the work type in the form
+  $$('[data-pick]').forEach(function (a) {
+    a.addEventListener('click', function () { $('#f-type').value = a.getAttribute('data-pick'); });
+  });
+
+  var form = $('#form');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = validate();
+    if (v) window.location.href = buildMailto(v);
+  });
+  $$('input, textarea', form).forEach(function (el) {
+    el.addEventListener('input', function () {
+      if (el.parentNode.classList.contains('f--bad')) {
+        el.parentNode.classList.remove('f--bad');
+        el.removeAttribute('aria-invalid');
+        var p = $('.f__err', el.parentNode); if (p) p.hidden = true;
       }
     });
-    if (first) {
-      first.focus({ preventScroll: true });
-      first.closest(".field").scrollIntoView({ block: "center" });
-    }
-    return !first;
-  }
-
-  function initForm() {
-    var form = document.getElementById("paring");
-    if (!form) return;
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var ok = document.getElementById("form-ok");
-      ok.textContent = "";
-      if (!validate(form)) return;
-      var url = buildMailto(readForm(form), current);
-      ok.textContent = MSG[current].ok;
-      window.location.href = url;
-    });
-    form.addEventListener("input", function (e) {
-      var el = e.target;
-      if (el.getAttribute("aria-invalid") === "true" && el.value.trim()) {
-        el.removeAttribute("aria-invalid");
-        var errId = el.getAttribute("aria-describedby");
-        var err = errId && document.getElementById(errId);
-        if (err) err.textContent = "";
-      }
-    });
-  }
-
-  /* ---------- header shadow line and reveal ---------- */
-  function initHeader() {
-    var top = document.getElementById("top");
-    if (!top) return;
-    var onScroll = function () { top.classList.toggle("is-scrolled", window.scrollY > 8); };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-  }
-
-  function initReveal() {
-    if (!("IntersectionObserver" in window)) return;
-    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    /* the contact block and the form are never hidden, even for a moment */
-    var items = document.querySelectorAll(".sec__head, .svc__row, .why__lead, .why__list li, .gal__item, .steps li, .process__img");
-    var showAll = function () {
-      each(".reveal:not(.is-in)", function (el) { el.classList.add("is-in"); });
-    };
-    /* safety net: at the bottom of the page, or before printing, everything is shown */
-    window.addEventListener("scroll", function () {
-      if (window.scrollY + window.innerHeight >= doc.scrollHeight - 4) showAll();
-    }, { passive: true });
-    window.addEventListener("beforeprint", showAll);
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); }
-      });
-    }, { rootMargin: "0px 0px -6% 0px", threshold: 0.01 });
-    Array.prototype.forEach.call(items, function (el) {
-      var r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight) return; /* already on screen: no effect */
-      el.classList.add("reveal");
-      io.observe(el);
-    });
-  }
-
-  collectEstonian();
-  setLang(initialLang(), { silent: true });
-
-  each(".lang__btn", function (b) {
-    b.addEventListener("click", function () { setLang(b.getAttribute("data-lang")); });
-  });
-  var footToggle = document.querySelector("[data-lang-toggle]");
-  if (footToggle) footToggle.addEventListener("click", function () {
-    setLang(current === "ru" ? "et" : "ru");
-    window.scrollTo({ top: 0 });
   });
 
-  /* "ask for an offer" links pick the matching work type in the form */
-  each(".svc__ask[data-type]", function (a) {
-    a.addEventListener("click", function () {
-      var sel = document.getElementById("f-type");
-      if (sel) sel.value = a.getAttribute("data-type");
-    });
-  });
-
-  /* scrollbar width, so the hero text lines up with the page grid */
-  function setScrollbar() {
-    doc.style.setProperty("--sbw", (window.innerWidth - doc.clientWidth) + "px");
+  // own works: the block shows itself once it has photos
+  var works = $('#tood');
+  if (works && $$('.works__grid > *', works).length) {
+    works.hidden = false;
+    $$('[data-works-link]').forEach(function (a) { a.hidden = false; });
   }
-  setScrollbar();
-  window.addEventListener("resize", setScrollbar);
 
-  initForm();
-  initHeader();
-  initReveal();
+  // header gets a background once the hero is scrolled away
+  var top = $('.top');
+  function onScroll() { top.classList.toggle('top--solid', window.scrollY > window.innerHeight * 0.72); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-  window.LinnArtehitus = { setLang: setLang, buildMailto: buildMailto, lang: function () { return current; } };
+  // quiet reveal on scroll
+  var items = $$('.rv');
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    doc.documentElement.classList.add('js-rv');
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    items.forEach(function (el) { io.observe(el); });
+    window.addEventListener('beforeprint', function () { items.forEach(function (el) { el.classList.add('in'); }); });
+  }
+
+  window.LinnArtehitus = { buildMailto: buildMailto, setLang: setLang, getLang: function () { return lang; } };
 })();
