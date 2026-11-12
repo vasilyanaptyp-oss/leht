@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Contact | EL4YOU OÜ</title>
+<meta name="description" content="Electrical installation, commissioning and manufacturing of distribution switchboards for shipbuilding and industry. Working in Estonia and Germany.">
+<meta name="theme-color" content="#0B141C">
+<link rel="icon" href="assets/brand/el4you-mark.svg?v=4" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/brand/el4you-mark-512.png?v=4">
+<style>
+@font-face{font-family:"Archivo";src:url("assets/fonts/archivo-var.woff2") format("woff2");font-weight:400 800;font-stretch:100% 125%;font-display:swap}
+@font-face{font-family:"Plex Mono";src:url("assets/fonts/plexmono-500.woff2") format("woff2");font-weight:500;font-display:swap}
+:root{
+  --hull:#0A2240; --hull-2:#0E2B4E; --hull-3:#16375E; --line-d:rgba(214,226,236,.16);
+  --txt-d:#EDF1F4; --txt-d2:#A9B6C1;
+  --paper:#EEF0ED; --steel:#D2D6D2; --steel-2:#E2E5E1; --steel-line:#A3AAA5;
+  --ink:#0E1A24; --ink-2:#44515C; --plate:#F5F6F2;
+  --blue:#0070C4; --blue-d:#005CA3; --blue-hi:#4DB0FF;
+  --slope:.4276; /* cot(66.85deg): the diagonal of the "4" */
+  --pad:clamp(16px,4.2vw,64px); --max:1280px;
+  --mono:"Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+  --sans:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--hull);color:var(--ink);font:400 1rem/1.55 var(--sans);font-stretch:100%;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{margin:0;font-weight:720;font-stretch:112%;hyphens:manual;overflow-wrap:normal}
+p{margin:0}
+.wrap{width:100%;max-width:calc(var(--max) + 2*var(--pad));margin:0 auto;padding-inline:var(--pad)}
+.skip{position:absolute;left:8px;top:-60px;z-index:50;background:var(--blue);color:#fff;padding:12px 16px;font-weight:600;text-decoration:none}
+.skip:focus{top:8px}
+:focus-visible{outline:3px solid var(--blue-hi);outline-offset:3px}
+.light :focus-visible{outline-color:var(--blue)}
+
+/* labels */
+.tag{font:500 .75rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:12px;color:var(--ink-2)}
+.tag .n{display:inline-flex;align-items:center;gap:10px;color:var(--blue)}
+.tag .n::after{content:"";width:9px;height:20px;background:currentColor;clip-path:polygon(calc(20px*var(--slope)) 0,100% 0,calc(100% - 20px*var(--slope)) 100%,0 100%)}
+.light .tag .n{color:var(--blue-d)}
+.dark .tag{color:var(--txt-d2)} .dark .tag .n{color:var(--blue-hi)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border:2px solid var(--blue);background:var(--blue);color:#fff;font:640 1rem/1.1 var(--sans);font-stretch:108%;text-decoration:none;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.btn:hover{background:var(--blue-d);border-color:var(--blue-d)}
+.btn svg{flex:none}
+.btn.ghost{background:transparent;border-color:rgba(237,241,244,.45);color:var(--txt-d)}
+.btn.ghost:hover{border-color:var(--txt-d);background:rgba(255,255,255,.06)}
+.btn.sm{min-height:44px;padding:0 18px;font-size:.9375rem}
+
+/* header */
+.top{position:sticky;top:0;z-index:20;background:var(--hull);border-bottom:1px solid var(--line-d)}
+.top .wrap{display:flex;align-items:center;gap:16px;height:64px}
+.brand{display:flex;align-items:center;min-height:44px;margin-right:auto;flex-shrink:0}
+.brand img{height:42px;width:auto}
+.nav{display:none}
+.nav a{color:var(--txt-d2);text-decoration:none;font-weight:500;font-size:.9375rem;display:inline-flex;align-items:center;min-height:44px;padding:0 4px}
+.nav a:hover{color:var(--txt-d)}
+.lang{display:flex;border:1px solid var(--line-d)}
+.lang button{all:unset;box-sizing:border-box;width:44px;height:40px;display:grid;place-items:center;font:500 .75rem/1 var(--mono);letter-spacing:.08em;color:var(--txt-d2);cursor:pointer;position:relative}
+.lang button+button{border-left:1px solid var(--line-d)}
+.lang button:hover{color:var(--txt-d)}
+.lang button[aria-pressed="true"]{color:#fff;background:var(--hull-3)}
+.lang button[aria-pressed="true"]::after{content:"";position:absolute;left:8px;right:8px;bottom:5px;height:2px;background:var(--blue-hi)}
+.lang button:focus-visible{outline:3px solid var(--blue-hi);outline-offset:-3px}
+.top .btn{display:inline-flex;min-height:40px;padding:0 14px;font-size:.875rem;white-space:nowrap}   /* phones: the contact page is one tap away */
+@media (min-width:960px){
+  .top .wrap{height:76px;gap:28px}
+  .brand img{height:52px}
+  .nav{display:flex;gap:22px}
+  .top .btn{display:inline-flex}
+  html{scroll-padding-top:84px}
+}
+@media (min-width:960px) and (max-width:1099px){.top .wrap{gap:20px}}
+
+/* hero */
+.hero{position:relative;background:var(--hull);color:var(--txt-d);overflow:hidden}
+.hero-media{--h:196px;position:relative;height:var(--h);margin-inline:auto;max-width:calc(var(--max) + 2*var(--pad))}
+.hero-media picture,.hero-media img{width:100%;height:100%}
+.hero-media img{object-fit:cover;object-position:50% 58%}
+.hero-media .photo{position:absolute;inset:0;clip-path:polygon(calc(var(--h)*var(--slope) + 12px) 0,100% 0,100% 100%,12px 100%)}
+.hero-media .stroke{position:absolute;inset:0;background:var(--blue-hi);clip-path:polygon(calc(var(--h)*var(--slope)) 0,calc(var(--h)*var(--slope) + 12px) 0,12px 100%,0 100%)}
+.hero-copy{padding-top:18px;padding-bottom:28px}
+.eyebrow{font:500 .75rem/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--blue-hi);margin-bottom:10px}
+.hero h1{font-size:clamp(2rem,.8rem + 3.6vw,3.75rem);line-height:1;letter-spacing:-.012em;font-weight:740}
+.hero h1 em{font-style:normal;color:var(--blue-hi);display:block}
+.lead{margin-top:14px;font-size:1rem;line-height:1.55;color:var(--txt-d2);max-width:36em}
+.ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.ctas .btn{flex:1 1 auto}
+.ctas .tel{font-family:var(--mono);font-weight:500;letter-spacing:.02em;font-size:.95rem}
+/* type plate */
+.plate{--screw:radial-gradient(circle,#9aa19c 0 2.6px,#6f7772 2.7px 3.4px,transparent 3.6px);
+  position:relative;background:var(--plate);color:var(--ink);border:1px solid #C3C9C4;padding:20px 22px 18px;
+  box-shadow:inset 0 0 0 7px var(--plate),inset 0 0 0 8px #D9DED9;margin:0 var(--pad) 36px;
+  background-image:var(--screw),var(--screw),var(--screw),var(--screw);background-size:12px 12px;background-repeat:no-repeat;
+  background-position:5px 5px,calc(100% - 5px) 5px,5px calc(100% - 5px),calc(100% - 5px) calc(100% - 5px)}
+.plate-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:0 4px 12px;border-bottom:2px solid var(--ink)}
+.plate-name{font-weight:760;font-stretch:118%;font-size:1.15rem;letter-spacing:.02em}
+.plate-code{font:500 .75rem/1 var(--mono);letter-spacing:.14em;color:var(--blue)}
+.plate dl{margin:0;padding:0 4px}
+.plate dl div{display:grid;grid-template-columns:minmax(0,9.5em) minmax(0,1fr);gap:4px 14px;padding:10px 0;border-bottom:1px solid #D3D8D3}
+.plate dl div:last-child{border-bottom:0;padding-bottom:2px}
+.plate dt{font:500 .6875rem/1.45 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);padding-top:2px}
+.plate dd{margin:0;font-weight:600;font-size:.95rem;line-height:1.4}
+@media (max-width:400px){.plate dl div{grid-template-columns:1fr;gap:2px}}
+@media (min-width:640px){.hero-media{--h:300px}}
+@media (min-width:960px){
+  .hero{--hh:clamp(620px,calc(100svh - 76px),820px)}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);max-width:calc(var(--max) + 2*var(--pad));margin:0 auto;min-height:var(--hh)}
+  .hero-copy{grid-column:1;grid-row:1;align-self:center;padding:64px 40px 72px var(--pad);max-width:none;margin:0}
+  .lead{font-size:1.125rem;margin-top:22px}
+  .ctas{margin-top:30px}
+  .hero-media{--h:var(--hh);grid-column:2;grid-row:1;height:var(--hh);margin:0;max-width:none;margin-right:calc(-1 * max(0px, (100vw - var(--max) - 2 * var(--pad)) / 2))}
+  .hero-media img{object-position:50% 50%}
+  .hero-media .photo{clip-path:polygon(calc(var(--h)*var(--slope) + 16px) 0,100% 0,100% 100%,16px 100%)}
+  .hero-media .stroke{clip-path:polygon(calc(var(--h)*var(--slope)) 0,calc(var(--h)*var(--slope) + 16px) 0,16px 100%,0 100%)}
+  .plate{position:absolute;z-index:2;left:auto;right:max(var(--pad),calc((100vw - var(--max)) / 2));bottom:36px;margin:0;width:min(450px,33vw);box-shadow:inset 0 0 0 7px var(--plate),inset 0 0 0 8px #D9DED9,0 18px 40px rgba(0,0,0,.35)}
+  .ctas .btn{flex:0 0 auto}
+}
+
+/* services: the switchboard */
+.light{background:var(--paper);color:var(--ink)}
+.services{background:var(--steel);padding:72px 0 80px;border-top:6px solid var(--blue)}
+.h2{font-size:clamp(1.9rem,1.1rem + 3.2vw,3.5rem);line-height:1.02;margin-top:16px;letter-spacing:-.01em}
+.sec-lead{margin-top:16px;font-size:1.0625rem;color:var(--ink-2);max-width:34em}
+.modules{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:14px}
+.module{--s:radial-gradient(circle,#a2a9a4 0 2.4px,#7c847f 2.5px 3.2px,transparent 3.4px);
+  position:relative;background:var(--steel-2);border:1px solid var(--steel-line);padding:12px 12px 24px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 1px 0 rgba(0,0,0,.05);
+  background-image:var(--s),var(--s),var(--s),var(--s);background-size:12px 12px;background-repeat:no-repeat;
+  background-position:3px 3px,calc(100% - 3px) 3px,3px calc(100% - 3px),calc(100% - 3px) calc(100% - 3px)}
+.module figure{margin:0;border:1px solid #9DA49F;background:#C9CEC9;aspect-ratio:16/10;overflow:hidden}
+.module figure img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.04)}
+.label{position:relative;display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #B8BEB9;margin:-26px 14px 0;padding:11px 14px;box-shadow:0 2px 0 rgba(14,26,36,.08)}
+.label .code{font:500 .8125rem/1 var(--mono);color:#fff;background:var(--blue);padding:6px 7px;letter-spacing:.06em;flex:none}
+.label h3{font-size:clamp(.875rem,.78rem + .45vw,1rem);font-stretch:108%;font-weight:740;text-transform:uppercase;letter-spacing:.035em;line-height:1.2;hyphens:manual}
+.module p{margin:16px 14px 0;color:var(--ink-2);font-size:1rem;line-height:1.55}
+@media (min-width:700px){.modules{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+  .module.wide{grid-column:1/-1}.module.wide figure{aspect-ratio:16/7}.module.wide figure img{object-position:50% 45%}}
+@media (min-width:1100px){
+  .services .grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:56px}
+  .services .sec-head{position:sticky;top:120px;align-self:start}
+  .modules{margin-top:0}
+  .services{padding:110px 0 120px}
+}
+
+/* where */
+.dark{background:var(--hull);color:var(--txt-d)}
+.where{padding:72px 0 64px;position:relative}
+.where .sec-lead,.contact .sec-lead{color:var(--txt-d2)}
+.where-grid{display:grid;gap:36px}
+.legend{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:14px}
+.legend li{display:flex;align-items:center;gap:14px;font-weight:600}
+.legend .sw{width:34px;height:20px;flex:none;border:1.5px solid var(--blue-hi)}
+.legend .sw.now{background:var(--blue-hi)}
+.legend .sw.past{background:repeating-linear-gradient(-66.85deg,var(--blue-hi) 0 2px,transparent 2px 7px)}
+.legend small{display:block;font:500 .6875rem/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--txt-d2);font-weight:500}
+.map{margin:0 auto;position:relative;width:100%;max-width:540px}
+.map svg{width:100%;height:auto;display:block;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 7%,#000 90%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 6%,#000 94%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 7%,#000 90%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 6%,#000 94%,transparent 100%);mask-composite:intersect}
+.map .land{fill:var(--hull-3);stroke:var(--hull);stroke-width:1.1;stroke-linejoin:round}
+.map .now{fill:var(--blue-hi);stroke:var(--hull);stroke-width:1.1}
+.map .past{fill:url(#hatch);stroke:var(--blue-hi);stroke-width:1.6}
+.map .lbl{font:500 19px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+@media (max-width:599px){.map .lbl{font-size:23px;letter-spacing:.1em}}
+.map .lbl-in{fill:var(--hull);font-weight:500}
+.map .lbl-out,.map .lbl-past{fill:#fff;paint-order:stroke;stroke:var(--hull);stroke-width:7px;stroke-linejoin:round}
+.map .lead-line{stroke:#fff;stroke-width:1.5;fill:none}
+@media (min-width:960px){
+  .where{padding:120px 0 110px}
+  .where-grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px;align-items:center}
+  .map{max-width:560px;justify-self:end;width:100%}
+}
+
+/* steps */
+.steps{padding:72px 0 80px}
+.flow{list-style:none;margin:40px 0 0;padding:0;display:grid;gap:0;counter-reset:s}
+.flow li{position:relative;padding:0 0 34px 64px}
+.flow li::before{content:"";position:absolute;left:21px;top:44px;bottom:0;width:2px;background:var(--ink)}
+.flow li:last-child::before{display:none}
+.flow .num{position:absolute;left:0;top:0;width:44px;height:44px;display:grid;place-items:center;background:var(--ink);color:#fff;font:500 1rem/1 var(--mono)}
+.flow li:first-child .num{background:var(--blue)}
+.flow h3{font-size:1.3rem;font-stretch:110%;line-height:1.2;padding-top:8px}
+.flow p{margin-top:10px;color:var(--ink-2);max-width:30em}
+@media (min-width:860px){
+  .flow{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+  .flow li{padding:68px 0 0}
+  .flow li::before{left:44px;right:-40px;top:21px;bottom:auto;width:auto;height:2px}
+  .steps{padding:110px 0 120px}
+}
+
+/* contact */
+.contact{padding:72px 0 80px;border-top:1px solid var(--line-d)}
+.page-contact .contact{border-top:0;min-height:calc(100svh - 64px - 1px)}
+.contact-grid{display:grid;gap:40px}
+.direct{margin-top:28px;display:grid;gap:6px}
+.direct a{display:inline-flex;flex-direction:column;justify-content:center;min-height:64px;text-decoration:none;color:var(--txt-d);padding:6px 0;border-bottom:1px solid var(--line-d)}
+.direct a span{font:500 .6875rem/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--txt-d2)}
+.direct a b{font-weight:680;font-stretch:108%;font-size:clamp(1.25rem,.9rem + 1.6vw,2rem);line-height:1.2;overflow-wrap:anywhere}
+.direct a:hover b{color:var(--blue-hi)}
+.phone-row{display:flex;flex-wrap:wrap;align-items:center;column-gap:16px;border-bottom:1px solid var(--line-d)}
+.phone-row>a:first-child{flex:0 1 auto;border-bottom:0}
+.direct .wa{flex-direction:row;min-height:44px;padding:0 18px;margin:8px 0;border:2px solid rgba(237,241,244,.45);font:640 .9375rem/1.1 var(--sans);font-stretch:108%;color:var(--txt-d)}
+.direct .wa:hover{border-color:var(--txt-d);background:rgba(255,255,255,.06)}
+.form{background:var(--plate);color:var(--ink);padding:24px 18px 22px;border:1px solid #C3C9C4;position:relative}
+.form::before{content:"";position:absolute;left:-1px;top:-1px;width:64px;height:6px;background:var(--blue)}
+.form h3{font-size:1.25rem;font-stretch:110%;margin-bottom:6px}
+.form .note{font-size:.875rem;color:var(--ink-2)}
+.fields{display:grid;gap:14px;margin-top:18px}
+.field label{display:block;font:500 .75rem/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px}
+.field label .opt{text-transform:none;letter-spacing:0;font-family:var(--sans);font-weight:400}
+.field input,.field textarea{width:100%;font:400 1rem/1.4 var(--sans);color:var(--ink);background:#fff;border:1.5px solid #8F9893;border-radius:0;padding:12px 12px;min-height:48px}
+.field textarea{min-height:128px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:3px solid var(--blue);outline-offset:0;border-color:var(--blue)}
+.field [aria-invalid="true"]{border-color:#B3261E;background:#FFF7F6}
+.err{color:#A3231B;font-size:.875rem;margin-top:6px;font-weight:500}
+.err:empty{display:none}
+.form .btn{width:100%;margin-top:6px}
+.hint{font-size:.875rem;color:var(--ink-2);margin-top:12px}
+.fallback{margin-top:4px;font-size:.9375rem;color:var(--ink)}
+.fallback a{display:inline-flex;align-items:center;min-height:44px;font-weight:600;color:var(--blue);overflow-wrap:anywhere}
+.status{margin-top:10px;padding:12px 14px;background:#E6EEFF;border-left:4px solid var(--blue);font-size:.9375rem}
+.status:empty{display:none}
+.two{display:grid;gap:14px}
+@media (min-width:560px){.two{grid-template-columns:1fr 1fr}.form{padding:32px 30px 28px}}
+@media (min-width:960px){
+  .contact{padding:120px 0 120px}
+  .contact-grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px;align-items:start}
+}
+
+/* footer */
+.foot{background:#070E14;color:var(--txt-d2);padding:48px 0 28px;border-top:1px solid var(--line-d)}
+.foot-grid{display:grid;gap:28px}
+.foot-logo img{width:min(300px,100%)}
+.foot dl{margin:0;display:grid;grid-template-columns:max-content minmax(0,1fr);gap:8px 18px;font-size:.9375rem;align-items:baseline}
+.foot dl div{display:contents}
+.foot dt{font:500 .6875rem/1.9 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.foot dd{margin:0;color:var(--txt-d)}
+.foot-links{display:grid;gap:2px}
+.foot-links a{display:inline-flex;align-items:center;min-height:44px;color:var(--txt-d);text-decoration:none;overflow-wrap:anywhere}
+.foot-links a:hover{color:var(--blue-hi)}
+.foot-bottom{margin-top:32px;padding-top:18px;border-top:1px solid var(--line-d);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;font:500 .75rem/1.4 var(--mono);letter-spacing:.08em}
+.foot-bottom a{color:var(--txt-d2);text-decoration:none;display:inline-flex;align-items:center;min-height:40px}
+.foot-bottom a:hover{color:var(--txt-d)}
+@media (min-width:860px){.foot-grid{grid-template-columns:1.2fr 1.4fr 1fr;align-items:start}}
+</style>
+</head>
+<body class="page-contact">
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="assets/brand/el4you-wordmark-white.svg?v=6" alt="EL4YOU" width="145" height="52"></a>
+    <nav class="nav" aria-label="Main" data-i18n-attr="aria-label:navAria">
+      <a href="./#services" data-i18n="nav.services">Services</a>
+      <a href="./#projects" data-i18n="nav.where">Projects involving us</a>
+      <a href="./#start" data-i18n="nav.start">How to start</a>
+      <a href="contact.html" aria-current="page" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <a class="btn sm" href="contact.html" data-i18n="cta">Get in touch</a>
+  </div>
+</header>
+
+<main id="main">
+<section class="contact dark" id="contact" aria-labelledby="contact-h">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="tag"><span data-i18n="contact.tag">Contact</span></p>
+      <h2 class="h2" id="contact-h" data-i18n="contact.h2">Get in touch</h2>
+      <p class="sec-lead" data-i18n="contact.p">Tell us about the job by phone, by e&#8209;mail or with the form.</p>
+      <div class="direct">
+        <div class="phone-row">
+          <a href="tel:+37255593398"><span data-i18n="contact.phone">Phone</span><b>+372 5559 3398</b></a>
+          <a class="btn ghost sm wa" href="https://wa.me/37255593398" target="_blank" rel="noopener" aria-label="Write on WhatsApp: +372 5559 3398" data-i18n-attr="aria-label:waAria"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" class="ico-wa"><path fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>WhatsApp</a>
+        </div>
+        <a href="mailto:info.el4you@gmail.com"><span data-i18n="contact.mail">E-mail</span><b>info.el4you@gmail.com</b></a>
+      </div>
+    </div>
+    <form class="form light" id="req" novalidate aria-labelledby="form-h">
+      <h3 id="form-h" data-i18n="f.title">Request</h3>
+      <p class="note" data-i18n="f.note">Fields marked * are required.</p>
+      <div class="fields">
+        <div class="two">
+          <div class="field"><label for="f-name"><span data-i18n="f.name">Your name</span> *</label><input id="f-name" name="name" autocomplete="name" required aria-describedby="e-name"><p class="err" id="e-name" aria-live="polite"></p></div>
+          <div class="field"><label for="f-company"><span data-i18n="f.company">Company</span></label><input id="f-company" name="company" autocomplete="organization"></div>
+        </div>
+        <div class="two">
+          <div class="field"><label for="f-email"><span data-i18n="f.email">E-mail</span> *</label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="e-email"><p class="err" id="e-email" aria-live="polite"></p></div>
+          <div class="field"><label for="f-phone"><span data-i18n="f.phone">Phone</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"></div>
+        </div>
+        <div class="field"><label for="f-where"><span data-i18n="f.where">Where is the job?</span></label><input id="f-where" name="where" placeholder="Shipyard, plant, port, country" data-i18n-attr="placeholder:f.whereP"></div>
+        <div class="field"><label for="f-msg"><span data-i18n="f.msg">What needs to be done?</span> *</label><textarea id="f-msg" name="message" required aria-describedby="e-msg"></textarea><p class="err" id="e-msg" aria-live="polite"></p></div>
+        <button class="btn" type="submit"><span data-i18n="f.submit">Send request</span><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M9.5 4.5 14 9l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+      </div>
+      <p class="hint" data-i18n="f.hint">The button opens your e&#8209;mail app with the request filled in.</p>
+      <p class="fallback"><span data-i18n="f.fallback">or write directly:</span> <a href="mailto:info.el4you@gmail.com">info.el4you@gmail.com</a></p>
+      <p class="status" id="f-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-logo"><img src="assets/brand/el4you-logo-white.svg?v=6" alt="EL4YOU, Electrical Engineering &amp; Installation" width="300" height="108" loading="lazy"></div>
+      <dl>
+        <div><dt data-i18n="foot.company">Company</dt><dd>EL4YOU OÜ</dd></div>
+        <div><dt data-i18n="foot.reg">Registry code</dt><dd>16330107</dd></div>
+        <div><dt data-i18n="foot.vat">VAT number</dt><dd>EE102863433</dd></div>
+      </dl>
+      <div class="foot-links">
+        <a href="./">www.el4you.eu</a>
+        <a href="mailto:info.el4you@gmail.com">info.el4you@gmail.com</a>
+        <a href="tel:+37255593398">+372 5559 3398</a>
+      </div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 EL4YOU OÜ</span><a href="#main" data-i18n="foot.top">Back to top ↑</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var EMAIL="info.el4you@gmail.com";
+var T={
+en:{
+ "meta.title":"Contact | EL4YOU OÜ",
+ "meta.desc":"Electrical installation work in the shipbuilding, ship repair, and industrial construction sectors across Europe.",
+ "skip":"Skip to content","navAria":"Main","langAria":"Language","cta":"Get in touch","callAria":"Call +372 5559 3398","waAria":"Write on WhatsApp: +372 5559 3398",
+ "nav.services":"Services","nav.where":"Projects involving us","nav.start":"How to start","nav.contact":"Contact",
+ "hero.eyebrow":"Shipbuilding · Ship repair · Industrial construction",
+ "hero.h1":"Marine & Industrial <em>Electrical Installation Services</em>",
+ "hero.lead":"Electrical installation work in the shipbuilding, ship repair, and industrial construction sectors across Europe.",
+ "alt.hero":"Engine room corridor on a ship with cable runs under the deckhead",
+ "plate.aria":"Company summary","plate.sector":"Sector","plate.sectorV":"Shipbuilding and industry","plate.scope":"Scope",
+ "plate.scopeV":"Installation · Commissioning · Switchboards","plate.now":"Working now","plate.nowV":"Estonia, Germany",
+ "plate.past":"Also worked in","plate.pastV":"Sweden, Finland",
+ "svc.tag":"What we offer","svc.h2":"Services","svc.lead":"Electrical installation on ships and on industrial sites, and commissioning of the installed systems.",
+ "s1.t":"Marine Electrical Installation","s1.d":"Electrical installation work on board in shipbuilding and ship repair: cable laying, connections and mounting of electrical equipment.",
+ "s2.t":"Industrial Electrical Installation","s2.d":"Electrical installation work on industrial construction sites: cable routes, connections and mounting of electrical equipment.",
+ "s3.t":"Electrical Commissioning","s3.d":"Start-up and adjustment: we put the installed electrical systems into operation and set them up.",
+ "alt.s1":"Cable conduits routed along a steel ceiling","alt.s2":"Row of blue electrical switchgear panels","alt.s3":"Wired relays and terminals inside a switchboard",
+ "where.tag":"Projects involving us","where.h2":"Estonia and Germany","where.p":"We currently work in Estonia and Germany. We have also worked in Sweden and Finland.",
+ "leg.now":"Working now","leg.nowV":"Estonia, Germany","leg.past":"Also worked in","leg.pastV":"Sweden, Finland",
+ "map.title":"Map of Northern Europe: Estonia and Germany, where we work now; Sweden and Finland, where we have also worked.",
+ "map.EST":"Estonia","map.DEU":"Germany","map.SWE":"Sweden","map.FIN":"Finland",
+ "start.tag":"How to start a job","start.h2":"Three steps to start",
+ "st1.t":"Send the details","st1.d":"Write or call: what needs to be done, where the vessel, yard or plant is, and the planned dates. Drawings or documents help if you have them.",
+ "st2.t":"Agree on the scope","st2.d":"We go through the job with you and agree on scope, schedule and terms.",
+ "st3.t":"Work starts","st3.d":"Installation or commissioning, as agreed.",
+ "contact.tag":"Contact","contact.h2":"Get in touch","contact.p":"Tell us about the job by phone, by e‑mail or with the form.","contact.phone":"Phone","contact.mail":"E-mail",
+ "f.title":"Request","f.note":"Fields marked * are required.","f.name":"Your name","f.company":"Company","f.email":"E-mail","f.phone":"Phone",
+ "f.where":"Where is the job?","f.whereP":"Shipyard, plant, port, country","f.msg":"What needs to be done?","f.submit":"Send request",
+ "f.hint":"The button opens your e‑mail app with the request filled in.","f.fallback":"or write directly:",
+ "e.name":"Please enter your name.","e.email":"Please enter a valid e-mail address.","e.msg":"Please describe the job.",
+ "f.ok":"Your e‑mail app should open now with the request. If it does not, write directly to info.el4you@gmail.com.",
+ "m.subject":"Request from the website","m.name":"Name","m.company":"Company","m.email":"E-mail","m.phone":"Phone","m.where":"Location","m.msg":"Job",
+ "foot.company":"Company","foot.reg":"Registry code","foot.vat":"VAT number","foot.top":"Back to top ↑"
+}};
+var cur="en";
+function t(k){return (T[cur]&&T[cur][k]!=null)?T[cur][k]:T.en[k];}
+function apply(lang){
+  if(!T[lang]) lang="en";
+  cur=lang;
+  document.documentElement.lang=lang;
+  document.title=t("meta.title");
+  var md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute("content",t("meta.desc"));
+  document.querySelectorAll("[data-i18n]").forEach(function(el){var v=t(el.getAttribute("data-i18n")); if(v!=null) el.innerHTML=v;});
+  document.querySelectorAll("[data-i18n-attr]").forEach(function(el){
+    el.getAttribute("data-i18n-attr").split(";").forEach(function(p){var kv=p.split(":"); var v=t(kv[1]); if(v!=null) el.setAttribute(kv[0],v);});
+  });
+  document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-lang")===lang));});
+  ["name","email","msg"].forEach(function(k){var e=document.getElementById("e-"+k); if(e&&e.textContent) e.textContent=t("e."+k);});
+  var st=document.getElementById("f-status"); if(st&&st.textContent) st.textContent=t("f.ok");
+}
+function setLang(lang){
+  apply(lang);
+  try{localStorage.setItem("el4you-lang",lang);}catch(e){}
+  try{var u=new URL(location.href); if(lang==="en") u.searchParams.delete("lang"); else u.searchParams.set("lang",lang); history.replaceState(null,"",u.pathname+u.search+u.hash);}catch(e){}
+}
+document.querySelectorAll(".lang button").forEach(function(b){b.addEventListener("click",function(){setLang(b.getAttribute("data-lang"));});});
+var start="en";
+try{localStorage.removeItem("el4you-lang");}catch(e){}   /* 12.11: English only for now */
+if(start!=="en") apply(start); else {cur="en";}
+
+/* request form: builds a mailto: (no backend yet) */
+var form=document.getElementById("req");
+if(form){
+function field(id){return document.getElementById(id);}
+function setErr(input,key,msg){var e=field("e-"+key); input.setAttribute("aria-invalid",msg?"true":"false"); e.textContent=msg?t("e."+key):"";}
+form.addEventListener("submit",function(ev){
+  ev.preventDefault();
+  var name=field("f-name"),email=field("f-email"),msg=field("f-msg");
+  var okName=name.value.trim().length>0;
+  var okMail=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim());
+  var okMsg=msg.value.trim().length>0;
+  setErr(name,"name",!okName); setErr(email,"email",!okMail); setErr(msg,"msg",!okMsg);
+  var st=field("f-status"); st.textContent="";
+  if(!okName){name.focus();return;} if(!okMail){email.focus();return;} if(!okMsg){msg.focus();return;}
+  var company=field("f-company").value.trim(), phone=field("f-phone").value.trim(), where=field("f-where").value.trim();
+  var subject=t("m.subject")+": "+(company||name.value.trim());
+  var lines=[t("m.name")+": "+name.value.trim()];
+  if(company) lines.push(t("m.company")+": "+company);
+  lines.push(t("m.email")+": "+email.value.trim());
+  if(phone) lines.push(t("m.phone")+": "+phone);
+  if(where) lines.push(t("m.where")+": "+where);
+  lines.push("", t("m.msg")+":", msg.value.trim());
+  var href="mailto:"+EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(lines.join("\r\n"));
+  st.textContent=t("f.ok");
+  var a=document.createElement("a"); a.href=href; a.hidden=true; document.body.appendChild(a); a.click(); a.remove();
+});
+["f-name","f-email","f-msg"].forEach(function(id){field(id).addEventListener("input",function(){if(this.getAttribute("aria-invalid")==="true"){var k=id.slice(2); var bad=k==="email"?!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(this.value.trim()):!this.value.trim(); if(!bad) setErr(this,k,false);}});});
+}
+})();
+</script>
+</body>
+</html>
