@@ -82,37 +82,63 @@
       mail_subj: 'Запрос с сайта', mail_name: 'Имя', mail_contact: 'Контакт', mail_service: 'Услуга', mail_msg: 'Описание', nav_aria: 'Меню'
     }
   };
+  var RELAY = 'https://script.google.com/macros/s/AKfycbxG8sh9Xi-msP2Ol6iG9FBB__M4_Btafq6KlNpsJNSXS-XnmKKVrajYfpyaGgVzA8zG/exec';
+  var SITE = 'sevenston', MAIL = 'avo@sevenston.ee';
+  var doc = document, root = doc.documentElement;
+  var page = root.getAttribute('data-page') || 'index';
+  var md = doc.querySelector('meta[name=description]');
   T.et = {
-    title: document.title,
-    desc: document.querySelector('meta[name=description]').content,
+    title: doc.title, desc: md.content,
     mail_subj: 'Päring kodulehelt', mail_name: 'Nimi', mail_contact: 'Kontakt', mail_service: 'Teenus', mail_msg: 'Kirjeldus', nav_aria: 'Menüü'
   };
-  var nodes = document.querySelectorAll('[data-i18n]');
-  var alts = document.querySelectorAll('[data-i18n-alt]');
+  var X = window.I18N || {};
+  ['et', 'en', 'ru'].forEach(function (l) { for (var k in (X[l] || {})) T[l][k] = X[l][k]; });
+  var nodes = doc.querySelectorAll('[data-i18n]');
+  var htmls = doc.querySelectorAll('[data-i18n-html]');
+  var alts = doc.querySelectorAll('[data-i18n-alt]');
   nodes.forEach(function (n) { var k = n.dataset.i18n; if (!(k in T.et)) T.et[k] = n.textContent; });
+  htmls.forEach(function (n) { var k = n.dataset.i18nHtml; if (!(k in T.et)) T.et[k] = n.innerHTML; });
   alts.forEach(function (n) { T.et[n.dataset.i18nAlt] = n.alt; });
 
   var cur = 'et';
+  function stored() { try { return localStorage.getItem('sv-lang'); } catch (e) { return null; } }
+  function store(v) { try { localStorage.setItem('sv-lang', v); } catch (e) { /* private mode */ } }
+  /* internal links keep the chosen language */
+  function carry() {
+    doc.querySelectorAll('a[href]').forEach(function (a) {
+      var h = a.getAttribute('href');
+      if (/^(https?:|tel:|mailto:|#|\?)/.test(h)) return;
+      var i = h.indexOf('#'), hash = i > -1 ? h.slice(i) : '', base = (i > -1 ? h.slice(0, i) : h).split('?')[0];
+      a.setAttribute('href', base + (cur === 'et' ? '' : '?lang=' + cur) + hash);
+    });
+  }
   function apply(lang) {
     if (!T[lang]) lang = 'et';
     cur = lang;
     var d = T[lang];
     nodes.forEach(function (n) { var v = d[n.dataset.i18n]; if (v != null) n.textContent = v; });
+    htmls.forEach(function (n) { var v = d[n.dataset.i18nHtml]; if (v != null) n.innerHTML = v; });
     alts.forEach(function (n) { var v = d[n.dataset.i18nAlt]; if (v != null) n.alt = v; });
-    document.documentElement.lang = lang;
-    document.title = d.title;
-    document.querySelector('meta[name=description]').content = d.desc;
-    document.querySelector('.nav').setAttribute('aria-label', d.nav_aria);
-    document.querySelectorAll('.lang a').forEach(function (a) {
+    root.lang = lang;
+    doc.title = (page === 'index' ? d.title : d['title_' + page]) || T.et.title;
+    md.content = (page === 'index' ? d.desc : d['desc_' + page]) || T.et.desc;
+    doc.querySelector('.nav').setAttribute('aria-label', d.nav_aria);
+    doc.querySelectorAll('.lang a').forEach(function (a) {
       if (a.dataset.lang === lang) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
     });
+    carry();
   }
-  var q = new URLSearchParams(location.search).get('lang');
-  if (q && q !== 'et') apply(q.toLowerCase());
-  document.querySelectorAll('.lang a').forEach(function (a) {
+  var q = null;
+  try { q = new URLSearchParams(location.search).get('lang'); } catch (e) { /* old browser */ }
+  q = q && q.toLowerCase();
+  var start = T[q] ? q : (T[stored()] ? stored() : 'et');
+  if (start !== 'et') apply(start);
+  if (T[q]) store(q);
+  doc.querySelectorAll('.lang a').forEach(function (a) {
     a.addEventListener('click', function (e) {
       e.preventDefault();
       apply(a.dataset.lang);
+      store(cur);
       try {
         var u = new URL(location.href);
         if (cur === 'et') u.searchParams.delete('lang'); else u.searchParams.set('lang', cur);
@@ -121,8 +147,21 @@
     });
   });
 
+  /* menu */
+  var menu = doc.getElementById('menu'), burger = doc.getElementById('burger'), mx = doc.getElementById('menu-x');
+  function setMenu(on) {
+    menu.hidden = !on;
+    burger.setAttribute('aria-expanded', String(on));
+    root.style.overflow = on ? 'hidden' : '';
+    (on ? mx : burger).focus();
+  }
+  burger.addEventListener('click', function () { setMenu(true); });
+  mx.addEventListener('click', function () { setMenu(false); });
+  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) setMenu(false); });
+  menu.querySelectorAll('.menu__nav a').forEach(function (a) { a.addEventListener('click', function () { menu.hidden = true; root.style.overflow = ''; }); });
+
   /* reveal on scroll */
-  var rv = document.querySelectorAll('.rv');
+  var rv = doc.querySelectorAll('.rv');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
@@ -133,12 +172,13 @@
   }
 
   /* phone bar: after the first screen, hidden while the contact block is on screen */
-  var bar = document.getElementById('bar');
-  var hero = document.querySelector('.hero');
-  var contact = document.getElementById('kontakt');
+  var bar = doc.getElementById('bar');
+  var first = doc.querySelector('.hero, .phead');
+  var contact = doc.getElementById('kontakt');
   function onScroll() {
-    var past = hero.getBoundingClientRect().bottom < 80;
-    var atContact = contact.getBoundingClientRect().top < window.innerHeight * 0.75;
+    var past = first.getBoundingClientRect().bottom < 80;
+    var cr = contact && contact.getBoundingClientRect();
+    var atContact = cr && cr.top < window.innerHeight * 0.75 && cr.bottom > 0;
     var on = past && !atContact;
     bar.classList.toggle('on', on);
     bar.setAttribute('aria-hidden', on ? 'false' : 'true');
@@ -148,20 +188,60 @@
   window.addEventListener('resize', onScroll);
   onScroll();
 
-  /* enquiry form: opens the visitor's mail program */
-  var form = document.getElementById('form');
-  var err = document.getElementById('form-err');
+  /* enquiry form: sent through the forms relay (tools/forms_relay, site 'sevenston');
+     if the relay does not accept it, the visitor's mail program opens with the message ready */
+  var form = doc.getElementById('form');
+  if (!form) return;
+  var err = doc.getElementById('form-err'), ok = doc.getElementById('form-ok'), btn = form.querySelector('button[type=submit]');
+  var t0 = Date.now(), busy = false, MAX_FILES = 6, MAX_BYTES = 18 * 1024 * 1024;
+  function showErr(key) { err.textContent = T[cur][key] || T.et[key]; err.setAttribute('data-i18n-live', key); err.hidden = false; }
+  function readFile(f) {
+    return new Promise(function (res, rej) {
+      var r = new FileReader();
+      r.onload = function () { res({ name: f.name, type: f.type || 'image/jpeg', data: String(r.result).split(',')[1] || '' }); };
+      r.onerror = rej;
+      r.readAsDataURL(f);
+    });
+  }
+  function mailto(v) {
+    var d = T[cur];
+    var body = d.mail_name + ': ' + v.name + '\n' + d.mail_contact + ': ' + v.contact + '\n' + d.mail_service + ': ' + v.svc +
+      (v.msg ? '\n\n' + d.mail_msg + ':\n' + v.msg : '');
+    return 'mailto:' + MAIL + '?subject=' + encodeURIComponent(d.mail_subj + ': ' + v.svc) + '&body=' + encodeURIComponent(body);
+  }
+  function done(key) {
+    form.querySelector('.form__body').hidden = true;
+    ok.textContent = T[cur][key] || T.et[key];
+    ok.hidden = false;
+    form.dataset.state = key;
+  }
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    if (busy) return;
     var f = form.elements;
-    var name = f.name.value.trim(), ct = f.contact.value.trim(), svc = f.service.value.replace(/­/g, '');
-    if (!name || !ct) { err.hidden = false; (name ? f.contact : f.name).focus(); return; }
+    var v = { name: f.name.value.trim(), contact: f.contact.value.trim(), svc: f.service.options[f.service.selectedIndex].text.replace(/­/g, ''), msg: f.msg.value.trim() };
+    if (!v.name || !v.contact) { showErr('fm_err'); (v.name ? f.contact : f.name).focus(); return; }
+    var files = Array.prototype.slice.call(f.files.files || []);
+    var total = files.reduce(function (s, x) { return s + x.size; }, 0);
+    if (files.length > MAX_FILES || total > MAX_BYTES) { showErr('fm_files_err'); return; }
     err.hidden = true;
-    var d = T[cur];
-    var body = d.mail_name + ': ' + name + '\n' + d.mail_contact + ': ' + ct + '\n' + d.mail_service + ': ' + svc +
-      (f.msg.value.trim() ? '\n\n' + d.mail_msg + ':\n' + f.msg.value.trim() : '');
-    var href = 'mailto:avo@sevenston.ee?subject=' + encodeURIComponent(d.mail_subj + ': ' + svc) + '&body=' + encodeURIComponent(body);
+    var href = mailto(v);
     form.dataset.mailto = href;
-    if (!window.__noMail) location.href = href;
+    busy = true;
+    var label = btn.textContent;
+    btn.textContent = T[cur].fm_sending || T.et.fm_sending;
+    btn.disabled = true;
+    Promise.all(files.map(readFile)).then(function (photos) {
+      return fetch(RELAY, {
+        method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ site: SITE, name: v.name, contact: v.contact, svc: v.svc, place: '', msg: v.msg, hp: f.website.value, t: Date.now() - t0, photos: photos })
+      });
+    }).then(function (r) { return r.json(); }).then(function (j) {
+      if (!j || !j.ok) throw new Error('relay');
+      done('fm_ok');
+    }).catch(function () {
+      done('fm_fallback');
+      if (!window.__noMail) location.href = href;
+    }).then(function () { busy = false; btn.disabled = false; btn.textContent = label; });
   });
 })();
