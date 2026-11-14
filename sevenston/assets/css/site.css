@@ -8,7 +8,7 @@
 :root{
   --fog:#C4D9E4; --paper:#EDF2F3; --ink:#0C1A20; --ink2:#12262E; --mute:#4C6169; --line:rgba(12,26,32,.2);
   --sig:#FF5A1F; --pad:clamp(16px,5.2vw,80px);
-  --sans:'Geologica',system-ui,'Segoe UI',Arial,sans-serif; --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+  --sans:'Geologica',system-ui,'Segoe UI',Arial,sans-serif; --mono:'Geologica',system-ui,'Segoe UI',Arial,sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
