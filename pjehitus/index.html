@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Pj Ehitus OÜ · üldehitustööd Tallinnas</title>
-<meta name="description" content="Pj Ehitus OÜ teeb Tallinnas üldehitustöid nii sees kui väljas. Kirjeldage oma objekti ja küsige pakkumist: +372 5617 7692.">
+<meta name="description" content="Pj Ehitus OÜ teeb Tallinnas üldehitustöid nii sees kui väljas: vundamendid, karkass, katused, välis- ja sisetööd. Küsige pakkumist: +372 5617 7692.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://vasylian.com/leht/pjehitus/">
+<link rel="alternate" hreflang="et" href="https://vasylian.com/leht/pjehitus/">
+<link rel="alternate" hreflang="ru" href="https://vasylian.com/leht/pjehitus/ru/">
 <meta name="theme-color" content="#EEF0EC">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2312181C'/%3E%3Cpath d='M14 46V30l18-13 18 13v16' fill='none' stroke='%23E8501C' stroke-width='6'/%3E%3C/svg%3E">
 <link rel="preload" href="assets/f/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -16,7 +18,7 @@
 @font-face{font-family:"Archivo";font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:swap;src:url(assets/f/archivo-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"Archivo";font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:swap;src:url(assets/f/archivo-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
 /* site sign on a building plot: light concrete, ink, one signal colour; extra-condensed caps for the big words */
-:root{--paper:#EEF0EC;--paper-2:#E3E7E2;--ink:#12181C;--muted:#566065;--line:#CFD5CF;--signal:#E8501C;--signal-d:#C93F10;
+:root{--paper:#EEF0EC;--paper-2:#E3E7E2;--white:#FAFBF9;--ink:#12181C;--muted:#566065;--line:#CFD5CF;--signal:#E8501C;--signal-d:#C93F10;
   --f:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;--gut:clamp(18px,4vw,56px)}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
@@ -38,15 +40,22 @@ a{color:inherit}
 .nav{display:flex;gap:28px;font-size:15px;font-weight:500}
 .nav a{text-decoration:none;color:var(--muted)}
 .nav a:hover{color:var(--ink)}
+.hdr__r{display:flex;align-items:center;gap:14px}
+.lang{display:flex;border:1px solid var(--line);border-radius:2px;font-size:13px;font-weight:700;letter-spacing:.06em}
+.lang span,.lang a{padding:6px 9px;text-decoration:none;line-height:1}
+.lang span{background:var(--ink);color:#fff}
+.lang a{color:var(--muted)}
+.lang a:hover{color:var(--ink)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:2px;background:var(--signal);color:#fff;
   font:700 16px/1 var(--f);letter-spacing:.01em;text-decoration:none;border:0;cursor:pointer;transition:background .2s}
 .btn:hover{background:var(--signal-d)}
-.btn svg{width:18px;height:18px}
-.btn--sm{min-height:42px;padding:0 18px;font-size:15px}
-@media (max-width:899px){.nav{display:none}.hdr .btn--sm{display:none}}
+.btn svg{width:18px;height:18px;flex:none}
+.btn--sm{min-height:42px;padding:0 16px;font-size:15px}
+@media (max-width:999px){.nav{display:none}}
+@media (max-width:640px){.hdr .btn--sm{display:none}}
 
 /* hero */
-.hero{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);min-height:min(calc(100vh - 64px),820px)}
+.hero{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);min-height:min(calc(100vh - 64px),800px)}
 .hero__txt{display:flex;flex-direction:column;justify-content:center;gap:26px;padding:56px var(--gut) 56px max(var(--gut),calc((100vw - 1360px)/2 + var(--gut)))}
 .hero h1{margin:0;font-size:clamp(52px,6.5vw,104px)}
 .hero h1 em{font-style:normal;color:var(--signal)}
@@ -55,7 +64,9 @@ a{color:inherit}
 .hero__mail{font-size:15px;color:var(--muted)}
 .hero__mail a{color:var(--ink);font-weight:600}
 .hero__img{position:relative;min-height:420px;overflow:hidden;background:#b9cbd9}
-.hero__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 30%}
+.hero__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 30%;animation:settle 1.6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes settle{from{transform:scale(1.06)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.hero__img img{animation:none}}
 @media (max-width:899px){
   .hero{grid-template-columns:1fr;min-height:0}
   .hero__img{order:-1;min-height:0;height:min(34vh,228px)}
@@ -70,18 +81,30 @@ a{color:inherit}
 .reg .wrap{display:flex;flex-wrap:wrap;gap:6px 34px;padding-top:16px;padding-bottom:16px;font-size:14.5px;color:var(--muted)}
 .reg b{color:var(--ink);font-weight:600}
 
-/* stages */
-.sec{padding:clamp(64px,9vw,120px) 0}
-.sec__head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px 48px;align-items:end;margin-bottom:clamp(32px,5vw,56px)}
+/* sections */
+.sec{padding:clamp(60px,8.5vw,116px) 0}
+.sec--tint{background:var(--white)}
+.sec__head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:20px 48px;align-items:end;margin-bottom:clamp(30px,4.5vw,52px)}
 .sec h2{margin:0;font-size:clamp(44px,6vw,92px)}
 .sec__lead{margin:0;max-width:34em;color:#2C3539;font-size:18px}
-@media (max-width:899px){.sec__head{grid-template-columns:1fr}.sec__lead{font-size:16.5px}}
+@media (max-width:899px){.sec__head{grid-template-columns:1fr}.sec__lead{font-size:16px}}
+
+/* services */
+.svc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--ink)}
+.svc__i{padding:26px 26px 30px 0;border-bottom:1px solid var(--line);min-width:0}
+.svc__i:not(:nth-child(3n+1)){padding-left:26px;border-left:1px solid var(--line)}
+.svc__n{display:block;font-weight:800;font-stretch:62%;font-size:20px;color:var(--signal);margin-bottom:10px}
+.svc h3{margin:0 0 6px;font-size:23px;font-weight:700;letter-spacing:-.005em}
+.svc p{margin:0;color:var(--muted);font-size:16px}
+.svc__note{margin:22px 0 0;font-size:16px;color:var(--muted)}
+.svc__note a{color:var(--ink);font-weight:700;white-space:nowrap}
+@media (max-width:899px){.svc{grid-template-columns:1fr 1fr}.svc__i,.svc__i:not(:nth-child(3n+1)){padding:20px 14px 22px 0;border-left:0}.svc__i:nth-child(2n){padding-left:14px;border-left:1px solid var(--line)}.svc h3{font-size:19px}.svc p{font-size:14.5px}}
+
+/* stages: grid on desktop, a swipe row on phones */
 .stages{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(16px,2vw,28px)}
 .st{margin:0;display:flex;flex-direction:column;gap:14px;min-width:0}
-.st:nth-child(1){grid-column:span 7}
-.st:nth-child(2){grid-column:span 5}
-.st:nth-child(3){grid-column:span 5}
-.st:nth-child(4){grid-column:span 7}
+.st:nth-child(1),.st:nth-child(4){grid-column:span 7}
+.st:nth-child(2),.st:nth-child(3){grid-column:span 5}
 .st__ph{position:relative;overflow:hidden;background:var(--paper-2);aspect-ratio:3/2}
 .st:nth-child(2) .st__ph,.st:nth-child(3) .st__ph{aspect-ratio:4/3.6}
 .st__ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
@@ -91,41 +114,71 @@ a{color:inherit}
 .st__n{font-weight:800;font-stretch:62%;font-size:44px;line-height:.9;color:var(--signal);grid-row:span 2}
 .st h3{margin:0;font-size:22px;font-weight:700;letter-spacing:-.005em}
 .st p{margin:0;color:var(--muted);font-size:16px;max-width:32em}
-@media (max-width:899px){.stages{grid-template-columns:1fr}.st:nth-child(n){grid-column:auto}.st:nth-child(n) .st__ph{aspect-ratio:3/2}}
+@media (max-width:899px){
+  .stages{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:max(var(--gut),env(safe-area-inset-left));gap:14px;margin:0 calc(-1 * max(var(--gut),env(safe-area-inset-right)));padding:0 max(var(--gut),env(safe-area-inset-left)) 6px;scrollbar-width:none}
+  .stages::-webkit-scrollbar{display:none}
+  .st{flex:0 0 82%;scroll-snap-align:start}
+  .st:nth-child(n) .st__ph{aspect-ratio:4/3}
+  .st__n{font-size:34px}.st h3{font-size:19px}.st p{font-size:15px}
+}
 
-/* how to start */
+/* why */
+.why{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,5vw,80px);align-items:center}
+.why__ph{aspect-ratio:4/5;overflow:hidden;background:var(--paper-2)}
+.why__ph img{width:100%;height:100%;object-fit:cover}
+.why h2{margin:0 0 26px;font-size:clamp(44px,5.4vw,84px)}
+.why__l{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.why__l li{display:grid;grid-template-columns:28px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.ck{width:28px;height:28px;border-radius:50%;background:var(--signal);color:#fff;display:grid;place-items:center}
+.ck svg{width:16px;height:16px;stroke:#fff}
+.why__l b{display:block;font-size:19px;font-weight:700;margin-bottom:2px}
+.why__l span{color:var(--muted);font-size:16px}
+@media (max-width:899px){.why{grid-template-columns:1fr}.why__ph{display:none}}
+
+/* how */
 .how{background:var(--ink);color:#E9ECE8}
 .how .sec__lead{color:#B9C1BD}
-.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #2B3438}
-.steps li{padding:28px 28px 8px 0;border-right:1px solid #2B3438;min-width:0}
-.steps li+li{padding-left:28px}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid #2B3438}
+.steps li{padding:28px 26px 8px 0;border-right:1px solid #2B3438;min-width:0}
+.steps li+li{padding-left:26px}
 .steps li:last-child{border-right:0}
 .steps b{display:block;font-weight:800;font-stretch:62%;font-size:28px;text-transform:uppercase;line-height:1;margin-bottom:12px;color:#fff}
 .steps span{color:#B9C1BD;font-size:16px}
-@media (max-width:899px){.steps{grid-template-columns:1fr}.steps li,.steps li+li{padding:22px 0 18px;border-right:0;border-bottom:1px solid #2B3438}}
+@media (max-width:899px){.steps{grid-template-columns:1fr 1fr}.steps li,.steps li+li{padding:20px 14px 16px 0;border-right:0;border-bottom:1px solid #2B3438}.steps li:nth-child(2n){padding-left:14px;border-left:1px solid #2B3438}.steps b{font-size:22px}.steps span{font-size:14.5px}}
 
-/* wide photo + contact */
-.wide{position:relative;min-height:clamp(380px,48vw,640px);display:flex;align-items:flex-end;overflow:hidden;background:#2a3238}
-.wide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
-.wide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,24,28,.12) 0%,rgba(18,24,28,.58) 45%,rgba(18,24,28,.88) 100%)}
-.wide .wrap{position:relative;z-index:1;width:100%;padding-bottom:clamp(30px,5vw,64px);padding-top:120px;color:#fff}
-.wide h2{margin:0 0 20px;font-size:clamp(46px,7vw,112px)}
-.wide p{margin:0 0 26px;max-width:32em;font-size:18px;color:#E3E7E2}
-.wide .hero__mail{color:#C9CFCB;margin-top:16px}
-.wide .hero__mail a{color:#fff}
+/* contact */
+.contact{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:32px clamp(28px,5vw,80px);align-items:start}
+.contact h2{margin:0 0 18px}
+.contact .sec__lead{margin-bottom:24px}
+.cdl{margin:28px 0 0;display:grid;grid-template-columns:auto 1fr;gap:12px 24px;font-size:16px;border-top:1px solid var(--line);padding-top:22px}
+.cdl dt{color:var(--muted)}
+.cdl dd{margin:0;font-weight:600}
+.form{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--signal);padding:clamp(20px,3vw,34px);display:grid;gap:14px}
+.form h3{margin:0 0 4px;font-weight:800;font-stretch:62%;text-transform:uppercase;font-size:30px;line-height:1}
+.form label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;color:var(--muted)}
+.form input,.form textarea{font:400 16px/1.4 var(--f);color:var(--ink);padding:12px;border:1.5px solid var(--line);border-radius:2px;background:#fff;width:100%;min-width:0}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--ink)}
+.form textarea{min-height:110px;resize:vertical}
+.form small{font-size:13px;color:var(--muted)}
+@media (max-width:899px){.contact{grid-template-columns:1fr}.contact>div>.btn{width:100%}}
 
 /* footer */
-.ftr{padding:34px 0 calc(34px + env(safe-area-inset-bottom));font-size:14.5px;color:var(--muted)}
-.ftr .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px}
-.ftr b{color:var(--ink)}
+.ftr{background:var(--ink);color:#AEB6B2;padding:30px 0 calc(30px + env(safe-area-inset-bottom));font-size:14.5px}
+.ftr .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 32px}
+.ftr b{color:#fff;font-weight:600}
+.ftr a{color:#fff;text-decoration:none}
+
 </style>
 </head>
 <body>
 <header class="hdr">
   <div class="wrap">
     <a class="logo" href="#top" aria-label="Pj Ehitus OÜ"><b>Pj <i>Ehitus</i></b><span>OÜ</span></a>
-    <nav class="nav" aria-label="Menüü"><a href="#etapid">Mida teeme</a><a href="#kuidas">Kuidas alustada</a><a href="#kontakt">Kontakt</a></nav>
-    <a class="btn btn--sm" href="tel:+37256177692"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5.2 3.8h3.3l1.6 4.1-2.1 1.4a11.3 11.3 0 0 0 6.7 6.7l1.4-2.1 4.1 1.6v3.3a1.6 1.6 0 0 1-1.7 1.6A16.4 16.4 0 0 1 3.6 5.5a1.6 1.6 0 0 1 1.6-1.7z"/></svg>+372 5617 7692</a>
+    <nav class="nav" aria-label="Menüü"><a href="#teenused">Mida teeme</a><a href="#etapid">Etapid</a><a href="#kontakt">Kontakt</a></nav>
+    <div class="hdr__r">
+      <div class="lang" role="group" aria-label="Keel / Язык"><span aria-current="true">ET</span><a href="ru/" hreflang="ru" lang="ru">RU</a></div>
+      <a class="btn btn--sm" href="tel:+37256177692"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5.2 3.8h3.3l1.6 4.1-2.1 1.4a11.3 11.3 0 0 0 6.7 6.7l1.4-2.1 4.1 1.6v3.3a1.6 1.6 0 0 1-1.7 1.6A16.4 16.4 0 0 1 3.6 5.5a1.6 1.6 0 0 1 1.6-1.7z"/></svg>+372 5617 7692</a>
+    </div>
   </div>
 </header>
 
@@ -136,73 +189,79 @@ a{color:inherit}
       <p>Pj Ehitus OÜ on Tallinna ehitusettevõte. Teeme üldehitustöid nii sees kui väljas: vundamendist ja karkassist katuse ning siseruumideni. Kirjeldage oma objekti, vaatame selle üle ja teeme pakkumise.</p>
       <div class="hero__act">
         <a class="btn" href="tel:+37256177692"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5.2 3.8h3.3l1.6 4.1-2.1 1.4a11.3 11.3 0 0 0 6.7 6.7l1.4-2.1 4.1 1.6v3.3a1.6 1.6 0 0 1-1.7 1.6A16.4 16.4 0 0 1 3.6 5.5a1.6 1.6 0 0 1 1.6-1.7z"/></svg>Helista +372 5617 7692</a>
-        <span class="hero__mail">või kirjutage <a href="mailto:pjehitus@gmail.com?subject=P%C3%A4ring%20Pj%20Ehituse%20kodulehelt">pjehitus@gmail.com</a></span>
+        <span class="hero__mail">või kirjutage <a href="mailto:pjehitus@gmail.com">pjehitus@gmail.com</a></span>
       </div>
     </div>
     <div class="hero__img">
       <picture>
         <source media="(max-width: 899px)" srcset="assets/p/hero-m-900.webp">
-        <img src="assets/p/hero-d-1400.webp" srcset="assets/p/hero-d-1400.webp 1400w, assets/p/hero-d-2000.webp 2000w" sizes="50vw" alt="Puitkarkassiga maja katusekonstruktsioon ehitusel" fetchpriority="high">
+        <img src="assets/p/hero-d-1400.webp" srcset="assets/p/hero-d-1400.webp 1400w, assets/p/hero-d-2000.webp 2000w" sizes="50vw" alt="Puitkarkassiga hoone katusekonstruktsioon ehitusel" fetchpriority="high">
       </picture>
     </div>
   </section>
 
-  <div class="reg"><div class="wrap"><span><b>Pj Ehitus OÜ</b></span><span>Registrikood 16270670</span><span>Tegutseb alates 2021</span><span>Elamute ja mitteeluhoonete ehitus</span><span>Tallinn</span></div></div>
+  <div class="reg" aria-label="Ettevõtte andmed"><div class="wrap"><span><b>Pj Ehitus OÜ</b></span><span>Registrikood 16270670</span><span>Äriregistris alates 2021</span><span>Üldehitustööd sees ja väljas</span><span>Tallinn</span></div></div>
 
-  <section class="sec" id="etapid">
+  <section class="sec" id="teenused">
     <div class="wrap">
-      <div class="sec__head">
-        <h2 class="cap">Mida teeme</h2>
-        <p class="sec__lead">Üldehitustööd sees ja väljas Tallinnas. Tööd jagunevad etappideks, igal etapil teate, mis on tehtud ja mis tuleb järgmisena.</p>
-      </div>
-      <div class="stages">
-        <figure class="st">
-          <div class="st__ph"><img src="assets/p/vundament-1400.webp" srcset="assets/p/vundament-800.webp 800w, assets/p/vundament-1400.webp 1400w" sizes="(max-width:899px) 100vw, 56vw" alt="Vundamendi raketis ehitusplatsil" loading="lazy"></div>
-          <figcaption><span class="st__n">01</span><h3>Vundament</h3><p>Maja algab vundamendist. Enne tööde algust vaatame üle krundi ja projekti.</p></figcaption>
-        </figure>
-        <figure class="st">
-          <div class="st__ph"><img src="assets/p/karkass-1400.webp" srcset="assets/p/karkass-800.webp 800w, assets/p/karkass-1400.webp 1400w" sizes="(max-width:899px) 100vw, 40vw" alt="Puitkarkassi seinte paigaldus" loading="lazy"></div>
-          <figcaption><span class="st__n">02</span><h3>Karkass ja seinad</h3><p>Kandvad konstruktsioonid, seinad ja vahelaed projekti järgi.</p></figcaption>
-        </figure>
-        <figure class="st">
-          <div class="st__ph"><img src="assets/p/katus-1400.webp" srcset="assets/p/katus-800.webp 800w, assets/p/katus-1400.webp 1400w" sizes="(max-width:899px) 100vw, 40vw" alt="Katusekivide paigaldus" loading="lazy"></div>
-          <figcaption><span class="st__n">03</span><h3>Katus</h3><p>Katusekonstruktsioon ja katusekate, et hoone saaks enne talve kinni.</p></figcaption>
-        </figure>
-        <figure class="st">
-          <div class="st__ph"><img src="assets/p/sise-1400.webp" srcset="assets/p/sise-800.webp 800w, assets/p/sise-1400.webp 1400w" sizes="(max-width:899px) 100vw, 56vw" alt="Siseruumi ehitustööd" loading="lazy"></div>
-          <figcaption><span class="st__n">04</span><h3>Sisetööd</h3><p>Siseruumide ehitus- ja viimistlustööd. Kogu töö käigus hoiame teid kursis.</p></figcaption>
-        </figure>
-      </div>
+      <div class="sec__head"><h2 class="cap">Mida teeme</h2><p class="sec__lead">Üldehitustööd Tallinnas: uued hooned, juurdeehitused ja tööd olemasolevates hoonetes.</p></div>
+      <ul class="svc"><li class="svc__i"><span class="svc__n">01</span><h3>Vundamendid</h3><p>Vundamenditööd uutele hoonetele ja juurdeehitustele.</p></li><li class="svc__i"><span class="svc__n">02</span><h3>Karkass ja seinad</h3><p>Karkassid, seinad ja vahelaed projekti järgi.</p></li><li class="svc__i"><span class="svc__n">03</span><h3>Katusetööd</h3><p>Katusekonstruktsioonid ja katusekatted.</p></li><li class="svc__i"><span class="svc__n">04</span><h3>Välistööd</h3><p>Fassaadid, terrassid ja muud välistööd.</p></li><li class="svc__i"><span class="svc__n">05</span><h3>Siseehitus</h3><p>Vaheseinad, laed ja põrandad.</p></li><li class="svc__i"><span class="svc__n">06</span><h3>Viimistlus ja remont</h3><p>Siseviimistlus ja remonditööd.</p></li></ul>
+      <p class="svc__note">Kui teie tööd loetelus pole, küsige julgelt. <a href="tel:+37256177692">+372 5617 7692</a></p>
     </div>
   </section>
 
-  <section class="sec how" id="kuidas">
+  <section class="sec sec--tint" id="etapid">
     <div class="wrap">
-      <div class="sec__head">
-        <h2 class="cap">Kuidas alustada</h2>
-        <p class="sec__lead">Pakkumise jaoks piisab lühikesest kirjeldusest. Projekt, joonised või fotod aitavad hinna kiiremini paika panna.</p>
-      </div>
-      <ol class="steps">
-        <li><b>1. Kirjutage</b><span>Mida ja kuhu soovite ehitada, millal tahaksite alustada.</span></li>
-        <li><b>2. Vaatame üle</b><span>Tutvume projekti ja objektiga ning saadame pakkumise.</span></li>
-        <li><b>3. Alustame</b><span>Lepime kokku ajakava ja tööde järjekorra ning alustame ehitusega.</span></li>
-      </ol>
+      <div class="sec__head"><h2 class="cap">Tööde etapid</h2><p class="sec__lead">Igal etapil teate, mis on tehtud ja mis tuleb järgmisena.</p></div>
+      <div class="stages"><figure class="st"><div class="st__ph"><img src="assets/p/vundament-1400.webp" srcset="assets/p/vundament-800.webp 800w, assets/p/vundament-1400.webp 1400w" sizes="(max-width:899px) 82vw, 50vw" alt="Vundamendi raketis ehitusplatsil" loading="lazy"></div><figcaption><span class="st__n">01</span><h3>Vundament</h3><p>Maja algab vundamendist. Enne tööde algust vaatame üle krundi ja projekti.</p></figcaption></figure><figure class="st"><div class="st__ph"><img src="assets/p/karkass-1400.webp" srcset="assets/p/karkass-800.webp 800w, assets/p/karkass-1400.webp 1400w" sizes="(max-width:899px) 82vw, 50vw" alt="Puitkarkassi seinte paigaldus" loading="lazy"></div><figcaption><span class="st__n">02</span><h3>Karkass ja seinad</h3><p>Kandvad konstruktsioonid, seinad ja vahelaed projekti järgi.</p></figcaption></figure><figure class="st"><div class="st__ph"><img src="assets/p/katus-1400.webp" srcset="assets/p/katus-800.webp 800w, assets/p/katus-1400.webp 1400w" sizes="(max-width:899px) 82vw, 50vw" alt="Katusekivide paigaldus" loading="lazy"></div><figcaption><span class="st__n">03</span><h3>Katus</h3><p>Katusekonstruktsioon ja katusekate, et hoone saaks enne talve kinni.</p></figcaption></figure><figure class="st"><div class="st__ph"><img src="assets/p/sise-1400.webp" srcset="assets/p/sise-800.webp 800w, assets/p/sise-1400.webp 1400w" sizes="(max-width:899px) 82vw, 50vw" alt="Siseruumi ehitustööd" loading="lazy"></div><figcaption><span class="st__n">04</span><h3>Sisetööd</h3><p>Siseruumide ehitus- ja viimistlustööd.</p></figcaption></figure></div>
     </div>
   </section>
 
-  <section class="wide" id="kontakt" aria-label="Kontakt">
-    <img src="assets/p/sein-1400.webp" srcset="assets/p/sein-800.webp 800w, assets/p/sein-1400.webp 1400w" sizes="100vw" alt="Puitkarkass ja tellingud ehitusplatsil" loading="lazy">
+  <section class="sec">
+    <div class="wrap why">
+      <div class="why__ph"><img src="assets/p/karkass-1400.webp" srcset="assets/p/karkass-800.webp 800w, assets/p/karkass-1400.webp 1400w" sizes="(max-width:899px) 100vw, 45vw" alt="" loading="lazy"></div>
+      <div><h2 class="cap">Miks Pj Ehitus</h2><ul class="why__l"><li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><div><b>Registreeritud ettevõte</b><span>Pj Ehitus OÜ on äriregistris alates 2021. aastast, registrikood 16270670.</span></div></li><li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><div><b>Tööd sees ja väljas</b><span>Üldehitustööd nii siseruumides kui väljas, ühe tegija käest.</span></div></li><li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><div><b>Otse tegijaga</b><span>Suhtlete otse Priit Jõgiga, ilma vahendajateta.</span></div></li><li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><div><b>Enne ja pärast</b><span>Näitame varasemate tööde enne ja pärast pilte.</span></div></li></ul></div>
+    </div>
+  </section>
+
+  <section class="sec how">
     <div class="wrap">
-      <h2 class="cap">Plaanite ehitust?</h2>
-      <p>Helistage või kirjutage, mida soovite ehitada. Vastame ja lepime kokku, kuidas edasi minna.</p>
-      <a class="btn" href="tel:+37256177692"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5.2 3.8h3.3l1.6 4.1-2.1 1.4a11.3 11.3 0 0 0 6.7 6.7l1.4-2.1 4.1 1.6v3.3a1.6 1.6 0 0 1-1.7 1.6A16.4 16.4 0 0 1 3.6 5.5a1.6 1.6 0 0 1 1.6-1.7z"/></svg>Helista +372 5617 7692</a>
-      <p class="hero__mail">E-post: <a href="mailto:pjehitus@gmail.com?subject=P%C3%A4ring%20Pj%20Ehituse%20kodulehelt">pjehitus@gmail.com</a></p>
+      <div class="sec__head"><h2 class="cap">Kuidas töö käib</h2><p class="sec__lead">Pakkumise jaoks piisab lühikesest kirjeldusest. Projekt, joonised või fotod aitavad hinna kiiremini paika panna.</p></div>
+      <ol class="steps"><li><b>1. Helistage või kirjutage</b><span>Rääkige, mida ja kuhu soovite ehitada.</span></li><li><b>2. Vaatame üle</b><span>Tutvume objekti ja projektiga.</span></li><li><b>3. Pakkumine</b><span>Saadame pakkumise ja lepime kokku ajakava.</span></li><li><b>4. Töö ja üleandmine</b><span>Ehitame ja anname töö üle.</span></li></ol>
+    </div>
+  </section>
+
+  <section class="sec sec--tint" id="kontakt">
+    <div class="wrap contact">
+      <div>
+        <h2 class="cap">Kontakt</h2>
+        <p class="sec__lead">Helistage või kirjutage, mida soovite ehitada. Vastame ja lepime kokku, kuidas edasi minna.</p>
+        <a class="btn" href="tel:+37256177692"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5.2 3.8h3.3l1.6 4.1-2.1 1.4a11.3 11.3 0 0 0 6.7 6.7l1.4-2.1 4.1 1.6v3.3a1.6 1.6 0 0 1-1.7 1.6A16.4 16.4 0 0 1 3.6 5.5a1.6 1.6 0 0 1 1.6-1.7z"/></svg>Helista +372 5617 7692</a>
+        <dl class="cdl"><dt>Telefon</dt><dd><a href="tel:+37256177692">+372 5617 7692</a></dd><dt>E-post</dt><dd><a href="mailto:pjehitus@gmail.com">pjehitus@gmail.com</a></dd><dt>Kontaktisik</dt><dd>Priit Jõgi</dd><dt>Juriidiline aadress</dt><dd>Kalevipoja põik 1, 13614 Tallinn</dd></dl>
+      </div>
+      <form class="form" id="ask" novalidate>
+        <h3>Päring</h3>
+        <label for="f-n">Nimi<input id="f-n" name="n" autocomplete="name" required></label>
+        <label for="f-c">Telefon või e-post<input id="f-c" name="c" autocomplete="tel" required></label>
+        <label for="f-m">Mida on vaja teha<textarea id="f-m" name="m" placeholder="Näiteks: terrass eramaja juurde, umbes 25 m², sooviks alustada kevadel"></textarea></label>
+        <button class="btn" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m4 7 8 6 8-6"/></svg>Saada päring</button>
+        <small>Nupp avab teie e-posti programmi valmis kirjaga.</small>
+      </form>
     </div>
   </section>
 </main>
 
 <footer class="ftr">
-  <div class="wrap"><span><b>Pj Ehitus OÜ</b> · registrikood 16270670</span><span>Kalevipoja põik 1, 13614 Tallinn</span><span>+372 5617 7692 · pjehitus@gmail.com</span></div>
+  <div class="wrap"><span><b>Pj Ehitus OÜ · registrikood 16270670</b></span><span>Kalevipoja põik 1, 13614 Tallinn</span><span><a href="tel:+37256177692">+372 5617 7692</a> · <a href="mailto:pjehitus@gmail.com">pjehitus@gmail.com</a></span></div>
 </footer>
+<script>
+document.getElementById('ask').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var g = function (id) { return document.getElementById(id); };
+  var n = g('f-n').value.trim(), c = g('f-c').value.trim(), m = g('f-m').value.trim();
+  if (!n || !c) { (n ? g('f-c') : g('f-n')).focus(); return; }
+  location.href = 'mailto:pjehitus@gmail.com?subject=' + encodeURIComponent('Päring Pj Ehituse kodulehelt') + '&body=' + encodeURIComponent('Nimi: ' + n + '\nKontakt: ' + c + '\n\n' + m);
+});
+</script>
 </body>
 </html>
