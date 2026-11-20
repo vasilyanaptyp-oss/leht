@@ -68,10 +68,11 @@ a{color:inherit}
 @keyframes settle{from{transform:scale(1.06)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){.hero__img img{animation:none}}
 @media (max-width:899px){
-  .hero{grid-template-columns:1fr;min-height:0}
+  .hero{grid-template-columns:minmax(0,1fr);min-height:0}
   .hero__img{order:-1;min-height:0;height:min(34vh,228px)}
   .hero__txt{padding:20px var(--gut) 30px;gap:16px}
   .hero h1{font-size:clamp(40px,12vw,64px)}
+  html[lang=ru] .hero h1{font-size:clamp(30px,9.8vw,60px)}
   .hero p{font-size:16px;line-height:1.5}
   .hero__act .btn{flex:1 1 100%}
 }
