@@ -55,5 +55,33 @@
     items.forEach(function (el) { el.classList.add('in'); });
   }
 
+    var ask = document.getElementById('paring');
+  if (ask) {
+    var note = ask.querySelector('.ask-note');
+    var via = 'mail';
+    [].forEach.call(ask.querySelectorAll('button[data-via]'), function (b) {
+      b.addEventListener('click', function () { via = b.getAttribute('data-via'); });
+    });
+    ask.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var koht = ask.koht.value.trim(), tel = ask.tel.value.trim(), too = ask.too.value;
+      if (!koht && !tel) {
+        note.textContent = 'Kirjutage palun katastritunnus, asukoht või oma telefon.';
+        ask.koht.focus();
+        return;
+      }
+      note.textContent = '';
+      var lines = ['Tere!', 'Soovin metsatööde pakkumist.', 'Töö: ' + too];
+      if (koht) lines.push('Kinnistu: ' + koht);
+      if (tel) lines.push('Telefon: ' + tel);
+      var text = lines.join(String.fromCharCode(10));
+      if (via === 'wa') {
+        window.open('https://wa.me/37251990544?text=' + encodeURIComponent(text), '_blank', 'noopener');
+      } else {
+        window.location.href = 'mailto:info@vaigavarad.ee?subject=' + encodeURIComponent('Päring: ' + too) + '&body=' + encodeURIComponent(text);
+      }
+    });
+  }
+
   onScroll();
 })();
