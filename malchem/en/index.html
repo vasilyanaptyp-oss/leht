@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>MALCHEM Estonia · anti-corrosion industrial coatings</title>
-<meta name="description" content="MALCHEM is a Polish manufacturer of industrial coatings with over 45 years of experience: alkyd, epoxy, polyurethane, heat-resistant and powder coatings for metal. Represented in Estonia by MIVTEK OÜ.">
+<meta name="description" content="MALCHEM is a Polish industrial coatings manufacturer with over 45 years of experience, making alkyd, epoxy, polyurethane, heat-resistant and powder coatings for metal. Represented in Estonia by MIVTEK OÜ.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://vasylian.com/leht/malchem/en/">
 <link rel="alternate" hreflang="et" href="https://vasylian.com/leht/malchem/"><link rel="alternate" hreflang="en" href="https://vasylian.com/leht/malchem/en/"><link rel="alternate" hreflang="x-default" href="https://vasylian.com/leht/malchem/">
-<meta property="og:title" content="MALCHEM Estonia · anti-corrosion industrial coatings"><meta property="og:description" content="MALCHEM is a Polish manufacturer of industrial coatings with over 45 years of experience: alkyd, epoxy, polyurethane, heat-resistant and powder coatings for metal. Represented in Estonia by MIVTEK OÜ."><meta property="og:image" content="https://vasylian.com/leht/malchem/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:url" content="https://vasylian.com/leht/malchem/en/"><meta property="og:type" content="website">
+<meta property="og:title" content="MALCHEM Estonia · anti-corrosion industrial coatings"><meta property="og:description" content="MALCHEM is a Polish industrial coatings manufacturer with over 45 years of experience, making alkyd, epoxy, polyurethane, heat-resistant and powder coatings for metal. Represented in Estonia by MIVTEK OÜ."><meta property="og:image" content="https://vasylian.com/leht/malchem/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:url" content="https://vasylian.com/leht/malchem/en/"><meta property="og:type" content="website">
 <meta name="theme-color" content="#16181A">
 <link rel="icon" href="../favicon.ico" sizes="32x32"><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="preload" href="../assets/f/plex-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -20,11 +20,12 @@
 @font-face{font-family:"Plex";font-style:normal;font-weight:300 700;font-stretch:85% 100%;font-display:swap;src:url(../assets/f/plex-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
 /* the manufacturer's own warehouse and plant footage, graphite and the brand's signal red; condensed Plex for headings */
 :root{--white:#fff;--paper:#F3F3F0;--ink:#16181A;--ink2:#22262A;--muted:#5A5F63;--line:#DEDED8;--red:#C8171E;--red-d:#A30F15;--ok:#1F7A4D;
-  --f:"Plex","IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;--gut:clamp(18px,4vw,56px);--hdr:72px}
+  --f:"Plex","IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;--gut:clamp(18px,4vw,56px);--hdr:72px;
+  --ease:cubic-bezier(.2,.72,.16,1)}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:12px}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--white);color:var(--ink);font:400 17px/1.6 var(--f)}
+body{margin:0;background:var(--white);color:var(--ink);font:400 17px/1.6 var(--f);overflow-x:hidden}
+@supports (overflow:clip){body{overflow-x:clip}}
 img,video{display:block;max-width:100%;height:auto}
 a{color:inherit}
 [hidden]{display:none!important}
@@ -32,39 +33,50 @@ a{color:inherit}
 .wrap{max-width:1320px;margin:0 auto;padding-left:max(var(--gut),env(safe-area-inset-left));padding-right:max(var(--gut),env(safe-area-inset-right))}
 .h{font-stretch:85%;font-weight:700;letter-spacing:-.015em;line-height:1;text-wrap:balance}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 28px;background:var(--red);color:#fff;
-  font:600 16.5px/1 var(--f);text-decoration:none;border:0;border-radius:2px;cursor:pointer;transition:background .2s}
-.btn:hover{background:var(--red-d)}
+  font:600 16.5px/1 var(--f);text-decoration:none;border:0;border-radius:2px;cursor:pointer;transition:background .2s,transform .2s,box-shadow .25s}
+.btn:hover{background:var(--red-d);box-shadow:0 10px 24px -10px rgba(200,23,30,.7)}
+.btn:active{transform:translateY(1px)}
 .btn svg{width:18px;height:18px;flex:none}
 .btn--ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55)}
-.btn--ghost:hover{background:rgba(255,255,255,.12)}
+.btn--ghost:hover{background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1.5px #fff}
+
+/* scroll reveal: transform + opacity only, nothing moves the layout */
+.js [data-r]{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform 1s var(--ease);transition-delay:calc(var(--d,0) * 110ms)}
+.js [data-r].in{opacity:1;transform:none}
 
 /* header */
-.hdr{background:var(--white);position:relative;z-index:3}
+/* header lies over the film, the logo in MALCHEM's own white version (as in its film) */
+.hdr{position:absolute;top:0;left:0;right:0;z-index:4;color:#fff}
 .hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;height:var(--hdr)}
 .brand{display:flex;align-items:center;gap:14px;text-decoration:none}
 .brand img{height:40px;width:auto}
-.brand span{font-stretch:85%;font-weight:600;font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-left:1px solid var(--line);padding-left:14px}
+.brand span{font-stretch:85%;font-weight:600;font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.78);border-left:1px solid rgba(255,255,255,.38);padding-left:14px}
 .nav{display:flex;gap:28px;font-size:15.5px;font-weight:500}
-.nav a{text-decoration:none;color:var(--ink2)}
-.nav a:hover{color:var(--red)}
+.nav a{text-decoration:none;color:rgba(255,255,255,.9);background:linear-gradient(var(--red),var(--red)) 0 100%/0 2px no-repeat;padding:4px 0;transition:background-size .35s var(--ease),color .2s}
+.nav a:hover{color:#fff;background-size:100% 2px}
 .hdr__r{display:flex;align-items:center;gap:14px}
-.lang{display:flex;border:1px solid var(--line);border-radius:2px;font-size:13px;font-weight:600;letter-spacing:.06em}
-.lang a{padding:9px 11px;text-decoration:none;color:var(--muted);line-height:1}
-.lang a:hover{color:var(--ink)}
-.lang a[aria-current]{background:var(--ink);color:#fff}
+.lang{display:flex;border:1px solid rgba(255,255,255,.42);border-radius:2px;font-size:13px;font-weight:600;letter-spacing:.06em}
+.lang a{padding:9px 11px;text-decoration:none;color:rgba(255,255,255,.78);line-height:1}
+.lang a:hover{color:#fff}
+.lang a[aria-current]{background:#fff;color:var(--ink)}
 .hdr .btn{min-height:44px;padding:0 18px;font-size:15px}
 @media (max-width:999px){.nav{display:none}}
 @media (max-width:640px){:root{--hdr:60px}.hdr .btn{display:none}.brand img{height:32px}.brand span{font-size:12px;padding-left:10px}.brand{gap:10px}}
 
-/* hero: one photograph across the whole screen, headline anchored to the bottom left */
+/* hero: the plant's own film runs behind the headline (poster = still from the same film) */
 .hero{position:relative;background:var(--ink);color:#fff;overflow:hidden;isolation:isolate}
 .hero__bg{position:absolute;inset:0;z-index:-1}
-.hero__bg img{width:100%;height:100%;object-fit:cover;object-position:78% 60%}
+.hero__bg img,.hero__vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:78% 60%}
+.hero__vid{opacity:0;transition:opacity 1.4s ease;object-position:62% 50%}
+.hero__vid.on{opacity:1}
 .hero__bg::after{content:"";position:absolute;inset:0;background:
-  linear-gradient(90deg,rgba(22,24,26,.94) 0%,rgba(22,24,26,.84) 34%,rgba(22,24,26,.5) 58%,rgba(22,24,26,.06) 82%),
-  linear-gradient(0deg,rgba(22,24,26,.9) 0%,rgba(22,24,26,0) 34%)}
-.hero__in{display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(560px,calc(100vh - var(--hdr)),900px);min-height:clamp(560px,calc(100svh - var(--hdr)),900px);padding-top:56px;padding-bottom:0}
+  linear-gradient(90deg,rgba(22,24,26,.94) 0%,rgba(22,24,26,.84) 34%,rgba(22,24,26,.5) 58%,rgba(22,24,26,.08) 82%),
+  linear-gradient(0deg,rgba(22,24,26,.9) 0%,rgba(22,24,26,0) 34%),
+  linear-gradient(180deg,rgba(22,24,26,.62) 0%,rgba(22,24,26,0) 20%)}
+.hero__in{display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(620px,100vh,960px);min-height:clamp(620px,100svh,960px);padding-top:calc(var(--hdr) + 56px);padding-bottom:0}
 .hero h1{margin:0;font-size:clamp(46px,7.3vw,116px);line-height:.94;max-width:9.6em;hyphens:manual}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+.hero h1 .ln>span{display:block}
 .hero h1 b{color:#FF4E53;font-weight:700}
 .hero p{margin:26px 0 0;max-width:33em;font-size:19px;line-height:1.55;color:#E3E6E7}
 .hero__act{display:flex;flex-wrap:wrap;gap:12px 14px;margin-top:30px}
@@ -72,16 +84,30 @@ a{color:inherit}
 .hero__facts div{padding:18px 20px 22px 0;min-width:0}
 .hero__facts dt{font-size:13.5px;color:#B9BEC1}
 .hero__facts dd{margin:2px 0 0;font-weight:600;font-size:17px;line-height:1.35}
+.cnt{display:inline-block;min-width:2ch;text-align:right;font-variant-numeric:tabular-nums}
+.hero__pp{position:absolute;z-index:2;top:calc(var(--hdr) + 18px);right:max(var(--gut),env(safe-area-inset-right));width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,255,255,.55);
+  background:rgba(22,24,26,.5);color:#fff;display:grid;place-items:center;cursor:pointer;padding:0;transition:background .2s,border-color .2s}
+.hero__pp:hover{background:rgba(22,24,26,.8);border-color:#fff}
+.hero__pp svg{width:18px;height:18px;grid-area:1/1}
+.hero__pp .i-play,.hero__pp.paused .i-pause{display:none}
+.hero__pp.paused .i-play{display:block}
+.js .hero h1 .ln>span{animation:rise 1.05s var(--ease) both .1s}
+.js .hero h1 .ln+.ln>span{animation-delay:.22s}
+.js .hero .fx{animation:fadeup .9s var(--ease) both;animation-delay:calc(.45s + var(--d,0) * .14s)}
+@keyframes rise{from{transform:translateY(104%)}to{transform:none}}
+@keyframes fadeup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 @media (max-width:699px){
-  .hero__bg img{object-position:50% 0%;height:74%}
-  .hero__bg::after{background:linear-gradient(180deg,rgba(22,24,26,.12) 0%,rgba(22,24,26,.2) 26%,rgba(22,24,26,.9) 56%,rgba(22,24,26,.98) 100%)}
-  .hero__in{min-height:max(520px,calc(100vh - var(--hdr)));min-height:max(520px,calc(100svh - var(--hdr)));padding-top:150px;padding-bottom:22px}
+  .hero__bg img,.hero__vid{object-position:50% 0%;height:78%}
+  .hero__vid{object-position:50% 35%}
+  .hero__bg::after{background:linear-gradient(180deg,rgba(22,24,26,.6) 0%,rgba(22,24,26,.1) 16%,rgba(22,24,26,.2) 30%,rgba(22,24,26,.9) 56%,rgba(22,24,26,.99) 76%,#16181A 100%)}
+  .hero__in{min-height:max(580px,100vh);min-height:max(580px,100svh);padding-top:calc(var(--hdr) + 150px);padding-bottom:22px}
   .hero h1{font-size:clamp(33px,10.6vw,54px);line-height:.98;max-width:none}
   .hero p{margin-top:14px;font-size:16px;line-height:1.5}
   .hero__act{margin-top:18px}
   .hero__act .btn{flex:1 1 100%}
   .hero__act .btn--ghost{display:none}
   .hero__facts{display:none}
+  .hero__pp{top:calc(var(--hdr) + 10px);width:40px;height:40px}
   .xm{display:none}
 }
 @media (min-width:700px) and (max-width:1000px){.hero__facts{grid-template-columns:1fr 1fr}.hero__facts div:nth-child(-n+2){padding-bottom:4px}}
@@ -94,73 +120,134 @@ a{color:inherit}
 .head p{margin:0;color:var(--muted);font-size:18px;max-width:32em}
 @media (max-width:899px){.head{grid-template-columns:1fr}.head p{font-size:16px}}
 
-/* products: a data-sheet table, the brand's own packaging next to it */
-.prod{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,9fr);gap:clamp(20px,4vw,64px);align-items:start}
-.pack{margin:0;position:sticky;top:24px;text-align:center}
-.pack img{width:100%;max-width:360px;margin:0 auto}
-.pack figcaption{margin-top:6px;font-size:14.5px;color:var(--muted)}
+/* products: a sticky stage with the brand's real packaging, a data-sheet list beside it */
+.prod{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4.4vw,72px);align-items:start}
+.side{position:sticky;top:24px}
+.stage{position:relative;margin:0;height:min(660px,calc(100vh - 48px));min-height:520px;background:var(--paper);overflow:hidden}
+.stage__code{position:absolute;left:22px;top:8px;font-stretch:85%;font-weight:700;font-size:clamp(150px,15vw,236px);line-height:1;letter-spacing:-.03em;color:#E3E3DC;
+  transition:opacity .3s ease,transform .5s var(--ease);user-select:none}
+.stage__code.sw{opacity:0;transform:translateY(-18px)}
+.stage__img{position:absolute;left:50%;bottom:58px;height:84%;width:auto;max-width:92%;object-fit:contain;mix-blend-mode:multiply;opacity:0;
+  transform:translate(-50%,28px) scale(.95);transition:opacity .5s ease,transform .9s var(--ease)}
+.stage__img.on{opacity:1;transform:translate(-50%,0) scale(1)}
+.stage__img--ph{left:0;bottom:0;top:0;height:100%;width:100%;max-width:none;object-fit:cover;mix-blend-mode:normal;transform:scale(1.07)}
+.stage__img--ph.on{transform:scale(1)}
+.stage__cap{position:absolute;left:0;right:0;bottom:0;z-index:1;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 14px;
+  padding:16px 22px;background:var(--ink);color:#B9BEC1;font-size:13px;letter-spacing:.06em}
+.stage__cap b{font-stretch:85%;font-size:20px;letter-spacing:0;color:#fff}
+.stage__m{display:none}
 .rows{border-top:2px solid var(--ink)}
-.row{display:grid;grid-template-columns:118px minmax(0,6fr) minmax(0,5fr);gap:8px 28px;padding:26px 0 28px;border-bottom:1px solid var(--line);align-items:start}
-.row__code{font-stretch:85%;font-weight:700;font-size:44px;line-height:.9;letter-spacing:-.01em;color:var(--red)}
+.row{position:relative;display:grid;grid-template-columns:104px minmax(0,1fr);gap:6px 22px;padding:26px 0 26px;border-bottom:1px solid var(--line)}
+.row::before{content:"";position:absolute;left:-16px;top:-1px;bottom:-1px;width:3px;background:var(--red);transform:scaleY(0);transform-origin:50% 0;transition:transform .5s var(--ease)}
+.row.on::before{transform:none}
+.row__code{font-stretch:85%;font-weight:700;font-size:44px;line-height:.9;letter-spacing:-.01em;color:var(--red);transition:color .4s ease}
+.js .row:not(.on) .row__code{color:#8A8C87}
+.js .row:not(.on) .row__code small{color:#6E716D}
 .row__code small{display:block;font-size:22px;line-height:1.5;letter-spacing:.02em;text-transform:uppercase}
 .row h3{margin:0 0 6px;font-stretch:85%;font-size:28px;font-weight:700;line-height:1.08}
 .row p{margin:0;color:var(--muted);font-size:16px}
-.row ul{margin:4px 0 0;padding:0;list-style:none;font-size:15.5px;color:var(--ink2)}
-.row li{padding:5px 0 5px 16px;position:relative;line-height:1.4}
+.row ul{margin:10px 0 0;padding:0;list-style:none;font-size:15.5px;color:var(--ink2)}
+.row li{padding:4px 0 4px 16px;position:relative;line-height:1.4}
 .row li::before{content:"";position:absolute;left:0;top:.82em;width:7px;height:2px;background:var(--red)}
+.row__names{margin-top:12px;font-size:14.5px}
+.row__names summary{display:inline-flex;align-items:center;gap:8px;cursor:pointer;list-style:none;font-weight:600;color:var(--ink2);padding:4px 0}
+.row__names summary::-webkit-details-marker{display:none}
+.row__names summary::after{content:"";width:9px;height:9px;border:solid var(--red);border-width:0 2px 2px 0;transform:translateY(-3px) rotate(45deg);transition:transform .3s var(--ease)}
+.row__names[open] summary::after{transform:translateY(2px) rotate(-135deg)}
+.row__names summary:hover{color:var(--red)}
+.row__names p{margin:4px 0 0;color:var(--ink2);font-size:14.5px;line-height:1.55;letter-spacing:.01em}
+.heat{margin:16px 0 2px;max-width:460px}
+.heat__bar{height:8px;background:#E7E7E1;position:relative;overflow:hidden;border-radius:1px}
+.heat__bar i{position:absolute;inset:0;background:linear-gradient(90deg,#F2C14E 0%,#E8781F 45%,#C8171E 100%);transform-origin:0 50%;transition:transform 1.8s cubic-bezier(.3,.6,.15,1) .15s}
+.js .heat:not(.in) .heat__bar i{transform:scaleX(0)}
+.heat ol{list-style:none;margin:0;padding:0;position:relative;height:24px;font-size:12.5px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.heat li{position:absolute;top:7px;left:calc(var(--p) * 100%);transform:translateX(-50%);line-height:1;white-space:nowrap}
+.heat li::before{content:"";position:absolute;left:50%;top:-7px;width:1.5px;height:5px;background:#B9BAB3}
+.heat li:last-child{transform:translateX(-100%);color:var(--red)}
+.heat li:last-child::before{left:auto;right:0}
 .note{margin:30px 0 0;font-size:17px;max-width:48em;color:var(--muted)}
 .note b{color:var(--ink)}
 @media (max-width:1000px){
-  .prod{grid-template-columns:1fr}
-  .pack{position:static;display:flex;align-items:center;gap:18px;text-align:left}
-  .pack img{width:150px;max-width:150px;margin:0}
+  .prod{grid-template-columns:1fr;gap:0}
+  .side{position:static}
+  .stage{height:auto;min-height:0;display:flex;justify-content:center;align-items:flex-end;gap:2.5%;padding:20px 14px 14px}
+  .stage__code,.stage__cap,.stage__img--ph{display:none}
+  .stage__img,.stage__img.on{position:static;opacity:1;transform:none;height:auto;width:31%;max-width:250px}
+  .stage__m{display:block;margin:10px 0 18px;font-size:14px;color:var(--muted)}
+  .row::before{left:-12px}
 }
 @media (max-width:640px){
-  .row{grid-template-columns:64px minmax(0,1fr);gap:0 10px;padding:15px 0 16px}
+  .row{grid-template-columns:62px minmax(0,1fr);gap:0 10px;padding:16px 0 16px}
   .row__code{font-size:27px;line-height:1.05}
-  .row__code small{font-size:14px;line-height:2}
+  .row__code small{font-size:13px;line-height:2.1}
   .row h3{font-size:22px;margin-bottom:3px}
   .row p{font-size:15px;line-height:1.45}
-  .row ul,.row>span:last-child{display:none}
-  .pack img{width:104px;max-width:104px}
-  .pack figcaption{font-size:14px;margin:0}
-  .pack{margin-bottom:14px}
+  .row ul{display:none}
+  .row__names{margin-top:6px;font-size:14px}
+  .row__names p{font-size:13.5px}
+  .heat{margin-top:10px}
   .note{font-size:15px;margin-top:18px}
+  .stage{padding:14px 10px 10px}
 }
+
+/* statement band: MALCHEM's own line over a frame from its film */
+.band{position:relative;overflow:hidden;background:var(--ink);color:#fff;min-height:clamp(300px,40vw,560px);display:flex;align-items:flex-end;isolation:isolate}
+.band__img{position:absolute;left:0;top:-12%;width:100%;height:124%;max-width:none;object-fit:cover;z-index:-2}
+.band::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(22,24,26,.82) 0%,rgba(22,24,26,.25) 55%,rgba(22,24,26,.05) 100%)}
+.band__in{width:100%;padding-top:40px;padding-bottom:clamp(30px,5.5vw,72px)}
+.band__t{margin:0;font-size:clamp(34px,6.2vw,96px);max-width:11em}
 
 /* industries */
 .ind{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(22px,2.6vw,36px) clamp(12px,1.8vw,24px)}
 .ind figure{margin:0;min-width:0}
-.ind img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#ddd}
-.ind figcaption{display:flex;gap:12px;align-items:baseline;padding-top:12px;font-stretch:85%;font-weight:600;font-size:21px;line-height:1.2;border-top:2px solid var(--ink);margin-top:0}
+.ph{overflow:hidden;background:#ddd}
+.ind .ph{margin-bottom:12px}
+.ind img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform 1.1s var(--ease)}
+.ind figure:hover img{transform:scale(1.06)}
+.ind figcaption{display:flex;gap:12px;align-items:baseline;padding-top:12px;font-stretch:85%;font-weight:600;font-size:21px;line-height:1.2;border-top:2px solid var(--ink);margin-top:0;transition:border-color .3s}
+.ind figure:hover figcaption{border-color:var(--red)}
 .ind figcaption b{color:var(--red);font-weight:700;font-variant-numeric:tabular-nums}
-.ind img{margin-bottom:12px}
-@media (max-width:899px){.ind{grid-template-columns:1fr 1fr}.ind figcaption{font-size:15.5px;gap:8px;padding-top:8px;border-top-width:1.5px}.ind img{margin-bottom:8px}}
+@media (max-width:899px){.ind{grid-template-columns:1fr 1fr}.ind figcaption{font-size:15.5px;gap:8px;padding-top:8px;border-top-width:1.5px}.ind .ph{margin-bottom:8px}}
 
 /* dew point tool */
 .dew__in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4.5vw,72px);align-items:stretch}
-.dew__ph{margin:0;position:relative;min-height:420px;background:#2a2e31}
-.dew__ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:42% 50%}
+.dew__ph{margin:0;position:relative;min-height:420px;background:#2a2e31;overflow:hidden}
+.dew__ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:42% 50%;transform:scale(1.02);transition:transform 14s linear}
+.dew__ph.in img{transform:scale(1.13)}
 .dew h2{margin-bottom:18px}
 .dew__main>p{margin:0 0 12px;color:var(--muted);max-width:38em}
 .calc{margin-top:26px;background:var(--paper);padding:clamp(18px,2.6vw,32px);border-top:3px solid var(--red)}
 .calc__f{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .calc label{display:flex;flex-direction:column;justify-content:space-between;gap:6px;font-size:14px;color:var(--muted);font-weight:500;line-height:1.3}
-.calc input{font:600 22px/1.2 var(--f);font-stretch:85%;color:var(--ink);padding:12px;border:1.5px solid var(--line);border-radius:2px;background:#fff;width:100%;min-width:0;font-variant-numeric:tabular-nums}
+.calc input{font:600 22px/1.2 var(--f);font-stretch:85%;color:var(--ink);padding:12px;border:1.5px solid var(--line);border-radius:2px;background:#fff;width:100%;min-width:0;font-variant-numeric:tabular-nums;transition:border-color .2s}
+.calc input:hover{border-color:#B9BAB3}
 .calc input:focus{outline:none;border-color:var(--ink)}
-.calc__out{margin-top:20px;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;align-items:center;border-top:1px solid var(--line);padding-top:18px}
+.calc__out{margin-top:20px;display:grid;grid-template-columns:auto 1fr;gap:8px 18px;align-items:center;border-top:1px solid var(--line);padding-top:18px}
+.calc__num{margin:0;display:flex;flex-direction:column}
+.calc__num small{font-size:13px;color:var(--muted);font-weight:500;line-height:1.2}
 .calc__dp{font-stretch:85%;font-weight:700;font-size:48px;line-height:1;font-variant-numeric:tabular-nums}
-.calc__verdict{font-weight:600;font-size:16px;padding:8px 12px;border-radius:2px;justify-self:start}
+.calc__verdict{font-weight:600;font-size:16px;padding:8px 12px;border-radius:2px;justify-self:start;transition:background .3s,color .3s}
 .calc__verdict.ok{background:#DCEFE4;color:var(--ok)}
 .calc__verdict.no{background:#F9DEDE;color:var(--red-d)}
-.calc__small{grid-column:1/-1;margin:6px 0 0;font-size:14px;color:var(--muted)}
+.calc__small{grid-column:1/-1;margin:2px 0 0;font-size:14px;color:var(--muted)}
+.gauge{grid-column:1/-1;padding:26px 0 22px}
+.gauge__tr{position:relative;height:6px;background:#DCDCD5;border-radius:3px}
+.gauge__risk{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(-45deg,#E79A9D 0 4px,#F4CDCE 4px 8px);border-radius:3px;transition:left .5s var(--ease),width .5s var(--ease)}
+.gauge__m{position:absolute;top:50%;transition:left .5s var(--ease)}
+.gauge__m i{position:absolute;left:50%;transform:translateX(-50%);font-style:normal;font-size:12.5px;font-weight:600;white-space:nowrap;color:var(--muted)}
+.gauge__m--dp{width:2px;height:22px;margin:-11px 0 0 -1px;background:var(--ink)}
+.gauge__m--dp i{bottom:calc(100% + 3px)}
+.gauge__m--s{width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--red-d);box-shadow:0 0 0 3px var(--paper)}
+.gauge__m--s.ok{background:var(--ok)}
+.gauge__m--s i{top:calc(100% + 5px)}
 @media (max-width:899px){.dew__in{grid-template-columns:1fr}.dew__ph{display:none}}
-@media (max-width:640px){.calc{margin-top:18px}.calc__f{gap:10px}.calc label{font-size:12.5px}.calc input{font-size:19px;padding:10px 8px}.calc__dp{font-size:38px}.calc__verdict{font-size:15px}}
+@media (max-width:640px){.calc{margin-top:18px}.calc__f{gap:10px}.calc label{font-size:12.5px}.calc input{font-size:19px;padding:10px 8px}.calc__dp{font-size:38px}.calc__verdict{font-size:14.5px}.calc__out{gap:8px 12px}}
 
 /* development + documents: stills from the plant */
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,44px)}
 .panel{min-width:0}
-.panel img{width:100%;aspect-ratio:16/9;object-fit:cover;background:#ddd}
+.panel img{width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform 1.1s var(--ease)}
+.panel:hover img{transform:scale(1.05)}
 .panel h3{margin:20px 0 8px;font-stretch:85%;font-size:clamp(25px,2.6vw,36px);font-weight:700;line-height:1.06}
 .panel p{margin:0;color:var(--muted);max-width:34em}
 @media (max-width:640px){.duo{grid-template-columns:1fr;gap:26px}.panel img{aspect-ratio:2/1}.panel h3{margin-top:14px;font-size:24px}.panel p{font-size:15.5px}.panel:first-child{display:none}}
@@ -168,26 +255,51 @@ a{color:inherit}
 /* film */
 .film{background:var(--ink);color:#fff}
 .film .head p{color:#B8BDC0}
+.film__box{position:relative;background:#000;overflow:hidden}
 .film video{width:100%;aspect-ratio:16/9;background:#000;object-fit:cover}
+.film__play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;border:0;padding:0;cursor:pointer;color:#fff;
+  background:radial-gradient(ellipse at 50% 55%,rgba(10,11,12,.5),rgba(10,11,12,.2) 60%),linear-gradient(0deg,rgba(10,11,12,.45),rgba(10,11,12,0) 50%);font:600 18px/1.2 var(--f);text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.film__btn{width:88px;height:88px;border-radius:50%;background:var(--red);display:grid;place-items:center;transition:transform .35s var(--ease),background .2s;animation:pulse 2.6s ease-out infinite}
+.film__btn svg{width:30px;height:30px;margin-left:4px}
+.film__play:hover .film__btn{transform:scale(1.08);background:var(--red-d)}
+.film__t{display:flex;gap:10px;align-items:baseline}
+.film__t small{font-size:15px;color:#C9CDD0;font-weight:500;font-variant-numeric:tabular-nums}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(200,23,30,.55)}70%,100%{box-shadow:0 0 0 24px rgba(200,23,30,0)}}
+@media (max-width:640px){.film__btn{width:64px;height:64px}.film__btn svg{width:24px;height:24px}.film__play{font-size:16px;gap:10px}}
 
 /* contact */
 .contact{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:32px clamp(28px,5vw,72px);align-items:start}
 .contact h2{margin:0 0 16px}
 .contact__lead{margin:0 0 22px;color:var(--muted);max-width:30em}
-.mail{display:inline-block;font-stretch:85%;font-weight:700;font-size:clamp(25px,3vw,42px);line-height:1.1;color:var(--red);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;overflow-wrap:anywhere}
-.mail:hover{color:var(--red-d)}
+.mail{display:inline-block;font-stretch:85%;font-weight:700;font-size:clamp(25px,3vw,42px);line-height:1.1;color:var(--red);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;overflow-wrap:anywhere;transition:color .2s,text-underline-offset .25s}
+.mail:hover{color:var(--red-d);text-underline-offset:9px}
 .facts{margin:26px 0 0;display:grid;grid-template-columns:auto 1fr;gap:10px 22px;font-size:16px;border-top:1px solid var(--line);padding-top:18px}
 .facts dt{color:var(--muted)}
 .facts dd{margin:0;font-weight:600}
 .form{background:var(--white);border-top:3px solid var(--red);padding:clamp(20px,3vw,36px);display:grid;gap:14px}
 .form h3{margin:0 0 4px;font-stretch:85%;font-size:28px;font-weight:700}
 .form label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:500;color:var(--muted)}
-.form input,.form textarea{font:400 16px/1.4 var(--f);color:var(--ink);padding:12px;border:1.5px solid var(--line);border-radius:2px;background:var(--paper);width:100%;min-width:0}
+.form input,.form textarea{font:400 16px/1.4 var(--f);color:var(--ink);padding:12px;border:1.5px solid var(--line);border-radius:2px;background:var(--paper);width:100%;min-width:0;transition:border-color .2s,background .2s}
 .form input:focus,.form textarea:focus{outline:none;border-color:var(--ink);background:#fff}
 .form textarea{min-height:110px;resize:vertical}
 .form small{font-size:13px;color:var(--muted)}
 @media (max-width:899px){.contact{grid-template-columns:1fr}}
-@media (max-width:640px){.sec{padding:44px 0}.head{margin-bottom:20px}.form textarea{min-height:88px}.sec--paper .head p,.film .head p,.form small{display:none}}
+@media (max-width:640px){.sec{padding:40px 0}.head{margin-bottom:20px}.form textarea{min-height:88px}.sec--paper .head p,.film .head p,.head--p p,.form small{display:none}}
+
+/* phone: keep the page short (industries swipe sideways, secondary texts stay on desktop) */
+@media (max-width:640px){
+  .stage__m,.note{display:none}
+  .stage{margin-bottom:16px}
+  .row{padding:13px 0}
+  .band{min-height:230px}
+  .band__t{font-size:clamp(30px,9vw,40px)}
+  .ind{display:flex;gap:12px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;margin:0 calc(-1 * var(--gut));padding:0 var(--gut) 4px;scroll-padding:0 var(--gut);scrollbar-width:none}
+  .ind::-webkit-scrollbar{display:none}
+  .ind figure{flex:0 0 70%;scroll-snap-align:start}
+  .ind figcaption{font-size:16.5px}
+  .panel .ph{display:none}
+  .panel h3{margin-top:0}
+}
 
 .ftr{background:var(--ink);color:#B5BABD;padding:34px 0 calc(34px + env(safe-area-inset-bottom));font-size:14.5px}
 .ftr .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px}
@@ -197,17 +309,26 @@ a{color:inherit}
 .dock{display:none}
 @media (max-width:640px){
   .dock{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:5;align-items:center;justify-content:center;gap:10px;min-height:52px;
-    background:var(--red);color:#fff;font:600 16px/1 var(--f);text-decoration:none;border-radius:2px;box-shadow:0 8px 24px rgba(22,24,26,.28)}
+    background:var(--red);color:#fff;font:600 16px/1 var(--f);text-decoration:none;border-radius:2px;box-shadow:0 8px 24px rgba(22,24,26,.28);animation:dockin .45s var(--ease)}
   .dock svg{width:18px;height:18px}
   .ftr{padding-bottom:calc(84px + env(safe-area-inset-bottom))}
 }
+@keyframes dockin{from{transform:translateY(120%)}to{transform:none}}
 
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js [data-r]{opacity:1;transform:none;transition:none}
+  .js .hero h1 .ln>span,.js .hero .fx,.film__btn,.dock{animation:none}
+  .stage__img,.stage__code,.heat__bar i,.dew__ph img,.ind img,.panel img,.row::before,.gauge__risk,.gauge__m{transition:none}
+  .dew__ph.in img{transform:scale(1.02)}
+}
 </style>
+<script>document.documentElement.className+=" js"</script>
 </head>
 <body>
 <header class="hdr">
   <div class="wrap">
-    <a class="brand" href="#top"><img src="../assets/p/logo.webp" alt="MALCHEM Protective &amp; Industrial Coatings" width="640" height="153"><span>Estonia</span></a>
+    <a class="brand" href="#top"><img src="../assets/p/logo-w.webp" alt="MALCHEM Protective &amp; Industrial Coatings" width="640" height="153"><span>Estonia</span></a>
     <nav class="nav" aria-label="Menu"><a href="#products">Products</a><a href="#industries">Industries</a><a href="#dew-point">Dew point</a><a href="#contact">Contact</a></nav>
     <div class="hdr__r"><div class="lang" aria-label="Language"><a href="../" lang="et" hreflang="et">ET</a><a href="./" aria-current="page" lang="en">EN</a></div><a class="btn" href="#contact">Request a quote</a></div>
   </div>
@@ -215,70 +336,141 @@ a{color:inherit}
 
 <main id="content">
   <section class="hero" aria-label="MALCHEM Estonia">
-    <picture class="hero__bg">
-      <source media="(max-width:699px)" srcset="../assets/p/ladu-m.webp" width="746" height="925">
-      <source media="(min-width:1301px)" srcset="../assets/p/ladu-1760.webp" width="1760" height="1262">
-      <img src="../assets/p/ladu-1290.webp" alt="MALCHEM warehouse: a forklift between racks of red paint buckets" width="1290" height="925" fetchpriority="high" decoding="async">
-    </picture>
+    <div class="hero__bg">
+      <picture>
+        <source media="(max-width:699px)" srcset="../assets/p/ladu-m.webp" width="746" height="925">
+        <source media="(min-width:1301px)" srcset="../assets/p/ladu-1760.webp" width="1760" height="1262">
+        <img src="../assets/p/ladu-1290.webp" alt="MALCHEM warehouse: a forklift between racks of red paint buckets" width="1290" height="925" fetchpriority="high" decoding="async">
+      </picture>
+      <video class="hero__vid" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1" data-d="../assets/v/hero-1600.mp4" data-m="../assets/v/hero-m.mp4"></video>
+    </div>
+    <button class="hero__pp" id="pp" type="button" aria-label="Pause video" data-pause="Pause video" data-play="Play video" hidden><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="5" width="3.6" height="14" fill="currentColor"/><rect x="13.9" y="5" width="3.6" height="14" fill="currentColor"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></button>
     <div class="hero__in wrap">
-      <h1 class="h">Anti-corrosion coatings <b>for industry</b></h1>
-      <p>MALCHEM is a Polish manufacturer of industrial coatings with over 45 years of experience. <span class="xm">Coating systems for steel structures, transport, energy and agriculture. </span>All MALCHEM products are available in Estonia from MIVTEK OÜ.</p>
-      <div class="hero__act">
+      <h1 class="h"><span class="ln"><span>Anti-corrosion coatings</span></span> <span class="ln"><span><b>for industry</b></span></span></h1>
+      <p class="fx">MALCHEM is a Polish industrial coatings manufacturer with over 45 years of experience. <span class="xm">The range covers coating systems for steel structures, transport, energy and agriculture. </span>All MALCHEM products are available in Estonia from MIVTEK OÜ.</p>
+      <div class="hero__act fx" style="--d:1">
         <a class="btn" href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m4 7 8 6 8-6"/></svg>Request a quote</a>
         <a class="btn btn--ghost" href="#products">View products</a>
       </div>
-      <dl class="hero__facts" aria-label="At a glance"><div><dt>Manufacturer</dt><dd>MALCHEM, Poland</dd></div><div><dt>Experience</dt><dd>over 45 years</dd></div><div><dt>Products</dt><dd>liquid and powder coatings</dd></div><div><dt>In Estonia</dt><dd>MIVTEK OÜ</dd></div></dl>
+      <dl class="hero__facts fx" style="--d:2" aria-label="At a glance"><div><dt>Manufacturer</dt><dd>MALCHEM, Poland</dd></div><div><dt>Experience</dt><dd>over <span class="cnt" data-count="45">45</span> years</dd></div><div><dt>Products</dt><dd>liquid and powder coatings</dd></div><div><dt>In Estonia</dt><dd>MIVTEK OÜ</dd></div></dl>
     </div>
   </section>
 
   <section class="sec" id="products">
     <div class="wrap">
-      <div class="head">
+      <div class="head head--p" data-r>
         <h2 class="h">A coating system for every environment</h2>
-        <p>From heavy-duty protection of structures to durable topcoats. The system is chosen by operating conditions, substrate and expected service life.</p>
+        <p>From heavy-duty corrosion protection to durable topcoats. The system is chosen according to operating conditions, substrate and required durability.</p>
       </div>
       <div class="prod">
-        <figure class="pack">
-          <img src="../assets/p/wiadro2k-600.webp" srcset="../assets/p/wiadro2k-360.webp 360w, ../assets/p/wiadro2k-600.webp 600w" sizes="(max-width:1000px) 150px, 360px" alt="MALCHEM two-component coating pack" width="600" height="699" loading="lazy" decoding="async">
-          <figcaption>Two-component systems: base and hardener in one kit.</figcaption>
-        </figure>
+        <div class="side">
+          <figure class="stage" id="stage">
+            <span class="stage__code" id="st-code" aria-hidden="true">AL</span>
+            <img class="stage__img on" data-k="1k" src="../assets/p/pack-1k-800.webp" srcset="../assets/p/pack-1k-480.webp 480w, ../assets/p/pack-1k-800.webp 800w" sizes="(max-width:1000px) 31vw, 380px" alt="MALCHEM paint bucket" width="480" height="640" loading="lazy" decoding="async">
+            <img class="stage__img" data-k="2k" src="../assets/p/pack-2k-800.webp" srcset="../assets/p/pack-2k-480.webp 480w, ../assets/p/pack-2k-800.webp 800w" sizes="(max-width:1000px) 31vw, 380px" alt="MALCHEM two-component kit: base and hardener" width="480" height="640" loading="lazy" decoding="async">
+            <img class="stage__img" data-k="kan" src="../assets/p/pack-kan-800.webp" srcset="../assets/p/pack-kan-480.webp 480w, ../assets/p/pack-kan-800.webp 800w" sizes="(max-width:1000px) 31vw, 380px" alt="MALCHEM thinner canister" width="480" height="640" loading="lazy" decoding="async">
+            <img class="stage__img stage__img--ph" data-k="pul" src="../assets/p/pulber-800.webp" alt="Powder coating being sprayed onto parts" width="800" height="600" loading="lazy" decoding="async">
+            <figcaption class="stage__cap"><b id="st-n">Alkyd coatings</b><span id="st-f">ALKIFARB · ALKIGRUNT · ALKIMAL · MALKOR</span></figcaption>
+          </figure>
+          <p class="stage__m">MALCHEM bucket, two-component kit and thinner canister</p>
+        </div>
         <div class="rows">
-          <article class="row"><span class="row__code" aria-hidden="true">AL</span><div class="row__main"><h3>Alkyd coatings</h3><p>Fast-drying primers, primer-enamels and enamels for steel.</p></div><ul><li>full RAL colour range</li><li>chromate-free anti-corrosion primers</li></ul></article>
-          <article class="row"><span class="row__code" aria-hidden="true">EP</span><div class="row__main"><h3>Epoxy coatings</h3><p>Two-component coatings for aggressive environments: protection against corrosion and chemicals.</p></div><ul><li>high-solids and zinc-rich primers</li><li>intermediate coats and topcoat enamels</li></ul></article>
-          <article class="row"><span class="row__code" aria-hidden="true">PUR</span><div class="row__main"><h3>Polyurethane coatings</h3><p>Two-component coatings for long-term protection against corrosion, chemicals and UV radiation.</p></div><ul><li>primers, primer-enamels and enamels in the full RAL range</li><li>clear varnishes</li></ul></article>
-          <article class="row"><span class="row__code" aria-hidden="true">TER</span><div class="row__main"><h3>Heat-resistant coatings</h3><p>Protective coatings for high-temperature industrial applications.</p></div><ul><li>alkyd coatings up to 200 °C</li><li>silicone coatings up to 400, 600 and 800 °C</li><li>ethyl silicate coatings up to 500 °C</li></ul></article>
-          <article class="row"><span class="row__code" aria-hidden="true">PV</span><div class="row__main"><h3>Polyvinyl coatings</h3><p>Protective coatings for metal and galvanised surfaces.</p></div><ul><li>primer-enamels and enamels in the full RAL range</li></ul></article>
-          <article class="row"><span class="row__code" aria-hidden="true"><small>Powder</small></span><div class="row__main"><h3>Powder coatings</h3><p>Efficient, durable finishes with a consistent look from batch to batch.</p></div><span></span></article>
+          <article class="row" data-k="1k" data-c="AL" data-n="Alkyd coatings" data-f="ALKIFARB · ALKIGRUNT · ALKIMAL · MALKOR">
+            <span class="row__code" aria-hidden="true">AL</span>
+            <div class="row__main">
+              <h3>Alkyd coatings</h3>
+              <p>Fast-drying primers, primer-topcoats and topcoats for steel.</p>
+              <ul><li>all RAL colours</li><li>chromate-free anti-corrosion primers</li></ul>
+              <details class="row__names"><summary>Products (7)</summary><p>ALKIFARB NV, ALKIGRUNT M, ALKIMAL ECO, ALKIMAL G, MALKOR A, MALKOR N, MALKOR NC</p></details>
+            </div>
+          </article>
+          <article class="row" data-k="2k" data-c="EP" data-n="Epoxy coatings" data-f="EPOXYKOR · EPOXYMAL">
+            <span class="row__code" aria-hidden="true">EP</span>
+            <div class="row__main">
+              <h3>Epoxy coatings</h3>
+              <p>Two-component coatings for aggressive environments, protecting against corrosion and chemicals.</p>
+              <ul><li>high-solids and zinc-rich primers</li><li>intermediate coats and topcoats</li></ul>
+              <details class="row__names"><summary>Products (15)</summary><p>EPOXYKOR B, HS 80, HS 80 MIO, HS 80 MIO ALU, M 501, M 503, M 505, MIO, MIO ALU, PRIMER, ZN-8; EPOXYMAL 12, 54 M 501, 54 M 503, ZB</p></details>
+            </div>
+          </article>
+          <article class="row" data-k="2k" data-c="PUR" data-n="Polyurethane coatings" data-f="PURMAL · MALPUR · NEOLACK · NEOMAL">
+            <span class="row__code" aria-hidden="true">PUR</span>
+            <div class="row__main">
+              <h3>Polyurethane coatings</h3>
+              <p>Two-component coatings for long-term protection against corrosion, chemicals and UV radiation.</p>
+              <ul><li>primers, primer-topcoats and topcoats in all RAL colours</li><li>clear varnishes</li></ul>
+              <details class="row__names"><summary>Products (15)</summary><p>PURMAL S-10, S-30, S-30 P, S-40, S-40 HS, S-50, S-50 STRUKTURA, S-70, S-70 NH, S-90, SMC; MALPUR X-40; MALKOR 2K PUR; NEOLACK; NEOMAL 95</p></details>
+            </div>
+          </article>
+          <article class="row" data-k="1k" data-c="TER" data-n="Heat-resistant coatings" data-f="TERMAL">
+            <span class="row__code" aria-hidden="true">TER</span>
+            <div class="row__main">
+              <h3>Heat-resistant coatings</h3>
+              <p>Protective coatings for surfaces that operate at high temperatures.</p>
+              <ul><li>alkyd coatings up to 200 °C</li><li>silicone coatings up to 400, 600 and 800 °C</li><li>ethyl silicate coatings up to 500 °C</li></ul>
+              <div class="heat" data-io aria-hidden="true"><div class="heat__bar"><i></i></div><ol><li style="--p:.25">200</li><li style="--p:.5">400</li><li style="--p:.625">500</li><li style="--p:.75">600</li><li style="--p:1">800 °C</li></ol></div>
+              <details class="row__names"><summary>Products (8)</summary><p>TERMAL 200, 400, 400 GR, 600, 600 GR, 800, 800 GR, ESI</p></details>
+            </div>
+          </article>
+          <article class="row" data-k="1k" data-c="PV" data-n="Polyvinyl coatings" data-f="WINYGRUNT · WINYMAL · WINYMAX">
+            <span class="row__code" aria-hidden="true">PV</span>
+            <div class="row__main">
+              <h3>Polyvinyl coatings</h3>
+              <p>Protective coatings for metal and galvanised surfaces.</p>
+              <ul><li>primer-topcoats and topcoats in all RAL colours</li></ul>
+              <details class="row__names"><summary>Products (3)</summary><p>WINYGRUNT, WINYMAL, WINYMAX M</p></details>
+            </div>
+          </article>
+          <article class="row" data-k="kan" data-c="TH" data-n="Thinners" data-f="THINNER AK · EP · PUR">
+            <span class="row__code" aria-hidden="true">TH</span>
+            <div class="row__main">
+              <h3>Thinners</h3>
+              <p>Dedicated thinners for MALCHEM alkyd, epoxy and polyurethane coatings.</p>
+              <details class="row__names"><summary>Products (3)</summary><p>THINNER AK, THINNER EP, THINNER PUR</p></details>
+            </div>
+          </article>
+          <article class="row" data-k="pul" data-c="" data-n="Powder coatings" data-f="">
+            <span class="row__code" aria-hidden="true"><small>Powder</small></span>
+            <div class="row__main">
+              <h3>Powder coatings</h3>
+              <p>Efficient, durable finishes with a consistent look from batch to batch.</p>
+            </div>
+          </article>
         </div>
       </div>
-      <p class="note"><b>The full MALCHEM range in Estonia.</b> MIVTEK OÜ supplies all MALCHEM products and helps choose the right coating system, documentation and application method for each project. Solvents and thinners for MALCHEM products are also available.</p>
+      <p class="note" data-r><b>The full MALCHEM range in Estonia.</b> MIVTEK OÜ supplies all MALCHEM products, helps you choose the right coating system and application method for each project, and provides the documentation.</p>
     </div>
+  </section>
+
+  <section class="band" aria-label="Coatings that protect industry">
+    <img class="band__img" src="../assets/p/band-1600.webp" srcset="../assets/p/band-900.webp 900w, ../assets/p/band-1600.webp 1600w" sizes="100vw" alt="Tank farm and process plant at dusk" width="1600" height="775" loading="lazy" decoding="async">
+    <div class="wrap band__in"><p class="band__t h" data-r>Coatings that protect industry.</p></div>
   </section>
 
   <section class="sec sec--paper" id="industries">
     <div class="wrap">
-      <div class="head">
+      <div class="head" data-r>
         <h2 class="h">Where MALCHEM coatings are used</h2>
         <p>Coatings for metal that has to withstand weather, load and chemicals.</p>
       </div>
       <div class="ind">
-        <figure><img src="../assets/p/tee-800.webp" srcset="../assets/p/tee-500.webp 500w, ../assets/p/tee-800.webp 800w" sizes="(max-width:899px) 50vw, 420px" alt="Painted noise barrier along a motorway" width="800" height="600" loading="lazy" decoding="async"><figcaption><b>01</b>Road infrastructure</figcaption></figure>
-        <figure><img src="../assets/p/raudtee-800.webp" srcset="../assets/p/raudtee-500.webp 500w, ../assets/p/raudtee-800.webp 800w" sizes="(max-width:899px) 50vw, 420px" alt="Painted locomotive" width="800" height="600" loading="lazy" decoding="async"><figcaption><b>02</b>Railways</figcaption></figure>
-        <figure><img src="../assets/p/teras-800.webp" srcset="../assets/p/teras-500.webp 500w, ../assets/p/teras-800.webp 800w" sizes="(max-width:899px) 50vw, 420px" alt="Painted steel beams" width="800" height="600" loading="lazy" decoding="async"><figcaption><b>03</b>Steel structures</figcaption></figure>
-        <figure><img src="../assets/p/konteiner-800.webp" srcset="../assets/p/konteiner-500.webp 500w, ../assets/p/konteiner-800.webp 800w" sizes="(max-width:899px) 50vw, 420px" alt="Painted container" width="800" height="600" loading="lazy" decoding="async"><figcaption><b>04</b>Containers</figcaption></figure>
-        <figure><img src="../assets/p/masinad-800.webp" srcset="../assets/p/masinad-500.webp 500w, ../assets/p/masinad-800.webp 800w" sizes="(max-width:899px) 50vw, 420px" alt="Tanker truck" width="800" height="600" loading="lazy" decoding="async"><figcaption><b>05</b>Machinery, equipment and industrial sites</figcaption></figure>
-        <figure><img src="../assets/p/mahutid-800.webp" srcset="../assets/p/mahutid-500.webp 500w, ../assets/p/mahutid-800.webp 800w" sizes="(max-width:899px) 50vw, 420px" alt="Chemical storage tanks" width="800" height="600" loading="lazy" decoding="async"><figcaption><b>06</b>Tanks and silos</figcaption></figure>
+        <figure data-r style="--d:0"><div class="ph"><img src="../assets/p/tee-800.webp" srcset="../assets/p/tee-500.webp 500w, ../assets/p/tee-800.webp 800w" sizes="(max-width:899px) 50vw, 420px" alt="Painted noise barrier along a motorway" width="800" height="600" loading="lazy" decoding="async"></div><figcaption><b>01</b>Road infrastructure</figcaption></figure>
+        <figure data-r style="--d:1"><div class="ph"><img src="../assets/p/raudtee-800.webp" srcset="../assets/p/raudtee-500.webp 500w, ../assets/p/raudtee-800.webp 800w" sizes="(max-width:899px) 50vw, 420px" alt="Painted locomotive" width="800" height="600" loading="lazy" decoding="async"></div><figcaption><b>02</b>Railways</figcaption></figure>
+        <figure data-r style="--d:2"><div class="ph"><img src="../assets/p/teras-800.webp" srcset="../assets/p/teras-500.webp 500w, ../assets/p/teras-800.webp 800w" sizes="(max-width:899px) 50vw, 420px" alt="Painted steel beams" width="800" height="600" loading="lazy" decoding="async"></div><figcaption><b>03</b>Steel structures</figcaption></figure>
+        <figure data-r style="--d:0"><div class="ph"><img src="../assets/p/konteiner-800.webp" srcset="../assets/p/konteiner-500.webp 500w, ../assets/p/konteiner-800.webp 800w" sizes="(max-width:899px) 50vw, 420px" alt="Painted container" width="800" height="600" loading="lazy" decoding="async"></div><figcaption><b>04</b>Containers</figcaption></figure>
+        <figure data-r style="--d:1"><div class="ph"><img src="../assets/p/masinad-800.webp" srcset="../assets/p/masinad-500.webp 500w, ../assets/p/masinad-800.webp 800w" sizes="(max-width:899px) 50vw, 420px" alt="Road tanker" width="800" height="600" loading="lazy" decoding="async"></div><figcaption><b>05</b>Machinery, equipment and industrial sites</figcaption></figure>
+        <figure data-r style="--d:2"><div class="ph"><img src="../assets/p/mahutid-800.webp" srcset="../assets/p/mahutid-500.webp 500w, ../assets/p/mahutid-800.webp 800w" sizes="(max-width:899px) 50vw, 420px" alt="Chemical storage tanks" width="800" height="600" loading="lazy" decoding="async"></div><figcaption><b>06</b>Tanks and silos</figcaption></figure>
       </div>
     </div>
   </section>
 
   <section class="sec dew" id="dew-point">
     <div class="wrap dew__in">
-      <figure class="dew__ph"><img src="../assets/p/hero-1200.webp" srcset="../assets/p/hero-800.webp 800w, ../assets/p/hero-1200.webp 1200w" sizes="(max-width:899px) 100vw, 520px" alt="Spraying anti-corrosion coating onto a steel beam" width="1200" height="900" loading="lazy" decoding="async"></figure>
-      <div class="dew__main">
+      <figure class="dew__ph" data-io><img src="../assets/p/hero-1200.webp" srcset="../assets/p/hero-800.webp 800w, ../assets/p/hero-1200.webp 1200w" sizes="(max-width:899px) 100vw, 520px" alt="Spraying anti-corrosion coating onto a steel beam" width="1200" height="900" loading="lazy" decoding="async"></figure>
+      <div class="dew__main" data-r>
         <h2 class="h">Can you paint today?</h2>
-        <p>If the steel surface is too close to the dew point, moisture forms on it and the coating does not adhere properly. The general rule: the surface temperature must be at least 3 °C above the dew point.</p>
-        <p class="xm">Enter the air temperature, relative humidity and surface temperature. The result is indicative; exact requirements are in each product's technical data sheet.</p>
+        <p>If the steel surface temperature is too close to the dew point, moisture condenses on the surface and the coating does not adhere properly. As a general rule, the surface temperature must be at least 3 °C above the dew point.</p>
+        <p class="xm">Enter the air temperature, relative humidity and surface temperature. The result is indicative; exact requirements are given in each product's technical data sheet.</p>
         <form class="calc" id="dp" aria-label="Dew point calculator" novalidate>
           <div class="calc__f">
             <label for="dp-t">Air temperature, °C<input id="dp-t" type="number" inputmode="decimal" step="0.1" value="12"></label>
@@ -286,9 +478,10 @@ a{color:inherit}
             <label for="dp-s">Surface temperature, °C<input id="dp-s" type="number" inputmode="decimal" step="0.1" value="10"></label>
           </div>
           <div class="calc__out" aria-live="polite">
-            <span class="calc__dp" id="dp-out">7.7 °C</span>
+            <p class="calc__num"><small>dew point</small><span class="calc__dp" id="dp-out">7.7 °C</span></p>
             <span class="calc__verdict no" id="dp-v">Surface is too close to the dew point</span>
-            <p class="calc__small" id="dp-note">Dew point. Margin above the dew point: 2.3 °C (at least 3 °C needed).</p>
+            <div class="gauge" aria-hidden="true"><div class="gauge__tr"><span class="gauge__risk" id="g-r"></span><span class="gauge__m gauge__m--dp" id="g-dp"><i>dew point</i></span><span class="gauge__m gauge__m--s" id="g-s"><i>surface</i></span></div></div>
+            <p class="calc__small" id="dp-note">Margin above the dew point: 2.3 °C (at least 3 °C required).</p>
           </div>
         </form>
       </div>
@@ -297,70 +490,183 @@ a{color:inherit}
 
   <section class="sec sec--paper duo-sec">
     <div class="wrap duo">
-      <article class="panel">
-        <img src="../assets/p/segu-1000.webp" alt="Painted steel bridge over a river" width="1000" height="574" loading="lazy" decoding="async">
-        <div><h3>New generation: fluoropolymer coatings</h3><p>In an EU co-funded project MALCHEM is developing liquid and powder coatings based on FEVE resins with exceptional resistance to corrosion and weathering. Intended for steel structures, buildings, infrastructure and urban architecture.</p></div>
+      <article class="panel" data-r>
+        <div class="ph"><img src="../assets/p/segu-1000.webp" alt="Painted steel bridge over a river" width="1000" height="574" loading="lazy" decoding="async"></div>
+        <div><h3>New generation: fluoropolymer coatings</h3><p>In an EU co-funded project, MALCHEM is developing liquid and powder coatings based on FEVE resins, with exceptional resistance to corrosion and weathering. Intended for steel structures, buildings, infrastructure and urban architecture.</p></div>
       </article>
-      <article class="panel">
-        <img src="../assets/p/labor-1000.webp" alt="Gloss meter on a coated test panel" width="1000" height="484" loading="lazy" decoding="async">
-        <div><h3>Technical and safety data sheets</h3><p>Every product has a technical data sheet (TDS) and a safety data sheet (MSDS). We send them on request together with the quote.</p></div>
+      <article class="panel" data-r style="--d:1">
+        <div class="ph"><img src="../assets/p/labor-1000.webp" alt="Gloss meter on a coated test panel" width="1000" height="484" loading="lazy" decoding="async"></div>
+        <div><h3>Technical and safety data sheets</h3><p>Every product has a technical data sheet (TDS) and a safety data sheet (SDS). We send them on request with our quote.</p></div>
       </article>
     </div>
   </section>
 
   <section class="sec film" aria-label="Inside MALCHEM">
     <div class="wrap">
-      <div class="head">
+      <div class="head" data-r>
         <h2 class="h">Inside MALCHEM</h2>
-        <p>Modern production, quality control and an experienced team: what stands behind the durability of MALCHEM coatings.</p>
+        <p>Modern production, quality control and an experienced team behind the durability of MALCHEM coatings.</p>
       </div>
-      <video controls preload="none" playsinline poster="../assets/p/film-1280.webp" aria-label="MALCHEM factory film" src="https://malchem.pl/wp-content/uploads/2026/07/Malchem_2026_logo_FULLHD_web_6000k.mp4"></video>
+      <div class="film__box" data-r>
+        <video id="film-v" controls preload="none" playsinline poster="../assets/p/film-poster-1280.webp" aria-label="Film from the MALCHEM factory" src="https://malchem.pl/wp-content/uploads/2026/07/Malchem_2026_logo_FULLHD_web_6000k.mp4"></video>
+        <button class="film__play" id="film-p" type="button" hidden><span class="film__btn"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span><span class="film__t">Watch the film<small>1:55</small></span></button>
+      </div>
     </div>
   </section>
 
   <section class="sec sec--paper" id="contact">
     <div class="wrap contact">
-      <div>
+      <div data-r>
         <h2 class="h">Request a quote</h2>
-        <p class="contact__lead">Tell us which surface needs protecting and in what conditions. We will help choose the right MALCHEM coating system and send you a quote.</p>
+        <p class="contact__lead">Tell us which surface needs protecting and in what conditions. We will help you choose the right MALCHEM coating system and send you a quote.</p>
         <a class="mail" href="mailto:info@mivtek.com.ee">info@mivtek.com.ee</a>
         <dl class="facts"><dt>Representative in Estonia</dt><dd>MIVTEK OÜ</dd><dt>Contact person</dt><dd>Margus</dd><dt>Manufacturer</dt><dd>MALCHEM, Poland · <a href="https://malchem.pl/" rel="noopener">malchem.pl</a></dd></dl>
       </div>
-      <form class="form" id="ask" novalidate>
+      <form class="form" id="ask" novalidate data-r style="--d:1">
         <h3>Enquiry</h3>
         <label for="f-n">Name and company<input id="f-n" name="n" autocomplete="name" required></label>
         <label for="f-c">Phone or email<input id="f-c" name="c" autocomplete="email" required></label>
         <label for="f-m">What needs protecting<textarea id="f-m" name="m" placeholder="For example: outdoor steel structure, about 300 m², colour RAL 7016"></textarea></label>
         <button class="btn" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m4 7 8 6 8-6"/></svg>Send enquiry</button>
-        <small>The button opens your email app with a ready message to info@mivtek.com.ee.</small>
+        <small>The button opens your email app with a pre-filled message to info@mivtek.com.ee.</small>
       </form>
     </div>
   </section>
 </main>
 
 <footer class="ftr">
-  <div class="wrap"><span><b>MALCHEM Estonia</b> · represented by MIVTEK OÜ, reg. code 17091586, Reti tee 9, Peetri, Rae vald, Estonia · info@mivtek.com.ee</span><span>MALCHEM® is a registered trademark of MALCHEM</span></div>
+  <div class="wrap"><span><b>MALCHEM Estonia</b> · represented by MIVTEK OÜ, registry code 17091586, Reti tee 9, Peetri, Rae vald, Estonia · info@mivtek.com.ee</span><span>MALCHEM® is a registered trademark of Malchem sp. z o.o.</span></div>
 </footer>
 <a class="dock" id="dock" href="#contact" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m4 7 8 6 8-6"/></svg>Request a quote</a>
 <script>
 (function () {
-  var f = function (x) { return (Math.round(x * 10) / 10).toFixed(1).replace('.', '.'); };
-  var g = function (id) { return document.getElementById(id); };
+  var d = document, w = window;
+  var g = function (id) { return d.getElementById(id); };
+  var RM = w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var IO = 'IntersectionObserver' in w;
+  var DEC = '.';
+
+  // scroll reveal (transform/opacity only)
+  var rv = [].slice.call(d.querySelectorAll('[data-r],[data-io]'));
+  if (IO && !RM) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -7% 0px', threshold: 0 });
+    rv.forEach(function (el) { io.observe(el); });
+  } else rv.forEach(function (el) { el.classList.add('in'); });
+
+  // hero: count up the one true number in the facts row
+  if (!RM) [].forEach.call(d.querySelectorAll('[data-count]'), function (el) {
+    var to = +el.getAttribute('data-count'), t0 = 0;
+    el.textContent = '0';
+    setTimeout(function () {
+      requestAnimationFrame(function step(t) {
+        if (!t0) t0 = t;
+        var p = Math.min((t - t0) / 1500, 1);
+        el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(step);
+      });
+    }, 700);
+  });
+
+  // hero: short muted loop from MALCHEM's own film, loaded after the page, never with reduced motion or Save-Data
+  var v = d.querySelector('.hero__vid'), pp = g('pp'), hero = d.querySelector('.hero');
+  var cn = navigator.connection || {}, userPaused = false, heroIn = true;
+  function setPP(paused) {
+    pp.classList.toggle('paused', paused);
+    pp.setAttribute('aria-label', pp.getAttribute(paused ? 'data-play' : 'data-pause'));
+  }
+  if (v && !RM && !cn.saveData && !/(^|-)2g$/.test(cn.effectiveType || '')) {
+    var started = false;
+    var start = function () {
+      if (started) return; started = true;
+      v.src = w.matchMedia('(max-width:699px)').matches ? v.getAttribute('data-m') : v.getAttribute('data-d');
+      var p = v.play(); if (p && p.catch) p.catch(function () {});
+    };
+    v.addEventListener('playing', function () { v.classList.add('on'); pp.hidden = false; });
+    var kick = function () { setTimeout(start, 600); };
+    if (d.readyState === 'complete') kick(); else w.addEventListener('load', kick);
+    pp.addEventListener('click', function () {
+      if (v.paused) { userPaused = false; v.play(); setPP(false); } else { userPaused = true; v.pause(); setPP(true); }
+    });
+    if (IO) new IntersectionObserver(function (es) {
+      heroIn = es[0].isIntersecting;
+      if (!started) return;
+      if (!heroIn) v.pause(); else if (!userPaused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+    }).observe(hero);
+  }
+
+  // products: the stage shows the packaging of the series in the middle of the screen (or under the pointer)
+  var stage = g('stage');
+  if (stage) {
+    var imgs = [].slice.call(stage.querySelectorAll('.stage__img')), code = g('st-code'), capn = g('st-n'), capf = g('st-f');
+    var rows = [].slice.call(d.querySelectorAll('.row')), cur = null, tm;
+    var act = function (r) {
+      if (r === cur) return;
+      if (cur) cur.classList.remove('on');
+      cur = r; r.classList.add('on');
+      var k = r.getAttribute('data-k');
+      imgs.forEach(function (im) { im.classList.toggle('on', im.getAttribute('data-k') === k); });
+      capn.textContent = r.getAttribute('data-n'); capf.textContent = r.getAttribute('data-f');
+      var c = r.getAttribute('data-c');
+      if (code.textContent !== c) {
+        code.classList.add('sw'); clearTimeout(tm);
+        tm = setTimeout(function () { code.textContent = c; code.classList.remove('sw'); }, 200);
+      }
+    };
+    if (IO) {
+      var mid = new IntersectionObserver(function (es) {
+        if (d.querySelector('.row:hover')) return;   // the row under the pointer wins
+        es.forEach(function (e) { if (e.isIntersecting) act(e.target); });
+      }, { rootMargin: '-46% 0px -46% 0px', threshold: 0 });
+      rows.forEach(function (r) { mid.observe(r); });
+    }
+    rows.forEach(function (r) { r.addEventListener('mouseenter', function () { act(r); }); });
+    act(rows[0]);
+  }
+
+  // statement band: slow parallax on the film frame
+  var band = d.querySelector('.band'), bi = band && band.querySelector('.band__img');
+  if (band && bi && !RM && IO) {
+    var bOn = false, ticking = false;
+    var upd = function () {
+      ticking = false;
+      var r = band.getBoundingClientRect(), vh = w.innerHeight;
+      var p = (r.top + r.height) / (vh + r.height);   // 1 when entering from below, 0 when leaving at the top
+      bi.style.transform = 'translate3d(0,' + ((p - 0.5) * -16).toFixed(2) + '%,0)';
+    };
+    new IntersectionObserver(function (es) { bOn = es[0].isIntersecting; if (bOn) upd(); }).observe(band);
+    w.addEventListener('scroll', function () { if (bOn && !ticking) { ticking = true; requestAnimationFrame(upd); } }, { passive: true });
+  }
+
+  // dew point calculator + gauge
+  var f = function (x) { return (Math.round(x * 10) / 10).toFixed(1).replace('.', DEC); };
+  function num(id) { return parseFloat(g(id).value.replace(',', '.')); }
+  function place(el, x, lo, hi) { el.style.left = ((x - lo) / (hi - lo) * 100).toFixed(2) + '%'; }
   function calc() {
-    var t = parseFloat(g('dp-t').value.replace(',', '.')), h = parseFloat(g('dp-h').value.replace(',', '.')), s = parseFloat(g('dp-s').value.replace(',', '.'));
-    var out = g('dp-out'), v = g('dp-v'), note = g('dp-note');
-    if (!isFinite(t) || !isFinite(h) || h <= 0 || h > 100) { out.textContent = '–'; v.textContent = 'Enter temperature and humidity (1–100 %)'; v.className = 'calc__verdict no'; note.textContent = ''; return; }
+    var t = num('dp-t'), h = num('dp-h'), s = num('dp-s');
+    var out = g('dp-out'), v2 = g('dp-v'), note = g('dp-note'), gr = g('g-r'), gd = g('g-dp'), gs = g('g-s');
+    if (!isFinite(t) || !isFinite(h) || h <= 0 || h > 100) {
+      out.textContent = '–'; v2.textContent = 'Enter the air temperature and humidity (1–100%)'; v2.className = 'calc__verdict no'; note.textContent = ''; gs.hidden = true; return;
+    }
     var a = 17.62, b = 243.12, gm = Math.log(h / 100) + a * t / (b + t), dp = b * gm / (a - gm);   // Magnus formula
     out.textContent = f(dp) + ' °C';
-    if (!isFinite(s)) { v.textContent = 'Enter the surface temperature too'; v.className = 'calc__verdict no'; note.textContent = 'Dew point.'; return; }
-    var d = s - dp, ok = d >= 3;
-    v.textContent = ok ? 'Conditions are suitable for painting' : 'Surface is too close to the dew point';
-    v.className = 'calc__verdict ' + (ok ? 'ok' : 'no');
-    note.textContent = 'Dew point. Margin above the dew point: ' + f(d) + ' °C (at least 3 °C needed).';
+    var lo = Math.min(dp, isFinite(s) ? s : dp) - 4, hi = Math.max(dp + 3, isFinite(s) ? s : dp + 3) + 4;
+    place(gd, dp, lo, hi);
+    gr.style.left = ((dp - lo) / (hi - lo) * 100).toFixed(2) + '%';
+    gr.style.width = (3 / (hi - lo) * 100).toFixed(2) + '%';
+    if (!isFinite(s)) { v2.textContent = 'Enter the surface temperature too'; v2.className = 'calc__verdict no'; note.textContent = ''; gs.hidden = true; return; }
+    var dd = s - dp, ok = dd >= 3;
+    gs.hidden = false; place(gs, s, lo, hi); gs.classList.toggle('ok', ok);
+    v2.textContent = ok ? 'Conditions are suitable for painting' : 'Surface is too close to the dew point';
+    v2.className = 'calc__verdict ' + (ok ? 'ok' : 'no');
+    note.textContent = 'Margin above the dew point: {d} °C (at least 3 °C required).'.replace('{d}', f(dd));
   }
   ['dp-t', 'dp-h', 'dp-s'].forEach(function (id) { g(id).addEventListener('input', calc); });
   g('dp').addEventListener('submit', function (e) { e.preventDefault(); });
   calc();
+
+  // inquiry form -> prepared e-mail
   g('ask').addEventListener('submit', function (e) {
     e.preventDefault();
     var n = g('f-n').value.trim(), c = g('f-c').value.trim(), m = g('f-m').value.trim();
@@ -368,13 +674,25 @@ a{color:inherit}
     var body = 'Name: ' + n + '\nContact: ' + c + '\n\n' + m;
     location.href = 'mailto:info@mivtek.com.ee?subject=' + encodeURIComponent('MALCHEM enquiry') + '&body=' + encodeURIComponent(body);
   });
+
+  // factory film: own play button, the browser controls appear once it plays
+  var fv = g('film-v'), fp = g('film-p');
+  if (fv && fp) {
+    fv.removeAttribute('controls'); fp.hidden = false;
+    fp.addEventListener('click', function () {
+      fp.hidden = true; fv.controls = true; fv.preload = 'auto';
+      var p = fv.play(); if (p && p.catch) p.catch(function () {});
+      fv.focus();
+    });
+  }
+
   // phone: quote button stays reachable between the hero and the contact section
-  var dock = g('dock'), hero = document.querySelector('.hero'), contact = g('contact');
-  if ('IntersectionObserver' in window) {
+  var dock = g('dock'), contact = g('contact');
+  if (IO) {
     var seen = { hero: true, contact: false };
-    var upd = function () { dock.hidden = seen.hero || seen.contact; };
-    new IntersectionObserver(function (es) { seen.hero = es[0].isIntersecting; upd(); }).observe(hero);
-    new IntersectionObserver(function (es) { seen.contact = es[0].isIntersecting; upd(); }).observe(contact);
+    var upd2 = function () { dock.hidden = seen.hero || seen.contact; };
+    new IntersectionObserver(function (es) { seen.hero = es[0].isIntersecting; upd2(); }).observe(hero);
+    new IntersectionObserver(function (es) { seen.contact = es[0].isIntersecting; upd2(); }).observe(contact);
   }
 })();
 </script>
