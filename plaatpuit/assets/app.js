@@ -64,6 +64,33 @@
     b.addEventListener('click', function () { copy(MAIL, function (ok) { flash(b, ok); }); });
   });
 
+  /* lightbox: opens exactly the pressed photo */
+  var lb = d.getElementById('lb'), lbImg = d.getElementById('lbImg'), lbCap = d.getElementById('lbCap'), lbX = d.getElementById('lbX');
+  var lastBtn = null;
+  function lbClose() { if (lb && lb.open) { lb.close(); } }
+  if (lb && typeof lb.showModal === 'function') {
+    [].slice.call(d.querySelectorAll('.work__btn')).forEach(function (b) {
+      b.addEventListener('click', function () {
+        lastBtn = b;
+        lbImg.src = b.getAttribute('data-full');
+        lbImg.alt = b.getAttribute('data-cap') || '';
+        lbCap.textContent = b.getAttribute('data-cap') || '';
+        lb.showModal();
+      });
+    });
+    lbX.addEventListener('click', lbClose);
+    lb.addEventListener('click', function (e) {
+      var r = lbImg.getBoundingClientRect();
+      var inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      if (!inside && e.target !== lbX && !lbX.contains(e.target)) lbClose();
+    });
+    lb.addEventListener('close', function () { lbImg.removeAttribute('src'); if (lastBtn) lastBtn.focus(); });
+  } else {
+    [].slice.call(d.querySelectorAll('.work__btn')).forEach(function (b) {
+      b.addEventListener('click', function () { window.open(b.getAttribute('data-full'), '_blank', 'noopener'); });
+    });
+  }
+
   /* inquiry builder */
   var form = d.getElementById('askForm');
   if (!form) return;
