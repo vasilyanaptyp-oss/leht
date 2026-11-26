@@ -406,7 +406,7 @@ a{color:inherit}
             <span class="row__code" aria-hidden="true">TER</span>
             <div class="row__main">
               <h3>Heat-resistant coatings</h3>
-              <p>Protective coatings for surfaces that operate at high temperatures.</p>
+              <p>Protective coatings for high-temperature surfaces.</p>
               <ul><li>alkyd coatings up to 200 °C</li><li>silicone coatings up to 400, 600 and 800 °C</li><li>ethyl silicate coatings up to 500 °C</li></ul>
               <div class="heat" data-io aria-hidden="true"><div class="heat__bar"><i></i></div><ol><li style="--p:.25">200</li><li style="--p:.5">400</li><li style="--p:.625">500</li><li style="--p:.75">600</li><li style="--p:1">800 °C</li></ol></div>
               <details class="row__names"><summary>Products (8)</summary><p>TERMAL 200, 400, 400 GR, 600, 600 GR, 800, 800 GR, ESI</p></details>
@@ -479,7 +479,7 @@ a{color:inherit}
           </div>
           <div class="calc__out" aria-live="polite">
             <p class="calc__num"><small>dew point</small><span class="calc__dp" id="dp-out">7.7 °C</span></p>
-            <span class="calc__verdict no" id="dp-v">Surface is too close to the dew point</span>
+            <span class="calc__verdict no" id="dp-v">Surface temperature is too close to the dew point</span>
             <div class="gauge" aria-hidden="true"><div class="gauge__tr"><span class="gauge__risk" id="g-r"></span><span class="gauge__m gauge__m--dp" id="g-dp"><i>dew point</i></span><span class="gauge__m gauge__m--s" id="g-s"><i>surface</i></span></div></div>
             <p class="calc__small" id="dp-note">Margin above the dew point: 2.3 °C (at least 3 °C required).</p>
           </div>
@@ -658,7 +658,7 @@ a{color:inherit}
     if (!isFinite(s)) { v2.textContent = 'Enter the surface temperature too'; v2.className = 'calc__verdict no'; note.textContent = ''; gs.hidden = true; return; }
     var dd = s - dp, ok = dd >= 3;
     gs.hidden = false; place(gs, s, lo, hi); gs.classList.toggle('ok', ok);
-    v2.textContent = ok ? 'Conditions are suitable for painting' : 'Surface is too close to the dew point';
+    v2.textContent = ok ? 'Conditions are suitable for painting' : 'Surface temperature is too close to the dew point';
     v2.className = 'calc__verdict ' + (ok ? 'ok' : 'no');
     note.textContent = 'Margin above the dew point: {d} °C (at least 3 °C required).'.replace('{d}', f(dd));
   }

@@ -360,7 +360,7 @@ a{color:inherit}
     <div class="wrap">
       <div class="head head--p" data-r>
         <h2 class="h">Värvisüsteem iga keskkonna jaoks</h2>
-        <p>Alates rasketes tingimustes töötavate konstruktsioonide kaitsest kuni vastupidavate pinnavärvideni. Värvisüsteem valitakse töötingimuste, aluspinna ja nõutava kestvuse järgi.</p>
+        <p>Alates korrosioonikaitsest rasketes tingimustes kuni vastupidavate pinnavärvideni. Värvisüsteem valitakse töötingimuste, aluspinna ja nõutava kestvuse järgi.</p>
       </div>
       <div class="prod">
         <div class="side">
@@ -388,7 +388,7 @@ a{color:inherit}
             <span class="row__code" aria-hidden="true">EP</span>
             <div class="row__main">
               <h3>Epoksüvärvid</h3>
-              <p>Kahekomponendilised värvid agressiivse keskkonna jaoks: kaitsevad korrosiooni ja kemikaalide eest.</p>
+              <p>Kahekomponendilised värvid, mis kaitsevad agressiivses keskkonnas korrosiooni ja kemikaalide eest.</p>
               <ul><li>suure kuivainesisaldusega ja tsingirikkad kruntvärvid</li><li>vahevärvid ja pinnavärvid</li></ul>
               <details class="row__names"><summary>Tooted (15)</summary><p>EPOXYKOR B, HS 80, HS 80 MIO, HS 80 MIO ALU, M 501, M 503, M 505, MIO, MIO ALU, PRIMER, ZN-8; EPOXYMAL 12, 54 M 501, 54 M 503, ZB</p></details>
             </div>
@@ -406,7 +406,7 @@ a{color:inherit}
             <span class="row__code" aria-hidden="true">TER</span>
             <div class="row__main">
               <h3>Kuumakindlad värvid</h3>
-              <p>Kaitsevärvid pindadele, mis töötavad kõrgel temperatuuril.</p>
+              <p>Kaitsevärvid kõrge temperatuuriga pindadele.</p>
               <ul><li>alküüdvärvid kuni 200 °C</li><li>silikoonvärvid kuni 400, 600 ja 800 °C</li><li>etüülsilikaatvärvid kuni 500 °C</li></ul>
               <div class="heat" data-io aria-hidden="true"><div class="heat__bar"><i></i></div><ol><li style="--p:.25">200</li><li style="--p:.5">400</li><li style="--p:.625">500</li><li style="--p:.75">600</li><li style="--p:1">800 °C</li></ol></div>
               <details class="row__names"><summary>Tooted (8)</summary><p>TERMAL 200, 400, 400 GR, 600, 600 GR, 800, 800 GR, ESI</p></details>
@@ -425,7 +425,7 @@ a{color:inherit}
             <span class="row__code" aria-hidden="true">TH</span>
             <div class="row__main">
               <h3>Vedeldid</h3>
-              <p>Eraldi vedeldid MALCHEM-i alküüd-, epoksü- ja polüuretaanvärvidele.</p>
+              <p>MALCHEM-i enda vedeldid alküüd-, epoksü- ja polüuretaanvärvidele.</p>
               <details class="row__names"><summary>Tooted (3)</summary><p>THINNER AK, THINNER EP, THINNER PUR</p></details>
             </div>
           </article>
@@ -647,7 +647,7 @@ a{color:inherit}
     var t = num('dp-t'), h = num('dp-h'), s = num('dp-s');
     var out = g('dp-out'), v2 = g('dp-v'), note = g('dp-note'), gr = g('g-r'), gd = g('g-dp'), gs = g('g-s');
     if (!isFinite(t) || !isFinite(h) || h <= 0 || h > 100) {
-      out.textContent = '–'; v2.textContent = 'Sisestage õhutemperatuur ja niiskus (1–100 %)'; v2.className = 'calc__verdict no'; note.textContent = ''; gs.hidden = true; return;
+      out.textContent = '–'; v2.textContent = 'Sisestage õhutemperatuur ja suhteline õhuniiskus (1–100 %)'; v2.className = 'calc__verdict no'; note.textContent = ''; gs.hidden = true; return;
     }
     var a = 17.62, b = 243.12, gm = Math.log(h / 100) + a * t / (b + t), dp = b * gm / (a - gm);   // Magnus formula
     out.textContent = f(dp) + ' °C';
